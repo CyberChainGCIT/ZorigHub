@@ -1,14 +1,10 @@
-# ZorigHub: Product Requirements Document
+# ZorigHub
 
 ## Project Overview
 
 **Project Name:** ZorigHub
 
-**Version:** 1.0
-
-**Date:** 2025-06-12
-
-### Original Requirements
+### Requirements
 
 ZorigHub is a digital platform that empowers Bhutanese youth artisans skilled in traditional crafts such as weaving, carving, and painting. The platform offers verified skills certification, eco-friendly packaging solutions, and access to global and tourism-focused markets. By integrating with existing handicraft associations, ZorigHub supports job creation, promotes sustainable livelihoods, and preserves Bhutan's cultural heritage. It blends technology with tradition to help young artisans thrive in a modern economy while staying rooted in their identity.
 
@@ -410,4 +406,4 @@ Through careful implementation and partnership with existing stakeholders, Zorig
 
 ## System Design
 
-[📄 View System Design Documentation](./docs/systemdesign.md)
+[📄 View System Design Documentation](./docs/System_Design.md)
