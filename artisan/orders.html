@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - Artisan Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zorig: '#FC2839',
+                        'zorig-light': '#FFE5E7',
+                        'bhutan-charcoal': '#333333',
+                        'bhutan-gray': '#F5F5F5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for elements not easily styled with Tailwind */
+        .sidebar {
+            scrollbar-width: thin;
+            scrollbar-color: #FC2839 transparent;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #FC2839;
+            border-radius: 20px;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .badge-shadow {
+            box-shadow: 0 4px 6px -1px rgba(252, 40, 57, 0.2), 0 2px 4px -1px rgba(252, 40, 57, 0.06);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-bhutan-gray font-sans">
+    <!-- Main Layout -->
+    <div class="flex flex-col md:flex-row min-h-screen">
+
+        <aside class="hidden md:flex md:flex-col w-64 bg-white border-r border-gray-200 h-screen sticky top-0 z-origin">
+            <div class="flex items-center justify-center h-16 border-b border-gray-200">
+                <div class="text-2xl font-bold text-zorig">Zorig<span class="text-bhutan-charcoal">Hub</span></div>
+            </div>
+            <div class="overflow-y-auto sidebar flex-grow">
+                <nav class="px-4 py-6">
+                    <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                            class="w-12 h-12 rounded-full border-2 border-zorig">
+                        <div>
+                            <p class="text-sm text-gray-600">Welcome back</p>
+                            <p class="font-medium">Choden Lhamo</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-home mr-3"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button  flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-tshirt mr-3"></i>
+                                <span>My Products</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button active flex items-center px-4 py-3 text-zorig bg-zorig-light rounded-lg">
+                                <i class="fas fa-shopping-bag mr-3"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-rupee-sign mr-3"></i>
+                                <span>Earnings</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-user mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                         
+                    </ul>
+                    <div class="mt-16 px-4">
+                        <button
+                            class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                            <i class="fas fa-plus mr-2"></i>
+                            <span>Add New Product</span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="px-4 py-3 border-t border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                        class="w-8 h-8 rounded-full">
+                    <div class="flex-grow">
+                        <p class="text-sm font-medium">Choden Lhamo</p>
+                        <p class="text-xs text-gray-500">Weaving Artisan</p>
+                    </div>
+                    <button class="text-gray-500 hover:text-zorig">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content flex-grow pb-16 md:pb-0">
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 flex items-center justify-between">
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="text-gray-500 hover:text-zorig focus:outline-none">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex-1 md:text-right">
+                        <div class="flex items-center justify-end space-x-4">
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-bell text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-envelope text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <div class="hidden md:block">
+                                <div class="flex items-center space-x-2 border-l border-gray-200 pl-4">
+                                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                                        class="w-8 h-8 rounded-full">
+                                    <span class="text-sm">Choden Lhamo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+                <!-- Page Title and Stats -->
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-[#FC2839] mb-2">Your Orders</h2>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-white rounded-lg shadow p-4 flex-1 min-w-[250px]">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500">Pending</p>
+                                    <h3 class="text-2xl font-bold">12</h3>
+                                </div>
+                                <div class="bg-[#fff6e5] p-3 rounded-full">
+                                    <i class="fas fa-clock text-[#FFC107] text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-4 flex-1 min-w-[250px]">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500">Shipped</p>
+                                    <h3 class="text-2xl font-bold">8</h3>
+                                </div>
+                                <div class="bg-[#e5f6ff] p-3 rounded-full">
+                                    <i class="fas fa-truck text-[#2196F3] text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-4 flex-1 min-w-[250px]">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500">Completed</p>
+                                    <h3 class="text-2xl font-bold">24</h3>
+                                </div>
+                                <div class="bg-[#e7f7e7] p-3 rounded-full">
+                                    <i class="fas fa-check-circle text-[#4CAF50] text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter and Search Section -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="relative flex-1">
+                            <input type="text" placeholder="Search orders..."
+                                class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FC2839] focus:border-transparent">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <select id="status-filter"
+                                class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FC2839] focus:border-transparent">
+                                <option value="all">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                            <select id="sort-by"
+                                class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FC2839] focus:border-transparent">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="product">Product Name (A-Z)</option>
+                            </select>
+                            <button
+                                class="px-4 py-2 bg-[#FC2839] text-white rounded-lg hover:bg-[#e02433] transition flex items-center justify-center">
+                                <i class="fas fa-filter mr-2"></i> Apply
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders List - Table for Desktop, Cards for Mobile -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <!-- Desktop Table -->
+                    <div class="hidden md:block">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Order #</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Buyer</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Product</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Date</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Status</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="orders-table-body">
+                                <!-- Orders will be inserted here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mobile Cards -->
+                    <div class="md:hidden space-y-4 p-4" id="orders-cards-container">
+                        <!-- Orders will be inserted here by JavaScript -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <div
+                        class="bg-gray-50 px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                        <div class="flex-1 flex justify-between items-center sm:hidden">
+                            <a href="#"
+                                class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                Previous </a>
+                            <span class="text-sm text-gray-700">Page <span id="current-page">1</span> of 5</span>
+                            <a href="#"
+                                class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                Next </a>
+                        </div>
+                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm text-gray-700">
+                                    Showing <span class="font-medium">1</span> to <span class="font-medium">8</span> of
+                                    <span class="font-medium">32</span> orders
+                                </p>
+                            </div>
+                            <div>
+                                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                                    aria-label="Pagination">
+                                    <a href="#"
+                                        class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <span class="sr-only">Previous</span>
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                    <a href="#" aria-current="page"
+                                        class="z-10 bg-[#FC2839] text-white border-[#FC2839] relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        1 </a>
+                                    <a href="#"
+                                        class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        2 </a>
+                                    <a href="#"
+                                        class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">
+                                        3 </a>
+                                    <span
+                                        class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                        ... </span>
+                                    <a href="#"
+                                        class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        5 </a>
+                                    <a href="#"
+                                        class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <span class="sr-only">Next</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+    </div>
+    <!-- Mobile Sidebar Overlay (hidden by default) -->
+    <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden">
+        <div class="absolute left-0 top-0 bottom-0 w-64 bg-white shadow-lg">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200">
+                <div class="text-xl font-bold text-zorig">Zorig<span class="text-bhutan-charcoal">Hub</span></div>
+                <button id="close-mobile-sidebar" class="text-gray-500 hover:text-zorig">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="overflow-y-auto h-full py-4">
+                <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mx-3 mb-6">
+                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                        class="w-10 h-10 rounded-full border-2 border-zorig">
+                    <div>
+                        <p class="text-xs text-gray-600">Welcome back</p>
+                        <p class="font-medium text-sm">Choden Lhamo</p>
+                    </div>
+                </div>
+                <ul>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button active flex items-center px-4 py-3 text-zorig bg-zorig-light mx-2 rounded-lg">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-tshirt mr-3"></i>
+                            <span>My Products</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-shopping-bag mr-3"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-rupee-sign mr-3"></i>
+                            <span>Earnings</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-user mr-3"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="mt-6 mx-3">
+                    <button
+                        class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                        <i class="fas fa-plus mr-2"></i>
+                        <span>Add New Product</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.remove('hidden');
+        });
+
+        document.getElementById('close-mobile-sidebar').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.add('hidden');
+        });
+
+        // Sample order data
+        const orders = [
+            {
+                id: "#ZH-2023-8765",
+                buyer: "Tashi Dema",
+                product: "Wooden Mask",
+                date: "June 10, 2025",
+                status: "pending",
+                image: "https://images.unsplash.com/photo-1616486602032-96a2b330d55d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "#ZH-2023-8764",
+                buyer: "Dorji Wangchuk",
+                product: "Handwoven Kira",
+                date: "June 8, 2025",
+                status: "shipped",
+                image: "https://images.unsplash.com/photo-1592925466403-2d0ef306b512?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "#ZH-2023-8763",
+                buyer: "Pema Choden",
+                product: "Silver Bracelet",
+                date: "June 5, 2025",
+                status: "completed",
+                image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "#ZH-2023-8762",
+                buyer: "Kinley Tobgay",
+                product: "Bamboo Basket",
+                date: "June 3, 2025",
+                status: "pending",
+                image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "#ZH-2023-8761",
+                buyer: "Sonam Tshering",
+                product: "Thangka Painting",
+                date: "May 29, 2025",
+                status: "shipped",
+                image: "https://images.unsplash.com/photo-1578302758064-2d4e4a8d2a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "#ZH-2023-8760",
+                buyer: "Dechen Zangmo",
+                product: "Ceramic Tea Set",
+                date: "May 27, 2025",
+                status: "completed",
+                image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "#ZH-2023-8759",
+                buyer: "Norbu Dorji",
+                product: "Wooden Bowl",
+                date: "May 23, 2025",
+                status: "pending",
+                image: "https://images.unsplash.com/photo-1604457860478-e6d1de463b0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "#ZH-2023-8758",
+                buyer: "Yangchen Lhamo",
+                product: "Woolen Scarf",
+                date: "May 20, 2025",
+                status: "completed",
+                image: "https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+            }
+        ];
+
+        // Function to render orders
+        function renderOrders(filter = "all") {
+            const filteredOrders = filter === "all"
+                ? orders
+                : orders.filter(order => order.status === filter);
+
+            // Render table view (desktop)
+            const tableBody = document.getElementById('orders-table-body');
+            tableBody.innerHTML = '';
+
+            filteredOrders.forEach(order => {
+                let statusColorClass = '';
+                switch (order.status.toLowerCase()) {
+                    case 'pending':
+                        statusColorClass = 'bg-yellow-100 text-yellow-700';
+                        break;
+                    case 'shipped':
+                        statusColorClass = 'bg-blue-100 text-blue-700';
+                        break;
+                    case 'completed':
+                        statusColorClass = 'bg-green-100 text-green-700';
+                        break;
+                    case 'cancelled':
+                        statusColorClass = 'bg-red-100 text-red-700';
+                        break;
+                    default:
+                        statusColorClass = 'bg-gray-100 text-gray-700';
+                }
+
+                const statusClass = `${statusColorClass} inline-flex px-3 py-1 rounded-full text-sm font-medium capitalize`;
+
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                row.innerHTML = `
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${order.id}</td>
+        <td class="px-6 py-4 whitespace-nowrap">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=${encodeURIComponent(order.buyer)}&background=random" alt="${order.buyer}">
+                </div>
+                <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">${order.buyer}</div>
+                    <div class="text-sm text-gray-500">${order.id}</div>
+                </div>
+            </div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-md object-cover" src="${order.image}" alt="${order.product}">
+                </div>
+                <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">${order.product}</div>
+                </div>
+            </div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${order.date}</td>
+        <td class="px-6 py-4 whitespace-nowrap">
+            <span class="${statusClass}">${order.status}</span>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <div class="flex space-x-2">
+                ${order.status === 'pending' ?
+                        `<button onclick="markAsShipped('${order.id}')" class="text-white bg-[#FC2839] hover:bg-[#e02433] px-3 py-1 rounded-md text-sm flex items-center">
+                    <i class="fas fa-truck mr-1"></i> Ship
+                </button>` :
+                        ''}
+                <button onclick="messageBuyer('${order.buyer}')" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-md text-sm flex items-center">
+                    <i class="fas fa-comment mr-1"></i> Message
+                </button>
+            </div>
+        </td>
+    `;
+                tableBody.appendChild(row);
+            });
+
+
+            // Render card view (mobile)
+            const cardsContainer = document.getElementById('orders-cards-container');
+            cardsContainer.innerHTML = '';
+
+            filteredOrders.forEach(order => {
+                const statusClass = `status-${order.status} inline-flex px-3 py-1 rounded-full text-sm font-medium text-white capitalize`;
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg shadow p-4 border border-gray-100';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-lg font-semibold">${order.product}</h3>
+                            <p class="text-sm text-gray-600">${order.id}</p>
+                        </div>
+                        <span class="${statusClass}">${order.status}</span>
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=${encodeURIComponent(order.buyer)}&background=random" alt="${order.buyer}">
+                        <span class="ml-2 text-sm font-medium">${order.buyer}</span>
+                    </div>
+                    <div class="mt-3 flex items-center text-sm text-gray-500">
+                        <i class="far fa-calendar-alt mr-1"></i>
+                        ${order.date}
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between">
+                        ${order.status === 'pending' ?
+                        `<button onclick="markAsShipped('${order.id}')" class="text-white bg-[#FC2839] hover:bg-[#e02433] px-3 py-1 rounded-md text-sm flex items-center flex-1 mr-2 justify-center">
+                                <i class="fas fa-truck mr-1"></i> Ship
+                            </button>` :
+                        '<div class="flex-1"></div>'}
+                        <button onclick="messageBuyer('${order.buyer}')" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-md text-sm flex items-center flex-1 ml-2 justify-center">
+                            <i class="fas fa-comment mr-1"></i> Message
+                        </button>
+                    </div>
+                    <div class="mt-3">
+                        <img class="w-full h-32 object-cover rounded-md mt-2" src="${order.image}" alt="${order.product}">
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+        // Function to mark an order as shipped
+        function markAsShipped(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = 'shipped';
+                renderOrders(document.getElementById('status-filter').value);
+                alert(`Order ${orderId} marked as shipped!`);
+            }
+        }
+
+        // Function to message buyer
+        function messageBuyer(buyerName) {
+            alert(`Opening chat with ${buyerName}`);
+        }
+
+        // Event listener for status filter
+        document.getElementById('status-filter').addEventListener('change', function () {
+            renderOrders(this.value);
+        });
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', function () {
+            renderOrders();
+        });
+    </script>
+</body>
+
+</html>

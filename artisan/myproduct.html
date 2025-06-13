@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - Artisan Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zorig: '#FC2839',
+                        'zorig-light': '#FFE5E7',
+                        'bhutan-charcoal': '#333333',
+                        'bhutan-gray': '#F5F5F5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for elements not easily styled with Tailwind */
+        .sidebar {
+            scrollbar-width: thin;
+            scrollbar-color: #FC2839 transparent;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #FC2839;
+            border-radius: 20px;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .badge-shadow {
+            box-shadow: 0 4px 6px -1px rgba(252, 40, 57, 0.2), 0 2px 4px -1px rgba(252, 40, 57, 0.06);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-bhutan-gray font-sans">
+    <!-- Main Layout -->
+    <div class="flex flex-col md:flex-row min-h-screen">
+
+        <aside class="hidden md:flex md:flex-col w-64 bg-white border-r border-gray-200 h-screen sticky top-0 z-origin">
+            <div class="flex items-center justify-center h-16 border-b border-gray-200">
+                <div class="text-2xl font-bold text-zorig">Zorig<span class="text-bhutan-charcoal">Hub</span></div>
+            </div>
+            <div class="overflow-y-auto sidebar flex-grow">
+                <nav class="px-4 py-6">
+                    <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                            class="w-12 h-12 rounded-full border-2 border-zorig">
+                        <div>
+                            <p class="text-sm text-gray-600">Welcome back</p>
+                            <p class="font-medium">Choden Lhamo</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-home mr-3"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button  active flex items-center px-4 py-3 text-zorig bg-zorig-light rounded-lg">
+                                <i class="fas fa-tshirt mr-3"></i>
+                                <span>My Products</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-shopping-bag mr-3"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-rupee-sign mr-3"></i>
+                                <span>Earnings</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-user mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                         
+                    </ul>
+                    <div class="mt-16 px-4">
+                        <button
+                            class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                            <i class="fas fa-plus mr-2"></i>
+                            <span>Add New Product</span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="px-4 py-3 border-t border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                        class="w-8 h-8 rounded-full">
+                    <div class="flex-grow">
+                        <p class="text-sm font-medium">Choden Lhamo</p>
+                        <p class="text-xs text-gray-500">Weaving Artisan</p>
+                    </div>
+                    <button class="text-gray-500 hover:text-zorig">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content flex-grow pb-16 md:pb-0">
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 flex items-center justify-between">
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="text-gray-500 hover:text-zorig focus:outline-none">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex-1 md:text-right">
+                        <div class="flex items-center justify-end space-x-4">
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-bell text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-envelope text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <div class="hidden md:block">
+                                <div class="flex items-center space-x-2 border-l border-gray-200 pl-4">
+                                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                                        class="w-8 h-8 rounded-full">
+                                    <span class="text-sm">Choden Lhamo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+                <!-- Search and Filter Section -->
+                <div class="mb-8 bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="relative w-full md:w-96">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text"
+                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-[#FC2839] focus:border-transparent"
+                                placeholder="Search products...">
+                        </div>
+
+                        <div class="flex flex-wrap gap-3">
+                            <select
+                                class="px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#FC2839]">
+                                <option>All Status</option>
+                                <option>Active</option>
+                                <option>Sold Out</option>
+                            </select>
+
+                            <select
+                                class="px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#FC2839]">
+                                <option>All Crafts</option>
+                                <option>Weaving</option>
+                                <option>Woodwork</option>
+                                <option>Painting</option>
+                                <option>Metalwork</option>
+                            </select>
+
+                            <select
+                                class="px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#FC2839]">
+                                <option>Sort By</option>
+                                <option>Newest</option>
+                                <option>Oldest</option>
+                                <option>Popular</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Product Card 1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 product-card">
+                        <div class="relative h-48 bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                                alt="Handwoven Yak Wool Scarf" class="w-full h-full object-cover">
+                            <span
+                                class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium status-active">Active</span>
+                            <div class="absolute top-3 left-3 flex items-center gap-1">
+                                <span
+                                    class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full flex items-center gap-1">
+                                    <i class="fas fa-leaf text-green-500 text-xs"></i> Eco-Packaging
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Handwoven Yak Wool Scarf</h3>
+                            <p class="text-sm text-gray-500 mb-4">Traditional Bhutanese weaving technique from Bumthang
+                            </p>
+
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-lg font-bold text-[#FC2839]">Nu. 3,500</span>
+                                <span class="text-xs text-gray-500"><i class="fas fa-eye mr-1"></i> 245 views</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-[#FC2839] text-sm font-medium flex items-center gap-1">
+                                    <i class="fas fa-passport"></i> Craft Passport
+                                </a>
+
+                                <div class="flex gap-2">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-edit transition-all">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-duplicate transition-all">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-delete transition-all">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 product-card">
+                        <div class="relative h-48 bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1624275721759-2d21b0ee8710?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                                alt="Bamboo Handicraft Bowl" class="w-full h-full object-cover">
+                            <span
+                                class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium status-sold">Sold
+                                Out</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Bamboo Handicraft Bowl</h3>
+                            <p class="text-sm text-gray-500 mb-4">Sustainable bamboo craft from Zhemgang</p>
+
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-lg font-bold text-[#FC2839]">Nu. 1,200</span>
+                                <span class="text-xs text-gray-500"><i class="fas fa-eye mr-1"></i> 189 views</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-[#FC2839] text-sm font-medium flex items-center gap-1">
+                                    <i class="fas fa-passport"></i> Craft Passport
+                                </a>
+
+                                <div class="flex gap-2">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-edit transition-all">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-duplicate transition-all">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-delete transition-all">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 product-card">
+                        <div class="relative h-48 bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1560380786-2ab6c821b6db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                                alt="Traditional Thanka Painting" class="w-full h-full object-cover">
+                            <span
+                                class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium status-active">Active</span>
+                            <div class="absolute top-3 left-3 flex items-center gap-1">
+                                <span
+                                    class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full flex items-center gap-1">
+                                    <i class="fas fa-leaf text-green-500 text-xs"></i> Eco-Packaging
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Traditional Thanka Painting</h3>
+                            <p class="text-sm text-gray-500 mb-4">Sacred Buddhist art painted with natural pigments</p>
+
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-lg font-bold text-[#FC2839]">Nu. 12,000</span>
+                                <span class="text-xs text-gray-500"><i class="fas fa-eye mr-1"></i> 356 views</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-[#FC2839] text-sm font-medium flex items-center gap-1">
+                                    <i class="fas fa-passport"></i> Craft Passport
+                                </a>
+
+                                <div class="flex gap-2">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-edit transition-all">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-duplicate transition-all">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-delete transition-all">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 product-card">
+                        <div class="relative h-48 bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                                alt="Silver Filigree Jewelry Set" class="w-full h-full object-cover">
+                            <span
+                                class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium status-active">Active</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Silver Filigree Jewelry Set</h3>
+                            <p class="text-sm text-gray-500 mb-4">Intricate silver work from Thimphu craftsmen</p>
+
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-lg font-bold text-[#FC2839]">Nu. 8,900</span>
+                                <span class="text-xs text-gray-500"><i class="fas fa-eye mr-1"></i> 412 views</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-[#FC2839] text-sm font-medium flex items-center gap-1">
+                                    <i class="fas fa-passport"></i> Craft Passport
+                                </a>
+
+                                <div class="flex gap-2">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-edit transition-all">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-duplicate transition-all">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-delete transition-all">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 product-card">
+                        <div class="relative h-48 bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1617897903251-5c3f5a0b9a6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                                alt="Handmade Wooden Mask" class="w-full h-full object-cover">
+                            <span
+                                class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium status-active">Active</span>
+                            <div class="absolute top-3 left-3 flex items-center gap-1">
+                                <span
+                                    class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full flex items-center gap-1">
+                                    <i class="fas fa-leaf text-green-500 text-xs"></i> Eco-Packaging
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Handmade Wooden Mask</h3>
+                            <p class="text-sm text-gray-500 mb-4">Dance mask carved from locally sourced pine</p>
+
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-lg font-bold text-[#FC2839]">Nu. 6,500</span>
+                                <span class="text-xs text-gray-500"><i class="fas fa-eye mr-1"></i> 178 views</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-[#FC2839] text-sm font-medium flex items-center gap-1">
+                                    <i class="fas fa-passport"></i> Craft Passport
+                                </a>
+
+                                <div class="flex gap-2">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-edit transition-all">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-duplicate transition-all">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border text-sm action-btn-delete transition-all">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Product Card -->
+                    <div
+                        class="bg-white bg-opacity-50 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center transition-all duration-300 hover:border-[#FC2839] hover:bg-opacity-30 cursor-pointer min-h-[400px]">
+                        <div class="text-center p-6">
+                            <div
+                                class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-[#FC2839] bg-opacity-10 text-[#FC2839] mb-4">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-1">Add Product</h3>
+                            <p class="text-sm text-gray-500">Showcase your craft to the world</p>
+                            <button
+                                class="mt-4 bg-[#FC2839] hover:bg-[#e01e2e] text-white font-medium py-2 px-4 rounded-lg transition-all">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-8 flex items-center justify-between bg-white p-4 rounded-xl shadow-sm">
+                    <div class="text-sm text-gray-500">
+                        Showing <span class="font-medium">1</span> to <span class="font-medium">6</span> of <span
+                            class="font-medium">24</span> products
+                    </div>
+                    <div class="flex gap-1">
+                        <button class="px-3 py-1 rounded border text-gray-500 hover:bg-gray-100 disabled:opacity-50"
+                            disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="px-3 py-1 rounded border bg-[#FC2839] text-white">
+                            1
+                        </button>
+                        <button class="px-3 py-1 rounded border text-gray-500 hover:bg-gray-100">
+                            2
+                        </button>
+                        <button class="px-3 py-1 rounded border text-gray-500 hover:bg-gray-100">
+                            3
+                        </button>
+                        <button class="px-3 py-1 rounded border text-gray-500 hover:bg-gray-100">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+    </div>
+    <!-- Mobile Sidebar Overlay (hidden by default) -->
+    <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden">
+        <div class="absolute left-0 top-0 bottom-0 w-64 bg-white shadow-lg">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200">
+                <div class="text-xl font-bold text-zorig">Zorig<span class="text-bhutan-charcoal">Hub</span></div>
+                <button id="close-mobile-sidebar" class="text-gray-500 hover:text-zorig">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="overflow-y-auto h-full py-4">
+                <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mx-3 mb-6">
+                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
+                        class="w-10 h-10 rounded-full border-2 border-zorig">
+                    <div>
+                        <p class="text-xs text-gray-600">Welcome back</p>
+                        <p class="font-medium text-sm">Choden Lhamo</p>
+                    </div>
+                </div>
+                <ul>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button active flex items-center px-4 py-3 text-zorig bg-zorig-light mx-2 rounded-lg">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-tshirt mr-3"></i>
+                            <span>My Products</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-shopping-bag mr-3"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-rupee-sign mr-3"></i>
+                            <span>Earnings</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-user mr-3"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="mt-6 mx-3">
+                    <button
+                        class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                        <i class="fas fa-plus mr-2"></i>
+                        <span>Add New Product</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.remove('hidden');
+        });
+
+        document.getElementById('close-mobile-sidebar').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.add('hidden');
+        });
+
+
+        // Simulate loading content
+        setTimeout(() => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.style.opacity = 1;
+                el.style.transform = 'translateY(0)';
+            });
+        }, 100);
+    </script>
+</body>
+
+</html>
