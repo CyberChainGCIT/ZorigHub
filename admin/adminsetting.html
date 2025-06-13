@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,14 @@
     <style>
         /* Bhutanese pattern inspired by khamar motifs */
         .bhutan-pattern {
-            background: 
+            background:
                 linear-gradient(135deg, #FC283911 25%, transparent 25%) -10px 0,
                 linear-gradient(225deg, #FC283911 25%, transparent 25%) -10px 0,
                 linear-gradient(315deg, #FC283911 25%, transparent 25%),
-                linear-gradient(45deg, #FC283911 25%, transparent 25%);	
+                linear-gradient(45deg, #FC283911 25%, transparent 25%);
             background-size: 20px 20px;
         }
-        
+
         /* Custom CSS for circular progress indicators */
         .circular-progress {
             position: relative;
@@ -28,7 +29,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .circular-progress::before {
             content: "";
             position: absolute;
@@ -37,29 +38,30 @@
             border-radius: 50%;
             background-color: white;
         }
-        
+
         .stat-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Custom tab switcher */
-        .tab-switcher [type="radio"]:checked + label {
+        .tab-switcher [type="radio"]:checked+label {
             border-bottom: 3px solid #FC2839;
             color: #FC2839;
             font-weight: 600;
         }
     </style>
 </head>
+
 <body class="bg-gray-50 font-sans text-gray-800">
     <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="bg-white shadow-sm sticky top-0 left-0 z-10">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-[#FC2839] flex items-center justify-center text-white font-bold text-xl">ZH</div>
-                        <span class="ml-2 text-xl font-semibold">ZorigHub</span>
+                        <img src="/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -74,7 +76,7 @@
                         <div class="flex items-center">
                             <button class="max-w-xs flex items-center text-sm rounded-full focus:outline-none">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1603984834265-49a4fc0b3481?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80" alt="">
+                                <img class="h-8 w-8 object-cover rounded-full" src="../karma.jpg" alt="profile img">
                                 <span class="ml-2 hidden md:block">Admin</span>
                                 <i class="fas fa-chevron-down ml-1 text-xs hidden md:block"></i>
                             </button>
@@ -92,56 +94,65 @@
             <nav class="p-6">
                 <ul class="space-y-4">
                     <li>
-                        <a href="./admindashboard.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="index.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-line mr-3"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminuser.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminuser.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-users mr-3"></i>
                             <span>Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminorders.html" class="flex items-center px-4 py-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminorders.html"
+                            class="flex items-center px-4 py-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-shopping-basket mr-3"></i>
                             <span>Orders</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminanalytics.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminanalytics.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-pie mr-3"></i>
                             <span>Analytics</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminloan.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminloan.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-pie mr-3"></i>
                             <span>Loan</span>
                         </a>
                     </li>
-                    
+
                     <li>
-                        <a href="./adminsetting.html" class="flex items-center px-4 py-2 text-[#FC2839] bg-[#FC2839]/10 rounded-lg">
+                        <a href="adminsetting.html"
+                            class="flex items-center px-4 py-2 text-[#FC2839] bg-[#FC2839]/10 rounded-lg">
                             <i class="fas fa-cog mr-3"></i>
                             <span>Settings</span>
                         </a>
                     </li>
                 </ul>
-                
+
                 <div class="mt-12 pt-6 border-t border-gray-200">
                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Quick Actions</h3>
                     <div class="mt-4 space-y-2">
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-check-circle mr-2 text-[#FC2839]"></i>
                             <span>Approve Artisans</span>
                         </a>
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-file-export mr-2 text-[#FC2839]"></i>
                             <span>Export Reports</span>
                         </a>
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-comment-dots mr-2 text-[#FC2839]"></i>
                             <span>Customer Inquiries</span>
                         </a>
@@ -156,338 +167,376 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                     <h1 class="text-2xl font-semibold text-gray-900">User Management</h1>
                 </div>
-                
+
                 <!-- Dashboard Stats -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-6">
                     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        
-                        
+
+
                         <!-- Stat Card 4 -->
-                        <div class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
-                            
-                        </div>
-                    </div>
-                </div>
-                
-               
-                
-                    <!-- Settings Content -->
-        <main class="md:ml-64 flex-1 overflow-y-auto">
-            <div class="py-6">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                    <div class="flex justify-between items-center">
-                        <h1 class="text-2xl font-semibold text-gray-900">Admin Profile & Settings</h1>
-                        <div class="flex space-x-2">
-                            <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
-                                <i class="fas fa-save mr-1"></i> Save Changes
-                            </button>
-                        </div>
-                    </div>
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
 
-                    <!-- Settings Tabs -->
-                    <div class="mt-6 border-b border-gray-200">
-                        <nav class="-mb-px flex space-x-8">
-                            <a href="#" class="border-[#FC2839] text-[#FC2839] whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                Profile
-                            </a>
-                            <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                Security
-                            </a>
-                            <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                Preferences
-                            </a>
-                            <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
-                                System Settings
-                                <span class="ml-1 text-xs text-[#D9A05B]">(Admin Only)</span>
-                            </a>
-                        </nav>
-                    </div>
-                
-                <!-- Profile Settings -->
-                <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-lg font-medium text-gray-900">Personal Information</h2>
-                    </div>
-                    <div class="px-6 py-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                        <!-- Profile Picture -->
-                        <div class="sm:col-span-1">
-                            <div class="flex items-center flex-col">
-                                <img class="h-24 w-24 rounded-full object-cover" src="data:image/jpeg;base64,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" alt="">
-                                <button type="button" class="mt-2 text-sm text-[#FC2839] hover:text-[#d92130] font-medium">
-                                    Change Photo
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Form Fields -->
-                        <div class="sm:col-span-5">
-                            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                                <div class="sm:col-span-3">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                </div>
-
-                                <div class="sm:col-span-3">
-                                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                                    <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                </div>
-
-                                <div class="sm:col-span-4">
-                                    <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
-                                    <input type="email" name="email" id="email" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                </div>
-
-                                <div class="sm:col-span-4">
-                                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone number</label>
-                                    <input type="text" name="phone" id="phone" autocomplete="tel" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                </div>
-
-                                <div class="sm:col-span-3">
-                                    <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
-                                    <select id="role" name="role" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                        <option>Super Admin</option>
-                                        <option>Moderator</option>
-                                        <option>Support</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Activity Log -->
-                <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-lg font-medium text-gray-900">Recent Activity</h2>
-                    </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 bg-[#FC2839]/10 p-2 rounded-lg">
-                                    <i class="fas fa-user-check text-[#FC2839]"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <p class="text-sm font-medium text-gray-900">Approved 5 artisan applications</p>
-                                    <p class="text-xs text-gray-500">Today at 10:45 AM from 203.0.113.42</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 bg-[#FC2839]/10 p-2 rounded-lg">
-                                    <i class="fas fa-sign-in-alt text-[#FC2839]"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <p class="text-sm font-medium text-gray-900">Last login</p>
-                                    <p class="text-xs text-gray-500">Yesterday at 8:32 AM from 203.0.113.42</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                  <!-- Security Settings -->
-                <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-lg font-medium text-gray-900">Security Settings</h2>
-                    </div>
-                    <div class="px-6 py-4 space-y-6">
-                        <!-- Password Change -->
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="text-sm font-medium text-gray-900">Password</h3>
-                                <p class="text-xs text-gray-500">Last changed 12 days ago</p>
-                            </div>
-                            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                                <div class="sm:col-span-3">
-                                    <label for="current-password" class="block text-sm font-medium text-gray-700">Current Password</label>
-                                    <input type="password" name="current-password" id="current-password" autocomplete="current-password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                                <div class="sm:col-span-3">
-                                    <label for="new-password" class="block text-sm font-medium text-gray-700">New Password</label>
-                                    <input type="password" name="new-password" id="new-password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
-                                        <div class="h-1 w-1/3 bg-red-500 rounded-full"></div>
-                                    </div>
-                                    <p class="mt-1 text-xs text-gray-500">Password strength: Weak</p>
-                                </div>
-                                <div class="sm:col-span-3">
-                                    <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-                                    <input type="password" name="confirm-password" id="confirm-password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
-                                </div>
-                            </div>
-                            <button type="button" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
-                                Change Password
-                            </button>
-                        </div>
 
-                        <!-- Two Factor Auth -->
-                        <div class="space-y-4 border-t border-gray-200 pt-4">
+
+                <!-- Settings Content -->
+                <main class="md:ml-64 flex-1 overflow-y-auto">
+                    <div class="py-6">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                             <div class="flex justify-between items-center">
-                                <div>
-                                    <h3 class="text-sm font-medium text-gray-900">Two-Factor Authentication</h3>
-                                    <p class="text-xs text-gray-500">Add an extra layer of security</p>
+                                <h1 class="text-2xl font-semibold text-gray-900">Admin Profile & Settings</h1>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                        <i class="fas fa-save mr-1"></i> Save Changes
+                                    </button>
                                 </div>
-                                <button type="button" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
-                                    Enable 2FA
-                                </button>
                             </div>
-                            <div class="rounded-md bg-yellow-50 p-4">
-                                <div class="flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-exclamation-triangle text-yellow-400"></i>
-                                    </div>
-                                    <div class="ml-3">
-                                        <h3 class="text-sm font-medium text-yellow-800">Not Enabled</h3>
-                                        <div class="mt-2 text-sm text-yellow-700">
-                                            <p>Two-factor authentication adds an extra layer of security to your account by requiring more than just a password to log in.</p>
+
+                            <!-- Settings Tabs -->
+                            <div class="mt-6 border-b border-gray-200">
+                                <nav class="-mb-px flex space-x-8">
+                                    <a href="#"
+                                        class="border-[#FC2839] text-[#FC2839] whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Profile
+                                    </a>
+                                    <a href="#"
+                                        class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Security
+                                    </a>
+                                    <a href="#"
+                                        class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Preferences
+                                    </a>
+                                    <a href="#"
+                                        class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        System Settings
+                                        <span class="ml-1 text-xs text-[#D9A05B]">(Admin Only)</span>
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <!-- Profile Settings -->
+                            <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
+                                <div class="px-6 py-4 border-b border-gray-200">
+                                    <h2 class="text-lg font-medium text-gray-900">Personal Information</h2>
+                                </div>
+                                <div class="px-6 py-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                    <!-- Profile Picture -->
+                                    <div class="sm:col-span-1">
+                                        <div class="flex items-center flex-col">
+                                            <img class="h-24 w-24 rounded-full object-cover" src="../karma.jpg" alt="">
+                                            <button type="button"
+                                                class="mt-2 text-sm text-[#FC2839] hover:text-[#d92130] font-medium">
+                                                Change Photo
+                                            </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Active Sessions -->
-                        <div class="space-y-4 border-t border-gray-200 pt-4">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <h3 class="text-sm font-medium text-gray-900">Active Sessions</h3>
-                                    <p class="text-xs text-gray-500">Currently logged in from 2 devices</p>
-                                </div>
-                                <button type="button" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
-                                    Log Out Other Devices
-                                </button>
-                            </div>
-                            <div class="rounded-md bg-blue-50 p-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0">
-                                            <i class="fas fa-laptop text-blue-400"></i>
-                                        </div>
-                                        <div class="ml-3">
-                                            <h3 class="text-sm font-medium text-blue-800">Chrome on Windows</h3>
-                                            <div class="mt-1 text-sm text-blue-700">
-                                                <p>Thimphu, Bhutan (This device)</p>
-                                                <p class="text-xs">Last active: Just now</p>
+                                    <!-- Form Fields -->
+                                    <div class="sm:col-span-5">
+                                        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                            <div class="sm:col-span-3">
+                                                <label for="first-name"
+                                                    class="block text-sm font-medium text-gray-700">First name</label>
+                                                <input type="text" name="first-name" id="first-name"
+                                                    autocomplete="given-name"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-3">
+                                                <label for="last-name"
+                                                    class="block text-sm font-medium text-gray-700">Last name</label>
+                                                <input type="text" name="last-name" id="last-name"
+                                                    autocomplete="family-name"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-4">
+                                                <label for="email" class="block text-sm font-medium text-gray-700">Email
+                                                    address</label>
+                                                <input type="email" name="email" id="email" autocomplete="email"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-4">
+                                                <label for="phone" class="block text-sm font-medium text-gray-700">Phone
+                                                    number</label>
+                                                <input type="text" name="phone" id="phone" autocomplete="tel"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-3">
+                                                <label for="role"
+                                                    class="block text-sm font-medium text-gray-700">Role</label>
+                                                <select id="role" name="role"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                                    <option>Super Admin</option>
+                                                    <option>Moderator</option>
+                                                    <option>Support</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-blue-700 text-sm font-medium">
-                                        Current
+                                </div>
+                            </div>
+
+                            <!-- Activity Log -->
+                            <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
+                                <div class="px-6 py-4 border-b border-gray-200">
+                                    <h2 class="text-lg font-medium text-gray-900">Recent Activity</h2>
+                                </div>
+                                <div class="divide-y divide-gray-200">
+                                    <div class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 bg-[#FC2839]/10 p-2 rounded-lg">
+                                                <i class="fas fa-user-check text-[#FC2839]"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <p class="text-sm font-medium text-gray-900">Approved 5 artisan
+                                                    applications</p>
+                                                <p class="text-xs text-gray-500">Today at 10:45 AM from 203.0.113.42</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 bg-[#FC2839]/10 p-2 rounded-lg">
+                                                <i class="fas fa-sign-in-alt text-[#FC2839]"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <p class="text-sm font-medium text-gray-900">Last login</p>
+                                                <p class="text-xs text-gray-500">Yesterday at 8:32 AM from 203.0.113.42
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-               
-            </div>
-        </main>
-    </div>
+                            <!-- Security Settings -->
+                            <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
+                                <div class="px-6 py-4 border-b border-gray-200">
+                                    <h2 class="text-lg font-medium text-gray-900">Security Settings</h2>
+                                </div>
+                                <div class="px-6 py-4 space-y-6">
+                                    <!-- Password Change -->
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h3 class="text-sm font-medium text-gray-900">Password</h3>
+                                            <p class="text-xs text-gray-500">Last changed 12 days ago</p>
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                            <div class="sm:col-span-3">
+                                                <label for="current-password"
+                                                    class="block text-sm font-medium text-gray-700">Current
+                                                    Password</label>
+                                                <input type="password" name="current-password" id="current-password"
+                                                    autocomplete="current-password"
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                            <div class="sm:col-span-3">
+                                                <label for="new-password"
+                                                    class="block text-sm font-medium text-gray-700">New Password</label>
+                                                <input type="password" name="new-password" id="new-password"
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                                <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                                                    <div class="h-1 w-1/3 bg-red-500 rounded-full"></div>
+                                                </div>
+                                                <p class="mt-1 text-xs text-gray-500">Password strength: Weak</p>
+                                            </div>
+                                            <div class="sm:col-span-3">
+                                                <label for="confirm-password"
+                                                    class="block text-sm font-medium text-gray-700">Confirm
+                                                    Password</label>
+                                                <input type="password" name="confirm-password" id="confirm-password"
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+                                        </div>
+                                        <button type="button"
+                                            class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                            Change Password
+                                        </button>
+                                    </div>
 
-    <!-- JavaScript -->
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Initialize sales chart
-        const salesCtx = document.getElementById('salesChart').getContext('2d');
-        const salesChart = new Chart(salesCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [
-                    {
-                        label: 'Weaving',
-                        data: [12, 19, 15, 17, 23, 25],
-                        backgroundColor: '#FC2839',
-                        borderRadius: 4,
-                        barThickness: 12,
+                                    <!-- Two Factor Auth -->
+                                    <div class="space-y-4 border-t border-gray-200 pt-4">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <h3 class="text-sm font-medium text-gray-900">Two-Factor Authentication
+                                                </h3>
+                                                <p class="text-xs text-gray-500">Add an extra layer of security</p>
+                                            </div>
+                                            <button type="button"
+                                                class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                                Enable 2FA
+                                            </button>
+                                        </div>
+                                        <div class="rounded-md bg-yellow-50 p-4">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-yellow-800">Not Enabled</h3>
+                                                    <div class="mt-2 text-sm text-yellow-700">
+                                                        <p>Two-factor authentication adds an extra layer of security to
+                                                            your account by requiring more than just a password to log
+                                                            in.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Active Sessions -->
+                                    <div class="space-y-4 border-t border-gray-200 pt-4">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <h3 class="text-sm font-medium text-gray-900">Active Sessions</h3>
+                                                <p class="text-xs text-gray-500">Currently logged in from 2 devices</p>
+                                            </div>
+                                            <button type="button"
+                                                class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                                Log Out Other Devices
+                                            </button>
+                                        </div>
+                                        <div class="rounded-md bg-blue-50 p-4">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <i class="fas fa-laptop text-blue-400"></i>
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <h3 class="text-sm font-medium text-blue-800">Chrome on Windows
+                                                        </h3>
+                                                        <div class="mt-1 text-sm text-blue-700">
+                                                            <p>Thimphu, Bhutan (This device)</p>
+                                                            <p class="text-xs">Last active: Just now</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-blue-700 text-sm font-medium">
+                                                    Current
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </main>
+            </div>
+
+            <!-- JavaScript -->
+            <!-- JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                // Initialize sales chart
+                const salesCtx = document.getElementById('salesChart').getContext('2d');
+                const salesChart = new Chart(salesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [
+                            {
+                                label: 'Weaving',
+                                data: [12, 19, 15, 17, 23, 25],
+                                backgroundColor: '#FC2839',
+                                borderRadius: 4,
+                                barThickness: 12,
+                            },
+                            {
+                                label: 'Wood Carving',
+                                data: [8, 9, 10, 12, 15, 18],
+                                backgroundColor: '#10B981',
+                                borderRadius: 4,
+                                barThickness: 12,
+                            },
+                            {
+                                label: 'Thangka Painting',
+                                data: [6, 8, 10, 12, 14, 16],
+                                backgroundColor: '#3B82F6',
+                                borderRadius: 4,
+                                barThickness: 12,
+                            }
+                        ]
                     },
-                    {
-                        label: 'Wood Carving',
-                        data: [8, 9, 10, 12, 15, 18],
-                        backgroundColor: '#10B981',
-                        borderRadius: 4,
-                        barThickness: 12,
-                    },
-                    {
-                        label: 'Thangka Painting',
-                        data: [6, 8, 10, 12, 14, 16],
-                        backgroundColor: '#3B82F6',
-                        borderRadius: 4,
-                        barThickness: 12,
-                    }
-                ]
-            },
-            options: {
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            display: false
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
                         },
-                        stacked: true
-                    },
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            borderDash: [5],
-                            drawBorder: false
-                        },
-                        ticks: {
-                            callback: function(value) {
-                                return 'BTN ' + value + 'k';
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                stacked: true
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    borderDash: [5],
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    callback: function (value) {
+                                        return 'BTN ' + value + 'k';
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            }
-        });
-        
-        // Initialize orders chart
-        const ordersCtx = document.getElementById('ordersChart').getContext('2d');
-        const ordersChart = new Chart(ordersCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-                datasets: [{
-                    label: 'Orders',
-                    data: [18, 24, 22, 30],
-                    backgroundColor: '#FC2839',
-                    borderRadius: 4,
-                    barThickness: 12,
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
-                scales: {
-                    x: { grid: { display: false } },
-                    y: { 
-                        beginAtZero: true,
-                        grid: { display: false },
-                        ticks: { stepSize: 5 }
-                    }
-                }
-            }
-        });
+                });
 
-        // Tab switching functionality
-        const tabs = document.querySelectorAll('.tab-switcher input[type="radio"]');
-        tabs.forEach(tab => {
-            tab.addEventListener('change', function() {
-                // In a real app, you would fetch different data here based on the selected tab
-                console.log(`Switched to ${this.id} tab`);
-            });
-        });
-    </script>
+                // Initialize orders chart
+                const ordersCtx = document.getElementById('ordersChart').getContext('2d');
+                const ordersChart = new Chart(ordersCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        datasets: [{
+                            label: 'Orders',
+                            data: [18, 24, 22, 30],
+                            backgroundColor: '#FC2839',
+                            borderRadius: 4,
+                            barThickness: 12,
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: { grid: { display: false } },
+                            y: {
+                                beginAtZero: true,
+                                grid: { display: false },
+                                ticks: { stepSize: 5 }
+                            }
+                        }
+                    }
+                });
+
+                // Tab switching functionality
+                const tabs = document.querySelectorAll('.tab-switcher input[type="radio"]');
+                tabs.forEach(tab => {
+                    tab.addEventListener('change', function () {
+                        // In a real app, you would fetch different data here based on the selected tab
+                        console.log(`Switched to ${this.id} tab`);
+                    });
+                });
+            </script>
 </body>
+
 </html>

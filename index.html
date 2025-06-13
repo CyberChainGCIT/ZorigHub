@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub | Preserve Traditions, Transform Lives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FC2839',
+                        primaryLight: '#fdd8da',
+                        primaryDark: '#d81d2c',
+                        secondary: '#2c394b',
+                        light: '#f8f9fa',
+                        dark: '#1e1e1e'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(44, 57, 75, 0.9));
+            z-index: -1;
+        }
+
+        .craft-item {
+            transition: transform 0.3s ease;
+        }
+
+        .craft-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .carousel-item {
+            opacity: 0;
+            transition: opacity 1s ease;
+            position: absolute;
+            width: 100%;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="bg-light text-dark">
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.png" class="w-28 h-14 object-cover" alt="logo image">
+                <!-- <span class="text-primary text-2xl font-bold">ZorigHub</span> -->
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#artisans" class="hover:text-primary transition-colors">Artisans</a>
+                <a href="#unique" class="hover:text-primary transition-colors">Our Model</a>
+                <a href="#shop" class="hover:text-primary transition-colors">Shop</a>
+                <a href="#impact" class="hover:text-primary transition-colors">Impact</a>
+                <a href="#stories" class="hover:text-primary transition-colors">Stories</a>
+            </nav>
+            <div class="flex items-center">
+                <button class="md:hidden text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="hidden md:flex space-x-4 ml-6">
+                    <a href="login.html">
+                        <button
+                            class="px-4 py-2 bg-primary hover:bg-primaryDark transition-colors text-white rounded-full">Login</button>
+                    </a>
+                    <a href="signup.html">
+                        <button
+                            class="px-4 py-2 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-full">Sign
+                            Up</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg relative min-h-screen flex items-center pt-16">
+        <!-- Video background -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img src="images/landing.jpg" class="min-w-full min-h-full object-cover" />
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        </div>
+
+
+        <div class="container mx-auto px-4 relative z-10 py-20">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold text-white font-playfair">Preserve Traditions, Transform Lives
+                </h1>
+                <p class="text-xl md:text-2xl text-white mt-4 mb-10">Discover Bhutanese handicrafts with purpose - where
+                    every purchase sustains cultural heritage and empowers artisans</p>
+                <div class="flex flex-wrap gap-4">
+                    <button
+                        class="px-8 py-3 bg-primary hover:bg-primaryDark transition-colors text-white font-semibold rounded-full text-lg">Shop
+                        Crafts with Meaning</button>
+                    <button
+                        class="px-8 py-3 bg-white hover:bg-gray-100 text-dark font-semibold rounded-full text-lg">Explore
+                        Artisan Stories</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Story Showcase -->
+    <section id="artisans" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Meet the Hands Behind the Heritage</h2>
+
+            <!-- Artisan Carousel -->
+            <div class="relative overflow-hidden h-[560px]">
+                <div class="carousel-item active">
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <div class="w-full md:w-1/2">
+                            <div class="aspect-square overflow-hidden rounded-2xl shadow-xl">
+                                <img src="pema.jpg" alt="Artisan Pema" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <span class="inline-block px-3 py-1 bg-primaryLight text-primary rounded-full mb-4">Single
+                                mother of three</span>
+                            <h3 class="text-3xl font-bold mb-4">Pema Wangmo</h3>
+                            <p class="text-gray-600 mb-6">Specializing in hand-woven silk textiles using techniques
+                                passed down through five generations of her family. Each pattern tells stories from
+                                Bhutanese folklore.</p>
+                            <blockquote class="border-l-4 border-primary pl-4 py-2 mb-6 italic">"This craft saved my
+                                family after my husband passed away. With what I earn, I can send my children to school
+                                and keep our traditions alive."</blockquote>
+                            <button
+                                class="px-6 py-3 bg-primary hover:bg-primaryDark text-white font-semibold rounded-full">Shop
+                                Pema's Crafts</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <div class="w-full md:w-1/2">
+                            <div class="aspect-square overflow-hidden rounded-2xl shadow-xl">
+                                <img src="tshering.jpg" alt="Artisan Sangay" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <span
+                                class="inline-block px-3 py-1 bg-primaryLight text-primary rounded-full mb-4">Disability
+                                artisan</span>
+                            <h3 class="text-3xl font-bold mb-4">Sangay Dorji</h3>
+                            <p class="text-gray-600 mb-6">Masters the intricate art of silver filigree despite limited
+                                mobility. His work decorates Buddhist altars and royal palaces throughout Bhutan.</p>
+                            <blockquote class="border-l-4 border-primary pl-4 py-2 mb-6 italic">"They said I couldn't
+                                continue my craft after the accident. This platform gave me a way to support my family
+                                and prove them wrong."</blockquote>
+                            <button
+                                class="px-6 py-3 bg-primary hover:bg-primaryDark text-white font-semibold rounded-full">Shop
+                                Sangay's Crafts</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <div class="w-full md:w-1/2">
+                            <div class="aspect-square overflow-hidden rounded-2xl shadow-xl">
+                                <img src="karma.jpg" alt="Artisan Tashi" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <span class="inline-block px-3 py-1 bg-primaryLight text-primary rounded-full mb-4">Flood
+                                survivor</span>
+                            <h3 class="text-3xl font-bold mb-4">Tashi Dorji</h3>
+                            <p class="text-gray-600 mb-6">Creates traditional bamboo craftwork that was almost lost
+                                after floods destroyed his village. Each piece represents resilience of Bhutanese
+                                culture.</p>
+                            <blockquote class="border-l-4 border-primary pl-4 py-2 mb-6 italic">"When the floods took
+                                everything, this craft gave me purpose. Now I teach others so our traditions won't
+                                disappear."</blockquote>
+                            <button
+                                class="px-6 py-3 bg-primary hover:bg-primaryDark text-white font-semibold rounded-full">Shop
+                                Tashi's Crafts</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-primary" data-slide="0"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300" data-slide="1"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300" data-slide="2"></button>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Value Proposition -->
+    <section id="unique" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Why ZorigHub is Different</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="text-5xl text-primary mb-6">🏺</div>
+                    <h3 class="text-xl font-bold mb-4">Cultural Preservation</h3>
+                    <p class="text-gray-600">Every product documents endangered techniques with historical context to
+                        ensure Bhutanese traditions live on for generations.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="text-5xl text-primary mb-6">❤️</div>
+                    <h3 class="text-xl font-bold mb-4">Social Impact Engine</h3>
+                    <p class="text-gray-600">10% of your purchase funds community loans for artisans in crisis, creating
+                        a sustainable cycle of empowerment.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="text-5xl text-primary mb-6">📖</div>
+                    <h3 class="text-xl font-bold mb-4">Story-Driven Commerce</h3>
+                    <p class="text-gray-600">Filter by artisan hardship to support those who need it most. Know exactly
+                        whose life you're changing with each purchase.</p>
+                </div>
+            </div>
+
+            <!-- Impact Fund Visualization -->
+            <div class="mt-20 bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-10">
+                        <h2 class="text-3xl font-bold mb-6">Your Purchase Creates Ripples of Change</h2>
+                        <p class="text-gray-600 mb-8">Every Nu. 100 spent creates a tangible impact. Here's how your
+                            support transforms lives:</p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-16 h-16 bg-primaryLight text-primary rounded-xl flex items-center justify-center">
+                                    <span class="font-bold text-xl">75</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Direct to Artisan</h4>
+                                    <p class="text-sm text-gray-500">Fair income for skills and materials</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div
+                                    class="w-16 h-16 bg-primaryLight text-primary rounded-xl flex items-center justify-center">
+                                    <span class="font-bold text-xl">15</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Platform Operation</h4>
+                                    <p class="text-sm text-gray-500">Sustainable model to help more artisans</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div
+                                    class="w-16 h-16 bg-primaryLight text-primary rounded-xl flex items-center justify-center">
+                                    <span class="font-bold text-xl">10</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Impact Fund</h4>
+                                    <p class="text-sm text-gray-500">Direct investment in artisan communities</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2 bg-primaryLight p-10 flex items-center">
+                        <div class="w-full">
+                            <div class="bg-white rounded-xl p-6 mb-4 shadow-md">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-bold">Impact Fund Distribution</h4>
+                                    <span class="text-primary font-bold">Nu. 100,000</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-3 mt-3">
+                                    <div class="bg-primaryLight rounded-lg p-3 text-center">
+                                        <div class="text-xl text-primary mb-1">💰</div>
+                                        <p class="text-xs font-semibold">Loans for Equipment</p>
+                                    </div>
+                                    <div class="bg-primaryLight rounded-lg p-3 text-center">
+                                        <div class="text-xl text-primary mb-1">🏥</div>
+                                        <p class="text-xs font-semibold">Medical Emergencies</p>
+                                    </div>
+                                    <div class="bg-primaryLight rounded-lg p-3 text-center">
+                                        <div class="text-xl text-primary mb-1">🎓</div>
+                                        <p class="text-xs font-semibold">Youth Training</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div
+                                    class="inline-block w-56 h-56 rounded-full bg-white flex items-center justify-center border-8 border-primary mb-4 mx-auto">
+                                    <div class="text-center">
+                                        <div class="text-4xl text-primary font-bold">1,000,000</div>
+                                        <p class="text-sm">Total Purchase</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empathy Shopping Experience -->
+    <section id="shop" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Shop by Story, Not Just Product</h2>
+            <p class="text-xl text-center text-gray-600 mb-16">Connect with the lives you're transforming through every
+                purchase</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div
+                    class="bg-gray-50 rounded-2xl p-8 text-center shadow-sm border border-gray-200 hover:shadow-lg transition-all craft-item">
+                    <div class="text-5xl mb-4">♿</div>
+                    <h3 class="text-xl font-bold mb-3">Support Disability Artisans</h3>
+                    <p class="text-gray-600 mb-6 text-sm">Showcase extraordinary skills overcoming physical challenges
+                    </p>
+                    <button
+                        class="px-4 py-2 bg-white border border-primary text-primary text-sm rounded-full w-full">View
+                        Crafts</button>
+                </div>
+
+                <div
+                    class="bg-gray-50 rounded-2xl p-8 text-center shadow-sm border border-gray-200 hover:shadow-lg transition-all craft-item">
+                    <div class="text-5xl mb-4">🆘</div>
+                    <h3 class="text-xl font-bold mb-3">Save Endangered Crafts</h3>
+                    <p class="text-gray-600 mb-6 text-sm">Rescue traditions with fewer than 5 practitioners</p>
+                    <button
+                        class="px-4 py-2 bg-white border border-primary text-primary text-sm rounded-full w-full">View
+                        Crafts</button>
+                </div>
+
+                <div
+                    class="bg-gray-50 rounded-2xl p-8 text-center shadow-sm border border-gray-200 hover:shadow-lg transition-all craft-item">
+                    <div class="text-5xl mb-4">👩‍👧‍👦</div>
+                    <h3 class="text-xl font-bold mb-3">Empower Single Parents</h3>
+                    <p class="text-gray-600 mb-6 text-sm">Support families where craft is the sole income</p>
+                    <button
+                        class="px-4 py-2 bg-white border border-primary text-primary text-sm rounded-full w-full">View
+                        Crafts</button>
+                </div>
+
+                <div
+                    class="bg-gray-50 rounded-2xl p-8 text-center shadow-sm border border-gray-200 hover:shadow-lg transition-all craft-item">
+                    <div class="text-5xl mb-4">🌧️</div>
+                    <h3 class="text-xl font-bold mb-3">Rebuild After Disasters</h3>
+                    <p class="text-gray-600 mb-6 text-sm">Help artisans recover from natural calamities</p>
+                    <button
+                        class="px-4 py-2 bg-white border border-primary text-primary text-sm rounded-full w-full">View
+                        Crafts</button>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <button
+                    class="px-8 py-4 bg-primary hover:bg-primaryDark text-white font-bold rounded-full text-lg shadow-lg">Begin
+                    Your Impact Journey</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Rescue Spotlight -->
+    <section class="py-20 bg-gradient-to-br from-primary to-secondary">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-3xl p-10 shadow-2xl">
+                <div class="flex items-center justify-between flex-wrap mb-8">
+                    <div>
+                        <span
+                            class="inline-block px-3 py-1 bg-primary text-white rounded-full mb-2 font-semibold">Preserve
+                            Before It Disappears</span>
+                        <h2 class="text-3xl font-bold">Lingzhi Woodcarving</h2>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <span
+                            class="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-semibold">Only
+                            2 master practitioners remain</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-1/2">
+                        <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                            <img src="images/woodcarving.jpg" alt="Lingzhi Woodcarving"
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2">
+                        <div class="border-l-4 border-primary pl-6">
+                            <h3 class="text-2xl font-bold mb-4">Cultural Significance</h3>
+                            <p class="text-gray-600 mb-6">For over 500 years, Lingzhi woodcarving has been essential in
+                                constructing Bhutan's sacred temples. Each intricate pattern represents Buddhist
+                                cosmology and protection symbols unique to Himalayan architecture.</p>
+
+                            <h3 class="text-2xl font-bold mb-4">Why It's Endangered</h3>
+                            <p class="text-gray-600 mb-6">Young generations are migrating to cities, and without
+                                apprentices, this 15th-century technique faces extinction. The specialized tools and
+                                monastic knowledge required take decades to master.</p>
+
+                            <button
+                                class="px-8 py-3 bg-primary hover:bg-primaryDark text-white font-bold rounded-full">Support
+                                This Tradition</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Impact Products -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Best Sellers Changing Lives</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg craft-item">
+                    <div class="relative">
+                        <img src="images/weave.jpg" alt="Silk Scarf" class="w-full h-64 object-cover">
+                        <button
+                            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-white text-primary border border-primary rounded-full font-semibold">Tshering's
+                            Story</button>
+                        <span
+                            class="absolute top-4 right-4 px-3 py-1 bg-primary text-white text-xs rounded-full">Medical
+                            debt relief</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold">Bhutanese Silk Scarf</h3>
+                        <p class="text-sm text-gray-500 my-2">Handwoven with 8 traditional symbols of protection</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="font-bold text-lg">Nu. 3,250</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Nu. 850 to artisan's
+                                loan fund</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg craft-item">
+                    <div class="relative">
+                        <img src="images/silver-bowl.jpg" alt="Ceremonial Bowls" class="w-full h-64 object-cover">
+                        <button
+                            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-white text-primary border border-primary rounded-full font-semibold">Dorji's
+                            Story</button>
+                        <span
+                            class="absolute top-4 right-4 px-3 py-1 bg-primary text-white text-xs rounded-full">Disability
+                            artisan</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold">Silver Offering Bowls</h3>
+                        <p class="text-sm text-gray-500 my-2">Ritual vessels crafted following temple specifications</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="font-bold text-lg">Nu. 12,800</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Nu. 1,280 to community
+                                fund</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg craft-item">
+                    <div class="relative">
+                        <img src="images/basket.jpg" alt="Bamboo Basket" class="w-full h-64 object-cover">
+                        <button
+                            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-white text-primary border border-primary rounded-full font-semibold">Choden's
+                            Story</button>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-primary text-white text-xs rounded-full">Flood
+                            recovery</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold">Traditional Bamboo Basket</h3>
+                        <p class="text-sm text-gray-500 my-2">Made using rare weaving technique from southern Bhutan</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="font-bold text-lg">Nu. 1,950</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Nu. 195 to youth
+                                training</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg craft-item">
+                    <div class="relative">
+                        <img src="images/thangka.jpg" alt="Thangka Painting" class="w-full h-64 object-cover">
+                        <button
+                            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-white text-primary border border-primary rounded-full font-semibold">Dechen's
+                            Story</button>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-primary text-white text-xs rounded-full">Single
+                            mother</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold">Meditation Thangka</h3>
+                        <p class="text-sm text-gray-500 my-2">Sacred painting created with natural mineral pigments</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="font-bold text-lg">Nu. 45,000</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Nu. 4,500 to artisan
+                                fund</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button
+                    class="px-8 py-3 bg-white border border-primary text-primary hover:bg-primary hover:text-white transition-colors font-bold rounded-full">View
+                    All Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Testimonials -->
+    <section class="py-20 bg-white" id="impact">
+        <div class="container mx-auto px-4">
+            <div class="bg-gray-50 rounded-3xl overflow-hidden shadow-xl">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-secondary p-10 flex items-center justify-center">
+                        <div class="relative w-full aspect-video rounded-xl overflow-hidden">
+                            <img src="images/sangay.jpg" alt="Artisan testimonial" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-70 flex items-end p-6">
+                                <div class="text-white">
+                                    <blockquote class="text-xl italic">"The loan helped me buy medicine and keep weaving
+                                        after my accident. This craft is my life."</blockquote>
+                                    <p class="mt-3 font-semibold">Sangay Choden, Master Weaver</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2 p-10">
+                        <div class="max-w-md mx-auto">
+                            <div class="text-5xl text-primary mb-6">"</div>
+                            <blockquote class="text-2xl italic mb-6">Knowing my purchase funded Dechen's loom repair
+                                makes this thanka priceless. It's art with meaning.</blockquote>
+                            <div class="flex items-center mt-10">
+                                <div class="w-16 h-16 rounded-full overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                                        alt="Customer" class="w-full h-full object-cover">
+                                </div>
+                                <div class="ml-4">
+                                    <p class="font-bold">James Wilson</p>
+                                    <p class="text-sm text-gray-500">Buyer from United Kingdom</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-12">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Artisan income protection</span>
+                                    <span>5 years</span>
+                                </div>
+                                <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-2 rounded-full w-3/4"></div>
+                                </div>
+
+                                <div class="flex justify-between text-sm mb-2 mt-4">
+                                    <span>Skills preserved</span>
+                                    <span>7 traditions</span>
+                                </div>
+                                <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-2 rounded-full w-5/6"></div>
+                                </div>
+
+                                <div class="flex justify-between text-sm mb-2 mt-4">
+                                    <span>Community impact</span>
+                                    <span>42 families</span>
+                                </div>
+                                <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-2 rounded-full w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Dashboard -->
+    <section class="py-20 bg-gradient-to-r from-primary to-primaryDark" id="stories">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white">See Your Impact Grow</h2>
+
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-10">
+                        <h3 class="text-2xl font-bold mb-6">Real-time Impact Dashboard</h3>
+                        <p class="text-gray-600 mb-8">Every purchase contributes to these measurable changes in artisan
+                            communities across Bhutan. See how collective action creates transformation:</p>
+
+                        <div class="mb-10">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="p-5 border border-gray-200 rounded-xl">
+                                    <div class="text-4xl font-bold text-primary mb-2">Nu. 2,450,000</div>
+                                    <p class="text-gray-600">Total impact fund generated</p>
+                                </div>
+                                <div class="p-5 border border-gray-200 rounded-xl">
+                                    <div class="text-4xl font-bold text-primary mb-2">37</div>
+                                    <p class="text-gray-600">Loans distributed</p>
+                                </div>
+                                <div class="p-5 border border-gray-200 rounded-xl">
+                                    <div class="text-4xl font-bold text-primary mb-2">5</div>
+                                    <p class="text-gray-600">Crafts saved from extinction</p>
+                                </div>
+                                <div class="p-5 border border-gray-200 rounded-xl">
+                                    <div class="text-4xl font-bold text-primary mb-2">89</div>
+                                    <p class="text-gray-600">Artisans lifted from poverty</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="text-primary font-semibold hover:underline">View Full Impact Report <i
+                                class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+
+                    <div class="md:w-1/2 bg-primaryLight p-10">
+                        <h3 class="text-2xl font-bold mb-6 text-primary">Impact Distribution Map</h3>
+                        <div class="aspect-video bg-gray-200 rounded-xl overflow-hidden relative">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14189.051501854874!2d89.6391!3d27.4728!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e19405029b22cf%3A0x7c0d9e68f7fcd6c3!2sThimphu!5e0!3m2!1sen!2sbt!4v1718273133821!5m2!1sen!2sbt"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="absolute inset-0 w-full h-full"></iframe>
+                        </div>
+
+                        <div class="mt-8">
+                            <div class="flex items-center mb-4">
+                                <div class="w-4 h-4 bg-primary rounded-full"></div>
+                                <div class="ml-3">
+                                    <span class="font-semibold">Active artisan communities</span>
+                                    <span class="ml-2 bg-gray-200 rounded-full px-2 py-1 text-xs">23 locations</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <div class="w-4 h-4 rounded-full" style="background-color: #9c27b0;"></div>
+                                <div class="ml-3">
+                                    <span class="font-semibold">Craft preservation workshops</span>
+                                    <span class="ml-2 bg-gray-200 rounded-full px-2 py-1 text-xs">8 locations</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 rounded-full" style="background-color: #2196f3;"></div>
+                                <div class="ml-3">
+                                    <span class="font-semibold">Beneficiaries of community loans</span>
+                                    <span class="ml-2 bg-gray-200 rounded-full px-2 py-1 text-xs">12 districts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Discovery CTA -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="relative rounded-3xl overflow-hidden">
+                <img src="images/granny.jpg" alt="Artisan group" class="w-full h-96 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-10 text-white text-center">
+                    <p class="text-xl md:text-3xl font-bold mb-8">Every Stitch Has a Story. Every Purchase Writes a New
+                        Chapter.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button
+                            class="px-8 py-3 bg-primary hover:bg-primaryDark text-white font-bold rounded-full">Explore
+                            Heartfelt Stories</button>
+                        <button class="px-8 py-3 bg-white hover:bg-gray-100 text-primary font-bold rounded-full">Shop
+                            with Purpose</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-center text-gray-600 text-lg font-semibold mb-12">Proudly Trusted By</h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl p-6 h-32 flex items-center justify-center shadow">
+                    <span class="text-lg font-bold">Handicraft Association of Bhutan</span>
+                </div>
+                <div class="bg-white rounded-xl p-6 h-32 flex items-center justify-center shadow">
+                    <span class="text-lg font-bold">Tourism Council of Bhutan</span>
+                </div>
+                <div class="bg-white rounded-xl p-6 h-32 flex items-center justify-center shadow">
+                    <span class="text-lg font-bold">Kuensel</span>
+                </div>
+                <div class="bg-white rounded-xl p-6 h-32 flex items-center justify-center shadow">
+                    <span class="text-lg font-bold">BBS</span>
+                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col items-center justify-center">
+                <div class="bg-white rounded-full px-6 py-3 mb-6">
+                    <span class="text-xl text-primary font-bold">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="ml-2 font-semibold">Ethical Commerce Certified</span>
+                </div>
+
+                <p class="text-gray-600 max-w-2xl text-center">
+                    ZorigHub has been verified by independent auditors to ensure fair trade practices, direct artisan
+                    payments, and transparent social impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white pt-16 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">ZorigHub</h4>
+                    <p class="text-gray-300 mb-4">Preserving Bhutanese cultural heritage while empowering artisans to
+                        build sustainable livelihoods.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-4">About</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Our Story</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Our Impact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Artisan Stories</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Press & Media</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Subscribe</h4>
+                    <p class="text-gray-300 mb-4">Get updates on new crafts, artisan stories, and special offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="px-4 py-2 rounded-l w-full">
+                        <button class="bg-primary hover:bg-primaryDark px-4 py-2 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>© 2025 ZorigHub. All rights reserved. Keeping Bhutanese traditions alive, one craft at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Artisan Carousel Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                carouselItems.forEach(item => item.classList.remove('active'));
+                indicators.forEach(ind => ind.classList.remove('bg-primary'));
+                indicators.forEach(ind => ind.classList.add('bg-gray-300'));
+
+                carouselItems[index].classList.add('active');
+                indicators[index].classList.remove('bg-gray-300');
+                indicators[index].classList.add('bg-primary');
+                currentIndex = index;
+            }
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto-rotate every 8 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                showSlide(currentIndex);
+            }, 8000);
+        });
+    </script>
+</body>
+
+</html>

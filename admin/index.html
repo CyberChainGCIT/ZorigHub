@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,14 @@
     <style>
         /* Bhutanese pattern inspired by khamar motifs */
         .bhutan-pattern {
-            background: 
+            background:
                 linear-gradient(135deg, #FC283911 25%, transparent 25%) -10px 0,
                 linear-gradient(225deg, #FC283911 25%, transparent 25%) -10px 0,
                 linear-gradient(315deg, #FC283911 25%, transparent 25%),
-                linear-gradient(45deg, #FC283911 25%, transparent 25%);	
+                linear-gradient(45deg, #FC283911 25%, transparent 25%);
             background-size: 20px 20px;
         }
-        
+
         /* Custom CSS for circular progress indicators */
         .circular-progress {
             position: relative;
@@ -28,7 +29,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .circular-progress::before {
             content: "";
             position: absolute;
@@ -37,29 +38,30 @@
             border-radius: 50%;
             background-color: white;
         }
-        
+
         .stat-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Custom tab switcher */
-        .tab-switcher [type="radio"]:checked + label {
+        .tab-switcher [type="radio"]:checked+label {
             border-bottom: 3px solid #FC2839;
             color: #FC2839;
             font-weight: 600;
         }
     </style>
 </head>
+
 <body class="bg-gray-50 font-sans text-gray-800">
     <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="bg-white shadow-sm sticky top-0 left-0 z-10">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-[#FC2839] flex items-center justify-center text-white font-bold text-xl">ZH</div>
-                        <span class="ml-2 text-xl font-semibold">ZorigHub</span>
+                        <img src="/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -74,7 +76,7 @@
                         <div class="flex items-center">
                             <button class="max-w-xs flex items-center text-sm rounded-full focus:outline-none">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="data:image/jpeg;base64,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" alt="">
+                                <img class="h-8 w-8 object-cover rounded-full" src="../karma.jpg" alt="">
                                 <span class="ml-2 hidden md:block">Admin</span>
                                 <i class="fas fa-chevron-down ml-1 text-xs hidden md:block"></i>
                             </button>
@@ -98,50 +100,58 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./adminuser.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="./adminuser.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-users mr-3"></i>
                             <span>Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminorders.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="./adminorders.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-shopping-basket mr-3"></i>
                             <span>Orders</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminanalytics.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="./adminanalytics.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-pie mr-3"></i>
                             <span>Analytics</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminloan.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="./adminloan.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-pie mr-3"></i>
                             <span>Loan</span>
                         </a>
                     </li>
-                  
+
                     <li>
-                        <a href="./adminsetting.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="./adminsetting.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-cog mr-3"></i>
                             <span>Settings</span>
                         </a>
                     </li>
                 </ul>
-                
+
                 <div class="mt-12 pt-6 border-t border-gray-200">
                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Quick Actions</h3>
                     <div class="mt-4 space-y-2">
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-check-circle mr-2 text-[#FC2839]"></i>
                             <span>Approve Artisans</span>
                         </a>
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-file-export mr-2 text-[#FC2839]"></i>
                             <span>Export Reports</span>
                         </a>
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-comment-dots mr-2 text-[#FC2839]"></i>
                             <span>Customer Inquiries</span>
                         </a>
@@ -156,12 +166,13 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                     <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
                 </div>
-                
+
                 <!-- Dashboard Stats -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-6">
                     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                         <!-- Stat Card 1 -->
-                        <div class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
                             <div class="px-4 py-5 sm:p-6">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 bg-[#FC2839]/10 p-3 rounded-lg">
@@ -187,9 +198,10 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Stat Card 2 -->
-                        <div class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
                             <div class="px-4 py-5 sm:p-6">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 bg-[#FC2839]/10 p-3 rounded-lg">
@@ -215,9 +227,10 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Stat Card 3 -->
-                        <div class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
                             <div class="px-4 py-5 sm:p-6">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 bg-[#FC2839]/10 p-3 rounded-lg">
@@ -243,9 +256,10 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Stat Card 4 -->
-                        <div class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
                             <div class="px-4 py-5 sm:p-6">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 bg-[#FC2839]/10 p-3 rounded-lg">
@@ -255,11 +269,7 @@
                                         <dl>
                                             <dt class="text-sm font-medium text-gray-500 truncate">Fulfillment Rate</dt>
                                             <dd>
-                                                <div class="flex items-center">
-                                                    <div class="circular-progress" style="--progress: 85%">
-                                                        <span class="relative text-sm font-medium text-gray-900">85%</span>
-                                                    </div>
-                                                </div>
+                                                <div class="text-lg font-medium text-gray-900">85%</div>
                                             </dd>
                                         </dl>
                                     </div>
@@ -277,7 +287,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Charts and Alerts Section -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-8">
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -286,12 +296,14 @@
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-lg font-medium text-gray-900">Sales Overview</h2>
                                 <div class="relative">
-                                    <select class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-1 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white">
+                                    <select
+                                        class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-1 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white">
                                         <option>Last 7 Days</option>
                                         <option selected>Last 30 Days</option>
                                         <option>Last 90 Days</option>
                                     </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <i class="fas fa-chevron-down text-xs"></i>
                                     </div>
                                 </div>
@@ -314,7 +326,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Alerts Section -->
                         <div class="bg-white p-6 shadow rounded-lg">
                             <div class="flex justify-between items-center mb-4">
@@ -330,15 +342,18 @@
                                         </div>
                                     </div>
                                     <div class="ml-3 flex-1">
-                                        <p class="text-sm font-medium text-gray-900">5 artisan profiles need verification</p>
+                                        <p class="text-sm font-medium text-gray-900">5 artisan profiles need
+                                            verification</p>
                                         <p class="text-xs text-gray-500">Submitter by Local Craft Council</p>
                                         <div class="mt-2 flex space-x-2">
-                                            <button class="text-xs px-3 py-1 bg-[#FC2839] text-white rounded-md hover:bg-[#d92130]">Review</button>
-                                            <button class="text-xs px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">Later</button>
+                                            <button
+                                                class="text-xs px-3 py-1 bg-[#FC2839] text-white rounded-md hover:bg-[#d92130]">Review</button>
+                                            <button
+                                                class="text-xs px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">Later</button>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Alert 2 -->
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0">
@@ -350,12 +365,14 @@
                                         <p class="text-sm font-medium text-gray-900">2 customer inquiries waiting</p>
                                         <p class="text-xs text-gray-500">About international shipping</p>
                                         <div class="mt-2 flex space-x-2">
-                                            <button class="text-xs px-3 py-1 bg-[#FC2839] text-white rounded-md hover:bg-[#d92130]">Respond</button>
-                                            <button class="text-xs px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">Later</button>
+                                            <button
+                                                class="text-xs px-3 py-1 bg-[#FC2839] text-white rounded-md hover:bg-[#d92130]">Respond</button>
+                                            <button
+                                                class="text-xs px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">Later</button>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Alert 3 -->
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0">
@@ -367,13 +384,15 @@
                                         <p class="text-sm font-medium text-gray-900">3 orders require attention</p>
                                         <p class="text-xs text-gray-500">Payment verification needed</p>
                                         <div class="mt-2 flex space-x-2">
-                                            <button class="text-xs px-3 py-1 bg-[#FC2839] text-white rounded-md hover:bg-[#d92130]">Check</button>
-                                            <button class="text-xs px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">Later</button>
+                                            <button
+                                                class="text-xs px-3 py-1 bg-[#FC2839] text-white rounded-md hover:bg-[#d92130]">Check</button>
+                                            <button
+                                                class="text-xs px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">Later</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="mt-6 py-4 bhutan-pattern rounded-lg text-center">
                                 <button class="text-sm text-[#FC2839] font-medium hover:text-[#d92130]">
                                     <i class="fas fa-plus mr-1"></i> Add New Certification
@@ -382,7 +401,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- User Management Section -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-8">
                     <div class="bg-white shadow rounded-lg overflow-hidden">
@@ -391,46 +410,68 @@
                                 <h2 class="text-lg font-medium text-gray-900">Artisan Management</h2>
                                 <div class="flex space-x-3">
                                     <div class="relative rounded-md shadow-sm">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                             <i class="fas fa-search text-gray-400"></i>
                                         </div>
-                                        <input type="text" class="focus:ring-[#FC2839] focus:border-[#FC2839] block w-full pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="Search artisans...">
+                                        <input type="text"
+                                            class="focus:ring-[#FC2839] focus:border-[#FC2839] block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                                            placeholder="Search artisans...">
                                     </div>
-                                    <button class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                    <button
+                                        class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
                                         <i class="fas fa-plus mr-1"></i> New
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Tabs -->
                         <div class="border-b border-gray-200 tab-switcher">
                             <div class="px-6 flex">
                                 <input type="radio" name="tabs" id="all" checked class="hidden">
-                                <label for="all" class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">All Artisans</label>
-                                
+                                <label for="all"
+                                    class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">All
+                                    Artisans</label>
+
                                 <input type="radio" name="tabs" id="pending" class="hidden">
-                                <label for="pending" class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">
+                                <label for="pending"
+                                    class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">
                                     Pending Verification
-                                    <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#FC2839] text-white">3</span>
+                                    <span
+                                        class="ml-1 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#FC2839] text-white">3</span>
                                 </label>
-                                
+
                                 <input type="radio" name="tabs" id="certified" class="hidden">
-                                <label for="certified" class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">Certified Masters</label>
+                                <label for="certified"
+                                    class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">Certified
+                                    Masters</label>
                             </div>
                         </div>
-                        
+
                         <!-- Table -->
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Artisan</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Craft</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Earnings</th>
-                                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Artisan</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Craft</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Location</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Earnings</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -439,7 +480,9 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1562788865-3e6baa0bac8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="">
+                                                    <img class="h-10 w-10 rounded-full"
+                                                        src="https://images.unsplash.com/photo-1562788865-3e6baa0bac8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                                                        alt="">
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">Dorji Wangmo</div>
@@ -455,7 +498,8 @@
                                             <div class="text-sm text-gray-900">Jakar</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 Verified Master
                                             </span>
                                         </td>
@@ -471,13 +515,15 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    
+
                                     <!-- Row 2 -->
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1580159983401-4311b19de74d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="">
+                                                    <img class="h-10 w-10 rounded-full"
+                                                        src="https://images.unsplash.com/photo-1580159983401-4311b19de74d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                                                        alt="">
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">Pema Dorji</div>
@@ -493,7 +539,8 @@
                                             <div class="text-sm text-gray-900">Motithang</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
                                                 Pending Approval
                                             </span>
                                         </td>
@@ -509,13 +556,15 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    
+
                                     <!-- Row 3 -->
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="">
+                                                    <img class="h-10 w-10 rounded-full"
+                                                        src="https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                                                        alt="">
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">Karma Tshering</div>
@@ -531,7 +580,8 @@
                                             <div class="text-sm text-gray-900">Shari</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 Active
                                             </span>
                                         </td>
@@ -550,45 +600,56 @@
                                 </tbody>
                             </table>
                         </div>
-                        
+
                         <!-- Pagination -->
                         <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
                             <div class="flex-1 flex justify-between sm:hidden">
-                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <a href="#"
+                                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                     Previous
                                 </a>
-                                <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <a href="#"
+                                    class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                     Next
                                 </a>
                             </div>
                             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                                 <div>
                                     <p class="text-sm text-gray-700">
-                                        Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">24</span> results
+                                        Showing <span class="font-medium">1</span> to <span class="font-medium">3</span>
+                                        of <span class="font-medium">24</span> results
                                     </p>
                                 </div>
                                 <div>
-                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                                        aria-label="Pagination">
+                                        <a href="#"
+                                            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                             <span class="sr-only">Previous</span>
                                             <i class="fas fa-chevron-left"></i>
                                         </a>
-                                        <a href="#" aria-current="page" class="z-10 bg-[#FC2839]/10 border-[#FC2839] text-[#FC2839] relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#" aria-current="page"
+                                            class="z-10 bg-[#FC2839]/10 border-[#FC2839] text-[#FC2839] relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             1
                                         </a>
-                                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#"
+                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             2
                                         </a>
-                                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#"
+                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             3
                                         </a>
-                                        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                        <span
+                                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
                                             ...
                                         </span>
-                                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#"
+                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             8
                                         </a>
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <a href="#"
+                                            class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                             <span class="sr-only">Next</span>
                                             <i class="fas fa-chevron-right"></i>
                                         </a>
@@ -598,29 +659,33 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Top Crafts Section -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-8">
                     <div class="bg-white p-6 shadow rounded-lg">
                         <div class="flex justify-between items-center mb-6">
                             <h2 class="text-lg font-medium text-gray-900">Top Performing Crafts</h2>
                             <div class="relative">
-                                <select class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-1 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white">
+                                <select
+                                    class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-1 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white">
                                     <option>This Month</option>
                                     <option selected>Last 3 Months</option>
                                     <option>This Year</option>
                                 </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <i class="fas fa-chevron-down text-xs"></i>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <!-- Craft 1 -->
-                            <div class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#FC2839]/50 transition duration-150">
+                            <div
+                                class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#FC2839]/50 transition duration-150">
                                 <div class="flex-shrink-0">
-                                    <img class="w-16 h-16 rounded-full object-cover" src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Weaving">
+                                    <img class="w-16 h-16 rounded-full object-cover" src="/images/weave.jpg"
+                                        alt="Weaving">
                                 </div>
                                 <div class="ml-4">
                                     <h4 class="text-sm font-medium text-gray-900">Bhutanese Weaving</h4>
@@ -633,17 +698,20 @@
                                         <div class="text-sm text-gray-500">45 orders</div>
                                     </div>
                                     <div class="mt-2">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FC2839] text-white">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FC2839] text-white">
                                             Top Seller
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Craft 2 -->
-                            <div class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#FC2839]/50 transition duration-150">
+                            <div
+                                class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#FC2839]/50 transition duration-150">
                                 <div class="flex-shrink-0">
-                                    <img class="w-16 h-16 rounded-full object-cover" src="https://images.unsplash.com/photo-1610902222169-3a1cc19d04e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Thangka">
+                                    <img class="w-16 h-16 rounded-full object-cover" src="/images/thangka.jpg"
+                                        alt="Thangka">
                                 </div>
                                 <div class="ml-4">
                                     <h4 class="text-sm font-medium text-gray-900">Thangka Painting</h4>
@@ -656,17 +724,20 @@
                                         <div class="text-sm text-gray-500">28 orders</div>
                                     </div>
                                     <div class="mt-2">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                                             Rising
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Craft 3 -->
-                            <div class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#FC2839]/50 transition duration-150">
+                            <div
+                                class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#FC2839]/50 transition duration-150">
                                 <div class="flex-shrink-0">
-                                    <img class="w-16 h-16 rounded-full object-cover" src="https://images.unsplash.com/photo-1507981506115-d2a7f756b38b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Wood Carving">
+                                    <img class="w-16 h-16 rounded-full object-cover" src="/images/woodcarving.jpg"
+                                        alt="Carving">
                                 </div>
                                 <div class="ml-4">
                                     <h4 class="text-sm font-medium text-gray-900">Wood Carving</h4>
@@ -679,7 +750,8 @@
                                         <div class="text-sm text-gray-500">22 orders</div>
                                     </div>
                                     <div class="mt-2">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                             Steady
                                         </span>
                                     </div>
@@ -746,7 +818,7 @@
                             drawBorder: false
                         },
                         ticks: {
-                            callback: function(value) {
+                            callback: function (value) {
                                 return 'BTN ' + value + 'k';
                             }
                         }
@@ -754,15 +826,16 @@
                 }
             }
         });
-        
+
         // Tab switching functionality
         const tabs = document.querySelectorAll('.tab-switcher input[type="radio"]');
         tabs.forEach(tab => {
-            tab.addEventListener('change', function() {
+            tab.addEventListener('change', function () {
                 // In a real app, you would fetch different data here based on the selected tab
                 console.log(`Switched to ${this.id} tab`);
             });
         });
     </script>
 </body>
+
 </html>

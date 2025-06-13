@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,14 @@
     <style>
         /* Bhutanese pattern inspired by khamar motifs */
         .bhutan-pattern {
-            background: 
+            background:
                 linear-gradient(135deg, #FC283911 25%, transparent 25%) -10px 0,
                 linear-gradient(225deg, #FC283911 25%, transparent 25%) -10px 0,
                 linear-gradient(315deg, #FC283911 25%, transparent 25%),
-                linear-gradient(45deg, #FC283911 25%, transparent 25%);	
+                linear-gradient(45deg, #FC283911 25%, transparent 25%);
             background-size: 20px 20px;
         }
-        
+
         /* Custom CSS for circular progress indicators */
         .circular-progress {
             position: relative;
@@ -28,7 +29,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .circular-progress::before {
             content: "";
             position: absolute;
@@ -37,29 +38,30 @@
             border-radius: 50%;
             background-color: white;
         }
-        
+
         .stat-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Custom tab switcher */
-        .tab-switcher [type="radio"]:checked + label {
+        .tab-switcher [type="radio"]:checked+label {
             border-bottom: 3px solid #FC2839;
             color: #FC2839;
             font-weight: 600;
         }
     </style>
 </head>
+
 <body class="bg-gray-50 font-sans text-gray-800">
     <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="bg-white shadow-sm sticky top-0 left-0 z-10">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-[#FC2839] flex items-center justify-center text-white font-bold text-xl">ZH</div>
-                        <span class="ml-2 text-xl font-semibold">ZorigHub</span>
+                        <img src="/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -74,7 +76,7 @@
                         <div class="flex items-center">
                             <button class="max-w-xs flex items-center text-sm rounded-full focus:outline-none">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1603984834265-49a4fc0b3481?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80" alt="">
+                                <img class="h-8 w-8 object-cover rounded-full" src="../karma.jpg" alt="profile img">
                                 <span class="ml-2 hidden md:block">Admin</span>
                                 <i class="fas fa-chevron-down ml-1 text-xs hidden md:block"></i>
                             </button>
@@ -92,56 +94,65 @@
             <nav class="p-6">
                 <ul class="space-y-4">
                     <li>
-                        <a href="./admindashboard.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="index.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-line mr-3"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminuser.html" class="flex items-center px-4 py-2 text-[#FC2839] bg-[#FC2839]/10 rounded-lg">
+                        <a href="adminuser.html"
+                            class="flex items-center px-4 py-2 text-[#FC2839] bg-[#FC2839]/10 rounded-lg">
                             <i class="fas fa-users mr-3"></i>
                             <span>Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminorders.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminorders.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-shopping-basket mr-3"></i>
                             <span>Orders</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminanalytics.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminanalytics.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-pie mr-3"></i>
                             <span>Analytics</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./adminloan.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminloan.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chart-pie mr-3"></i>
                             <span>Loan</span>
                         </a>
                     </li>
-                   
+
                     <li>
-                        <a href="./adminsetting.html" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="adminsetting.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-cog mr-3"></i>
                             <span>Settings</span>
                         </a>
                     </li>
                 </ul>
-                
+
                 <div class="mt-12 pt-6 border-t border-gray-200">
                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Quick Actions</h3>
                     <div class="mt-4 space-y-2">
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-check-circle mr-2 text-[#FC2839]"></i>
                             <span>Approve Artisans</span>
                         </a>
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-file-export mr-2 text-[#FC2839]"></i>
                             <span>Export Reports</span>
                         </a>
-                        <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-comment-dots mr-2 text-[#FC2839]"></i>
                             <span>Customer Inquiries</span>
                         </a>
@@ -156,21 +167,22 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                     <h1 class="text-2xl font-semibold text-gray-900">User Management</h1>
                 </div>
-                
+
                 <!-- Dashboard Stats -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-6">
                     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        
-                        
+
+
                         <!-- Stat Card 4 -->
-                        <div class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
-                            
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
+
                         </div>
                     </div>
                 </div>
-                
-               
-                
+
+
+
                 <!-- User Management Section -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-8">
                     <div class="bg-white shadow rounded-lg overflow-hidden">
@@ -179,54 +191,71 @@
                                 <h2 class="text-lg font-medium text-gray-900">Artisan Management</h2>
                                 <div class="flex flex-wrap gap-2">
                                     <div class="relative w-64">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                             <i class="fas fa-search text-gray-400"></i>
                                         </div>
-                                        <input type="text" class="focus:ring-[#FC2839] focus:border-[#FC2839] block w-full pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="Search users...">
+                                        <input type="text"
+                                            class="focus:ring-[#FC2839] focus:border-[#FC2839] block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                                            placeholder="Search users...">
                                     </div>
-                                    <button class="px-3 py-2 text-sm rounded-md text-white bg-[#FC2839] hover:bg-[#d92130]">
+                                    <button
+                                        class="px-3 py-2 text-sm rounded-md text-white bg-[#FC2839] hover:bg-[#d92130]">
                                         <i class="fas fa-users mr-1"></i> All Users
                                     </button>
-                                    <button class="px-3 py-2 text-sm rounded-md text-white bg-[#FF9800] hover:bg-[#e68a00]">
+                                    <button
+                                        class="px-3 py-2 text-sm rounded-md text-white bg-[#FF9800] hover:bg-[#e68a00]">
                                         <i class="fas fa-clock mr-1"></i> Pending Verification
                                     </button>
-                                    <button class="px-3 py-2 text-sm rounded-md bg-white border border-gray-300 hover:bg-gray-50">
+                                    <button
+                                        class="px-3 py-2 text-sm rounded-md bg-white border border-gray-300 hover:bg-gray-50">
                                         <i class="fas fa-file-export mr-1"></i> Export CSV
                                     </button>
-                                    <button class="px-3 py-2 text-sm rounded-md bg-white border border-gray-300 hover:bg-gray-50">
+                                    <button
+                                        class="px-3 py-2 text-sm rounded-md bg-white border border-gray-300 hover:bg-gray-50">
                                         <i class="fas fa-bell mr-1"></i> Send Notification
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Tabs -->
                         <div class="border-b border-gray-200 tab-switcher">
                             <div class="px-6 flex">
                                 <input type="radio" name="tabs" id="all" checked class="hidden">
-                                <label for="all" class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">All Artisans</label>
-                                
+                                <label for="all"
+                                    class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">All
+                                    Artisans</label>
+
                                 <input type="radio" name="tabs" id="pending" class="hidden">
-                                <label for="pending" class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">
+                                <label for="pending"
+                                    class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">
                                     Pending Verification
-                                    <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#FC2839] text-white">3</span>
+                                    <span
+                                        class="ml-1 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#FC2839] text-white">3</span>
                                 </label>
-                                
+
                                 <input type="radio" name="tabs" id="certified" class="hidden">
-                                <label for="certified" class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">Certified Masters</label>
+                                <label for="certified"
+                                    class="px-4 py-3 text-sm font-medium cursor-pointer border-b-2 border-transparent">Certified
+                                    Masters</label>
                             </div>
                         </div>
-                        
+
                         <!-- Table -->
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            User</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             <div class="flex items-center">
                                                 <span>Skill Type</span>
-                                                <select class="ml-2 bg-gray-50 border-0 text-xs focus:ring-[#FC2839] rounded">
+                                                <select
+                                                    class="ml-2 bg-gray-50 border-0 text-xs focus:ring-[#FC2839] rounded">
                                                     <option>All</option>
                                                     <option>Weaving</option>
                                                     <option>Woodcarving</option>
@@ -234,10 +263,12 @@
                                                 </select>
                                             </div>
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             <div class="flex items-center">
                                                 <span>Location</span>
-                                                <select class="ml-2 bg-gray-50 border-0 text-xs focus:ring-[#FC2839] rounded">
+                                                <select
+                                                    class="ml-2 bg-gray-50 border-0 text-xs focus:ring-[#FC2839] rounded">
                                                     <option>All</option>
                                                     <option>Thimphu</option>
                                                     <option>Paro</option>
@@ -245,9 +276,15 @@
                                                 </select>
                                             </div>
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Certifications</th>
-                                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Role</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Certifications</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -256,7 +293,9 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1562788865-3e6baa0bac8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="">
+                                                    <img class="h-10 w-10 rounded-full"
+                                                        src="https://images.unsplash.com/photo-1562788865-3e6baa0bac8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                                                        alt="">
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">Dorji Wangmo</div>
@@ -272,7 +311,8 @@
                                             <div class="text-sm text-gray-900">Jakar</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 Verified Master
                                             </span>
                                         </td>
@@ -281,13 +321,16 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <div class="flex justify-end space-x-2">
-                                                <button class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded hover:bg-green-200 transition">
+                                                <button
+                                                    class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded hover:bg-green-200 transition">
                                                     <i class="fas fa-check mr-1"></i> Approve
                                                 </button>
-                                                <button class="px-2 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200 transition">
+                                                <button
+                                                    class="px-2 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200 transition">
                                                     <i class="fas fa-times mr-1"></i> Reject
                                                 </button>
-                                                <select class="text-xs bg-gray-100 border-0 rounded focus:ring-[#FC2839]">
+                                                <select
+                                                    class="text-xs bg-gray-100 border-0 rounded focus:ring-[#FC2839]">
                                                     <option>Assign Badge</option>
                                                     <option>Master Weaver</option>
                                                     <option>Eco-Certified</option>
@@ -296,13 +339,15 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    
+
                                     <!-- Row 2 -->
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1580159983401-4311b19de74d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="">
+                                                    <img class="h-10 w-10 rounded-full"
+                                                        src="https://images.unsplash.com/photo-1580159983401-4311b19de74d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                                                        alt="">
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">Pema Dorji</div>
@@ -318,7 +363,8 @@
                                             <div class="text-sm text-gray-900">Motithang</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
                                                 Pending Approval
                                             </span>
                                         </td>
@@ -334,13 +380,15 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    
+
                                     <!-- Row 3 -->
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="">
+                                                    <img class="h-10 w-10 rounded-full"
+                                                        src="https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                                                        alt="">
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">Karma Tshering</div>
@@ -356,7 +404,8 @@
                                             <div class="text-sm text-gray-900">Shari</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 Active
                                             </span>
                                         </td>
@@ -375,45 +424,56 @@
                                 </tbody>
                             </table>
                         </div>
-                        
+
                         <!-- Pagination -->
                         <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
                             <div class="flex-1 flex justify-between sm:hidden">
-                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <a href="#"
+                                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                     Previous
                                 </a>
-                                <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <a href="#"
+                                    class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                     Next
                                 </a>
                             </div>
                             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                                 <div>
                                     <p class="text-sm text-gray-700">
-                                        Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">24</span> results
+                                        Showing <span class="font-medium">1</span> to <span class="font-medium">3</span>
+                                        of <span class="font-medium">24</span> results
                                     </p>
                                 </div>
                                 <div>
-                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                                        aria-label="Pagination">
+                                        <a href="#"
+                                            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                             <span class="sr-only">Previous</span>
                                             <i class="fas fa-chevron-left"></i>
                                         </a>
-                                        <a href="#" aria-current="page" class="z-10 bg-[#FC2839]/10 border-[#FC2839] text-[#FC2839] relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#" aria-current="page"
+                                            class="z-10 bg-[#FC2839]/10 border-[#FC2839] text-[#FC2839] relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             1
                                         </a>
-                                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#"
+                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             2
                                         </a>
-                                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#"
+                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             3
                                         </a>
-                                        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                        <span
+                                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
                                             ...
                                         </span>
-                                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <a href="#"
+                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             8
                                         </a>
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <a href="#"
+                                            class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                             <span class="sr-only">Next</span>
                                             <i class="fas fa-chevron-right"></i>
                                         </a>
@@ -423,8 +483,8 @@
                         </div>
                     </div>
                 </div>
-                
-               
+
+
             </div>
         </main>
     </div>
@@ -483,7 +543,7 @@
                             drawBorder: false
                         },
                         ticks: {
-                            callback: function(value) {
+                            callback: function (value) {
                                 return 'BTN ' + value + 'k';
                             }
                         }
@@ -491,15 +551,16 @@
                 }
             }
         });
-        
+
         // Tab switching functionality
         const tabs = document.querySelectorAll('.tab-switcher input[type="radio"]');
         tabs.forEach(tab => {
-            tab.addEventListener('change', function() {
+            tab.addEventListener('change', function () {
                 // In a real app, you would fetch different data here based on the selected tab
                 console.log(`Switched to ${this.id} tab`);
             });
         });
     </script>
 </body>
+
 </html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - Login/Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-card {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .flip-btn {
+            transition: all 0.3s ease;
+        }
+
+        .flip-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .input-field {
+            transition: border-color 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #FC2839;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+
+        .social-btn {
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .zorig-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f46e5' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-50 flex items-center justify-center p-4 zorig-pattern">
+    <div class="login-card p-8">
+        <div class="flex justify-center mb-6">
+            <div class="bg-red-600 p-4 rounded-full">
+                <i class="fas fa-mountain text-white text-3xl"></i>
+            </div>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-1">Welcome to ZorigHub</h2>
+        <p class="text-center text-gray-500 mb-8">Traditional meets digital</p>
+
+        <form class="space-y-4">
+            <div>
+                <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" id="login-email"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 input-field focus:outline-none"
+                    placeholder="your@email.com" required>
+            </div>
+            <div>
+                <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" id="login-password"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 input-field focus:outline-none"
+                    placeholder="••••••••" required>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input type="checkbox" id="remember-me"
+                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                </div>
+                <a href="#" class="text-sm text-red-600 hover:text-red-500">Forgot password?</a>
+            </div>
+            <button type="submit"
+                class="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-200">
+                Login
+            </button>
+        </form>
+
+        <div class="relative my-6">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+                <span class="px-2 bg-white text-gray-500">Or continue with</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+            <button
+                class="flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg social-btn bg-white hover:bg-gray-50">
+                <i class="fab fa-google text-red-500 mr-2"></i>
+            </button>
+            <button
+                class="flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg social-btn bg-white hover:bg-gray-50">
+                <i class="fab fa-facebook-f text-blue-600 mr-2"></i>
+            </button>
+            <button
+                class="flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg social-btn bg-white hover:bg-gray-50">
+                <i class="fab fa-apple text-gray-800 mr-2"></i>
+            </button>
+        </div>
+
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600">
+                Don't have an account?
+                <a href="signup.html" class="text-red-600 font-medium hover:text-red-500">Sign up</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Login functionality would go here');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,63 +27,68 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
         }
-        
+
         .bhutan-pattern {
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTAgMEgxMDBWMTAwSDBWMCBNMjAgMjBINjBWNjBIMjBWMjBNMjAgNjBINjBWODBIMjBWNjBNNDAgMjBINjBWNjBINDBWMjBNNDAgNjBINjBWODBINDBWNjBNMjAgNDBINjBWODBIMjBWNDBNNDAgNDBINjBWODBINDBWNDBNNjAgMjBIODBWNjBINjBWMjBNNjAgNjBIODBWODBINjBWNjBNNjAgNDBIODBWODBINjBWNDBNODAgMjBIMTAwVjYwSDgwVjIwTTgwIDYwSDEwMFY4MEg4MFY2ME04MCA0MEgxMDBWODBIODBWNDBNMjAgODBIODBWOTBIMjBWODBNNDAgODBIODBWOTBINDBWODBNNjAgODBIODBWOTBINjBWODBNODAgODBIMTAwVjkxSDgwVjgwTTIwIDkwSDgwVjEwMEgyMFY5ME00MCA5MEg4MFYxMDBINDBWOTBNNjAgOTBIODBWMTBINjBWOTBNODAgOTBIMTAwVjEwMUg4MFY5MCIgZmlsbD0iI0ZDMjgzOSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3N2Zz4=');
             opacity: 0.1;
         }
-        
+
         .eco-badge {
             background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
         .quantity-btn {
             transition: all 0.2s ease;
         }
-        
+
         .quantity-btn:hover {
             background-color: #e2e8f0;
         }
-        
+
         .remove-btn:hover {
             color: #FC2839;
         }
-        
+
         .checkout-btn {
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(252, 40, 57, 0.2);
         }
-        
+
         .checkout-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(252, 40, 57, 0.3);
         }
     </style>
 </head>
+
 <body class="min-h-screen">
-     <!-- Navigation -->
-     <nav class="bg-white shadow-md">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <h1 class="text-primary font-bold text-2xl">Zorig<span class="text-secondary">Hub</span></h1>
+                    <img src="/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
                 </div>
-                
+
                 <!-- Navigation Links -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="Buyer.html" class="text-secondary px-3 py-2 text-sm font-medium">Home</a>
-                    <a href="marketplace.html" class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Marketplace</a>
-                    <a href="artisanPage.html" class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Artisans</a>
-                    <a href="buyerAbout.html" class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">About</a>
+                    <a href="index.html" class="text-secondary px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="marketplace.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Marketplace</a>
+                    <a href="artisanPage.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Artisans</a>
+                    <a href="buyerAbout.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">About</a>
                 </div>
-                
+
                 <!-- Right Side -->
                 <div class="hidden md:flex items-center space-x-5">
                     <div class="relative">
@@ -93,29 +99,35 @@
                     <div class="relative">
                         <button class="text-secondary hover:text-primary relative">
                             <i class="fas fa-bell text-xl"></i>
-                            <span class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">3</span>
+                            <span
+                                class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">3</span>
                         </button>
                     </div>
                     <div class="relative">
-                        <a href="cart.html" class="text-secondary hover:text-primary relative inline-block" id="cart-btn">
-                          <i class="fas fa-shopping-cart text-xl"></i>
-                          <span class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs" id="cart-count">2</span>
+                        <a href="cart.html" class="text-secondary hover:text-primary relative inline-block"
+                            id="cart-btn">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span
+                                class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
+                                id="cart-count">2</span>
                         </a>
                     </div>
-                    <button onclick="toggleLanguage()" class="text-xs bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 transition">
+                    <button onclick="toggleLanguage()"
+                        class="text-xs bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 transition">
                         <i class="fas fa-language mr-1"></i> Dzongkha
                     </button>
                     <div class="relative ml-4">
                         <div class="flex items-center space-x-2">
-                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="User" class="w-8 h-8 rounded-full border-2 border-primary">
-                            <span class="text-sm font-medium text-secondary hidden md:inline">Sarah</span>
+                            <img src="/tshering.jpg" alt="User" class="w-8 h-8 rounded-full border-2 border-primary">
+                            <span class="text-sm font-medium text-secondary hidden md:inline">Jigme</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -123,7 +135,7 @@
         </div>
     </nav>
 
-    
+
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <div class="flex flex-col lg:flex-row gap-8">
@@ -134,15 +146,14 @@
                         <h2 class="text-2xl font-bold text-gray-800">Your Cart</h2>
                         <span class="text-gray-600">3 items</span>
                     </div>
-                    
+
                     <!-- Cart Items Table -->
                     <div class="divide-y divide-gray-200">
                         <!-- Item 1 -->
                         <div class="py-4 flex flex-col md:flex-row" data-item-id="1">
                             <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-4">
-                                <img src="https://images.unsplash.com/photo-1605000797499-2059b30889b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                     alt="Bhutanese Handwoven Scarf" 
-                                     class="w-24 h-24 rounded-md object-cover">
+                                <img src="/images/scarf.jpg" alt="Bhutanese Handwoven Scarf"
+                                    class="w-24 h-24 rounded-md object-cover">
                             </div>
                             <div class="flex-grow">
                                 <div class="flex justify-between">
@@ -150,39 +161,44 @@
                                         <h3 class="font-medium text-gray-800 hover:text-bhutanRed">
                                             <a href="#">Bhutanese Handwoven Scarf</a>
                                         </h3>
-                                        <p class="text-sm text-gray-600">By <a href="#" class="hover:text-bhutanRed">Tashi Dorji</a></p>
-                                        <span class="eco-badge text-xs text-white px-2 py-1 rounded-full inline-block mt-1">Eco-Friendly</span>
+                                        <p class="text-sm text-gray-600">By <a href="#"
+                                                class="hover:text-bhutanRed">Tashi Dorji</a></p>
+                                        <span
+                                            class="eco-badge text-xs text-white px-2 py-1 rounded-full inline-block mt-1">Eco-Friendly</span>
                                     </div>
-                                    <button class="remove-btn text-gray-400 hover:text-bhutanRed self-start" onclick="removeItem(1)">
+                                    <button class="remove-btn text-gray-400 hover:text-bhutanRed self-start"
+                                        onclick="removeItem(1)">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
-                                
+
                                 <div class="mt-4 flex flex-col md:flex-row md:items-center md:justify-between">
                                     <span class="text-lg font-medium text-bhutanBlue">Nu. 1,200</span>
-                                    
+
                                     <div class="flex items-center mt-2 md:mt-0">
                                         <div class="flex items-center border border-gray-300 rounded-md">
-                                            <button class="quantity-btn px-3 py-1 text-gray-600" onclick="updateQuantity(1, -1)">
+                                            <button class="quantity-btn px-3 py-1 text-gray-600"
+                                                onclick="updateQuantity(1, -1)">
                                                 <i class="fas fa-minus"></i>
                                             </button>
                                             <span class="px-4 py-1 quantity-display" data-item-id="1">1</span>
-                                            <button class="quantity-btn px-3 py-1 text-gray-600" onclick="updateQuantity(1, 1)">
+                                            <button class="quantity-btn px-3 py-1 text-gray-600"
+                                                onclick="updateQuantity(1, 1)">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
-                                        <span class="ml-6 text-lg font-medium text-gray-800 subtotal" data-item-id="1">Nu. 1,200</span>
+                                        <span class="ml-6 text-lg font-medium text-gray-800 subtotal"
+                                            data-item-id="1">Nu. 1,200</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Item 2 -->
                         <div class="py-4 flex flex-col md:flex-row" data-item-id="2">
                             <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-4">
-                                <img src="https://images.unsplash.com/photo-1590344863131-98715c4fa0d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                     alt="Traditional Bhutanese Bowl" 
-                                     class="w-24 h-24 rounded-md object-cover">
+                                <img src="/images/bowl.jpg" alt="Traditional Bhutanese Bowl"
+                                    class="w-24 h-24 rounded-md object-cover">
                             </div>
                             <div class="flex-grow">
                                 <div class="flex justify-between">
@@ -190,73 +206,83 @@
                                         <h3 class="font-medium text-gray-800 hover:text-bhutanRed">
                                             <a href="#">Traditional Bhutanese Bowl</a>
                                         </h3>
-                                        <p class="text-sm text-gray-600">By <a href="#" class="hover:text-bhutanRed">Pema Wangchuk</a></p>
+                                        <p class="text-sm text-gray-600">By <a href="#"
+                                                class="hover:text-bhutanRed">Pema Wangchuk</a></p>
                                     </div>
-                                    <button class="remove-btn text-gray-400 hover:text-bhutanRed self-start" onclick="removeItem(2)">
+                                    <button class="remove-btn text-gray-400 hover:text-bhutanRed self-start"
+                                        onclick="removeItem(2)">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
-                                
+
                                 <div class="mt-4 flex flex-col md:flex-row md:items-center md:justify-between">
                                     <span class="text-lg font-medium text-bhutanBlue">Nu. 3,500</span>
-                                    
+
                                     <div class="flex items-center mt-2 md:mt-0">
                                         <div class="flex items-center border border-gray-300 rounded-md">
-                                            <button class="quantity-btn px-3 py-1 text-gray-600" onclick="updateQuantity(2, -1)">
+                                            <button class="quantity-btn px-3 py-1 text-gray-600"
+                                                onclick="updateQuantity(2, -1)">
                                                 <i class="fas fa-minus"></i>
                                             </button>
                                             <span class="px-4 py-1 quantity-display" data-item-id="2">2</span>
-                                            <button class="quantity-btn px-3 py-1 text-gray-600" onclick="updateQuantity(2, 1)">
+                                            <button class="quantity-btn px-3 py-1 text-gray-600"
+                                                onclick="updateQuantity(2, 1)">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
-                                        <span class="ml-6 text-lg font-medium text-gray-800 subtotal" data-item-id="2">Nu. 7,000</span>
+                                        <span class="ml-6 text-lg font-medium text-gray-800 subtotal"
+                                            data-item-id="2">Nu. 7,000</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Item 3 -->
                         <div class="py-4 flex flex-col md:flex-row" data-item-id="3">
                             <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-4">
-                                <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                     alt="Bhutanese Prayer Wheel" 
-                                     class="w-24 h-24 rounded-md object-cover">
+                                <img src="/images/embroidery.jpg" alt="Bhutanese Prayer Wheel"
+                                    class="w-24 h-24 rounded-md object-cover">
                             </div>
                             <div class="flex-grow">
                                 <div class="flex justify-between">
                                     <div>
                                         <h3 class="font-medium text-gray-800 hover:text-bhutanRed">
-                                            <a href="#">Bhutanese Prayer Wheel</a>
+                                            <a href="#">Bhutanese Embroidery</a>
                                         </h3>
-                                        <p class="text-sm text-gray-600">By <a href="#" class="hover:text-bhutanRed">Sonam Gyeltshen</a></p>
-                                        <span class="eco-badge text-xs text-white px-2 py-1 rounded-full inline-block mt-1">Eco-Friendly</span>
+                                        <p class="text-sm text-gray-600">By <a href="#"
+                                                class="hover:text-bhutanRed">Sonam Gyeltshen</a></p>
+                                        <span
+                                            class="eco-badge text-xs text-white px-2 py-1 rounded-full inline-block mt-1">Eco-Friendly</span>
                                     </div>
-                                    <button class="remove-btn text-gray-400 hover:text-bhutanRed self-start" onclick="removeItem(3)">
+                                    <button class="remove-btn text-gray-400 hover:text-bhutanRed self-start"
+                                        onclick="removeItem(3)">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
-                                
+
                                 <div class="mt-4 flex flex-col md:flex-row md:items-center md:justify-between">
                                     <span class="text-lg font-medium text-bhutanBlue">Nu. 8,750</span>
-                                    
+
                                     <div class="flex items-center mt-2 md:mt-0">
                                         <div class="flex items-center border border-gray-300 rounded-md">
-                                            <button class="quantity-btn px-3 py-1 text-gray-600" onclick="updateQuantity(3, -1)">
+                                            <button class="quantity-btn px-3 py-1 text-gray-600"
+                                                onclick="updateQuantity(3, -1)">
                                                 <i class="fas fa-minus"></i>
                                             </button>
                                             <span class="px-4 py-1 quantity-display" data-item-id="3">1</span>
-                                            <button class="quantity-btn px-3 py-1 text-gray-600" onclick="updateQuantity(3, 1)">
+                                            <button class="quantity-btn px-3 py-1 text-gray-600"
+                                                onclick="updateQuantity(3, 1)">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
-                                        <span class="ml-6 text-lg font-medium text-gray-800 subtotal" data-item-id="3">Nu. 8,750</span>
+                                        <span class="ml-6 text-lg font-medium text-gray-800 subtotal"
+                                            data-item-id="3">Nu. 8,750</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mt-6 pt-6 border-t border-gray-200 flex justify-between items-center">
                         <a href="marketplace.html" class="text-bhutanRed hover:underline flex items-center">
                             <i class="fas fa-arrow-left mr-2"></i>
@@ -267,22 +293,23 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Promo Code Section -->
                 <div class="bg-white rounded-lg shadow-sm p-6">
                     <h3 class="text-lg font-medium text-gray-800 mb-4">Have a Promo Code?</h3>
                     <div class="flex">
-                        <input type="text" placeholder="Enter promo code" class="flex-grow px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-bhutanRed">
+                        <input type="text" placeholder="Enter promo code"
+                            class="flex-grow px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-bhutanRed">
                         <button class="bg-bhutanRed text-white px-6 py-2 rounded-r-md hover:bg-red-700">Apply</button>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Order Summary Section -->
             <div class="lg:w-1/3">
                 <div class="bg-white rounded-lg shadow-sm p-6 sticky top-8">
                     <h3 class="text-xl font-bold text-gray-800 mb-6">Order Summary</h3>
-                    
+
                     <div class="space-y-3 mb-6">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Subtotal</span>
@@ -297,23 +324,24 @@
                             <span class="font-medium">Nu. 1,695</span>
                         </div>
                     </div>
-                    
+
                     <div class="border-t border-gray-200 pt-4 mb-6">
                         <div class="flex justify-between text-lg font-bold">
                             <span>Total</span>
                             <span id="cart-total">Nu. 19,145</span>
                         </div>
                     </div>
-                    
-                    <a href="checkout.html" class="w-full bg-bhutanRed text-white py-3 rounded-md font-bold checkout-btn hover:bg-red-700 mb-4 inline-block text-center">
+
+                    <a href="checkout.html"
+                        class="w-full bg-bhutanRed text-white py-3 rounded-md font-bold checkout-btn hover:bg-red-700 mb-4 inline-block text-center">
                         Proceed to Checkout
                     </a>
-                    
-                    
+
+
                     <p class="text-sm text-gray-500 text-center">
                         <i class="fas fa-lock mr-1"></i> Secure checkout
                     </p>
-                    
+
                     <div class="mt-6 pt-6 border-t border-gray-200">
                         <h4 class="font-medium text-gray-800 mb-3">Accepted Payment Methods</h4>
                         <div class="flex space-x-4">
@@ -335,21 +363,22 @@
             </div>
         </div>
     </main>
-    
-      <!-- Footer -->
-      <footer class="bg-secondary text-white py-12">
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4">Zorig<span class="text-primary">Hub</span></h3>
-                    <p class="text-gray-400">Preserving and promoting Bhutanese traditional arts and crafts through ethical commerce.</p>
+                    <p class="text-gray-400">Preserving and promoting Bhutanese traditional arts and crafts through
+                        ethical commerce.</p>
                     <div class="flex space-x-4 mt-4">
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
                     <ul class="space-y-2">
@@ -359,7 +388,7 @@
                         <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
                     <ul class="space-y-2">
@@ -369,26 +398,27 @@
                         <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
                     <p class="text-gray-400 mb-4">Subscribe to receive updates on new products and artisan stories.</p>
                     <form class="flex">
-                        <input type="email" placeholder="Your email" class="px-3 py-2 rounded-l-md bg-gray-700 text-white w-full focus:outline-none">
+                        <input type="email" placeholder="Your email"
+                            class="px-3 py-2 rounded-l-md bg-gray-700 text-white w-full focus:outline-none">
                         <button type="submit" class="bg-primary hover:bg-darkred px-4 py-2 rounded-r-md">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2023 ZorigHub. All rights reserved. Handcrafted in Bhutan 🇧🇹</p>
+                <p>© 2025 ZorigHub. All rights reserved. Handcrafted in Bhutan 🇧🇹</p>
             </div>
         </div>
     </footer>
 
-    
+
     <script>
         // Product prices
         const prices = {
@@ -396,16 +426,16 @@
             2: 3500,
             3: 8750
         };
-        
+
         // Shipping and tax rates
         const shipping = 500;
         const taxRate = 0.1; // 10%
-        
+
         // Calculate and update totals
         function updateTotals() {
             let subtotal = 0;
             let itemCount = 0;
-            
+
             // Calculate subtotal and count items
             document.querySelectorAll('[data-item-id]').forEach(item => {
                 const itemId = item.getAttribute('data-item-id');
@@ -413,45 +443,45 @@
                 subtotal += prices[itemId] * quantity;
                 itemCount += quantity;
             });
-            
+
             // Calculate tax
             const tax = subtotal * taxRate;
-            
+
             // Calculate total
             const total = subtotal + shipping + tax;
-            
+
             // Update displayed values
             document.getElementById('cart-subtotal').textContent = `Nu. ${subtotal.toLocaleString()}`;
             document.getElementById('cart-total').textContent = `Nu. ${total.toLocaleString()}`;
-            
+
             // Update item count in header
             document.querySelector('.flex.justify-between.items-center.mb-6 span').textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
         }
-        
+
         // Update quantity
         function updateQuantity(itemId, change) {
             const quantityElement = document.querySelector(`.quantity-display[data-item-id="${itemId}"]`);
             let quantity = parseInt(quantityElement.textContent) + change;
-            
+
             // Ensure quantity doesn't go below 1
             if (quantity < 1) quantity = 1;
-            
+
             quantityElement.textContent = quantity;
-            
+
             // Update item subtotal
             const subtotalElement = document.querySelector(`.subtotal[data-item-id="${itemId}"]`);
             subtotalElement.textContent = `Nu. ${(prices[itemId] * quantity).toLocaleString()}`;
-            
+
             // Update all totals
             updateTotals();
         }
-        
+
         // Remove item
         function removeItem(itemId) {
             const itemElement = document.querySelector(`[data-item-id="${itemId}"]`);
             itemElement.remove();
             updateTotals();
-            
+
             // Show empty cart message if no items left
             if (document.querySelectorAll('[data-item-id]').length === 0) {
                 document.querySelector('.divide-y').innerHTML = `
@@ -466,9 +496,10 @@
                 `;
             }
         }
-        
+
         // Initialize totals on page load
         document.addEventListener('DOMContentLoaded', updateTotals);
     </script>
 </body>
+
 </html>

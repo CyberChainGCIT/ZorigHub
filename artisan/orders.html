@@ -77,13 +77,14 @@
 
         <aside class="hidden md:flex md:flex-col w-64 bg-white border-r border-gray-200 h-screen sticky top-0 z-origin">
             <div class="flex items-center justify-center h-16 border-b border-gray-200">
-                <div class="text-2xl font-bold text-zorig">Zorig<span class="text-bhutan-charcoal">Hub</span></div>
+                <img src="/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
             </div>
             <div class="overflow-y-auto sidebar flex-grow">
                 <nav class="px-4 py-6">
                     <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mb-6">
-                        <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
-                            class="w-12 h-12 rounded-full border-2 border-zorig">
+                        <img src="../pema.jpg" alt="Profile"
+                            class="w-12 h-12 object-cover rounded-full border-2 border-zorig">
                         <div>
                             <p class="text-sm text-gray-600">Welcome back</p>
                             <p class="font-medium">Choden Lhamo</p>
@@ -91,14 +92,14 @@
                     </div>
                     <ul>
                         <li class="mb-2">
-                            <a href="#"
+                            <a href="index.html"
                                 class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
                                 <i class="fas fa-home mr-3"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="#"
+                            <a href="myproduct.html"
                                 class="tab-button  flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
                                 <i class="fas fa-tshirt mr-3"></i>
                                 <span>My Products</span>
@@ -112,20 +113,20 @@
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="#"
+                            <a href="earning.html"
                                 class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
                                 <i class="fas fa-rupee-sign mr-3"></i>
                                 <span>Earnings</span>
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="#"
+                            <a href="profile.html"
                                 class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
                                 <i class="fas fa-user mr-3"></i>
                                 <span>Profile</span>
                             </a>
                         </li>
-                         
+
                     </ul>
                     <div class="mt-16 px-4">
                         <button
@@ -138,8 +139,7 @@
             </div>
             <div class="px-4 py-3 border-t border-gray-200">
                 <div class="flex items-center space-x-3">
-                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
-                        class="w-8 h-8 rounded-full">
+                    <img src="../pema.jpg" alt="Profile" class="w-8 h-8 object-cover rounded-full">
                     <div class="flex-grow">
                         <p class="text-sm font-medium">Choden Lhamo</p>
                         <p class="text-xs text-gray-500">Weaving Artisan</p>
@@ -171,8 +171,7 @@
                             </button>
                             <div class="hidden md:block">
                                 <div class="flex items-center space-x-2 border-l border-gray-200 pl-4">
-                                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
-                                        class="w-8 h-8 rounded-full">
+                                    <img src="../pema.jpg" alt="Profile" class="w-8 h-8 object-cover rounded-full">
                                     <span class="text-sm">Choden Lhamo</span>
                                 </div>
                             </div>
@@ -358,8 +357,7 @@
             </div>
             <nav class="overflow-y-auto h-full py-4">
                 <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mx-3 mb-6">
-                    <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Profile"
-                        class="w-10 h-10 rounded-full border-2 border-zorig">
+                    <img src="../pema.jpg" alt="Profile" class="w-10 h-10 rounded-full border-2 border-zorig">
                     <div>
                         <p class="text-xs text-gray-600">Welcome back</p>
                         <p class="font-medium text-sm">Choden Lhamo</p>
@@ -440,68 +438,68 @@
         // Sample order data
         const orders = [
             {
-                id: "#ZH-2023-8765",
+                id: "#ZH-2025-8765",
                 buyer: "Tashi Dema",
                 product: "Wooden Mask",
                 date: "June 10, 2025",
                 status: "pending",
-                image: "https://images.unsplash.com/photo-1616486602032-96a2b330d55d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/mask.jpg"
             },
             {
-                id: "#ZH-2023-8764",
+                id: "#ZH-2025-8764",
                 buyer: "Dorji Wangchuk",
                 product: "Handwoven Kira",
                 date: "June 8, 2025",
                 status: "shipped",
-                image: "https://images.unsplash.com/photo-1592925466403-2d0ef306b512?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/weave.jpg"
             },
             {
-                id: "#ZH-2023-8763",
+                id: "#ZH-2025-8763",
                 buyer: "Pema Choden",
                 product: "Silver Bracelet",
                 date: "June 5, 2025",
                 status: "completed",
-                image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/jewellery.jpg"
             },
             {
-                id: "#ZH-2023-8762",
+                id: "#ZH-2025-8762",
                 buyer: "Kinley Tobgay",
                 product: "Bamboo Basket",
                 date: "June 3, 2025",
                 status: "pending",
-                image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/basket.jpg"
             },
             {
-                id: "#ZH-2023-8761",
+                id: "#ZH-2025-8761",
                 buyer: "Sonam Tshering",
                 product: "Thangka Painting",
                 date: "May 29, 2025",
                 status: "shipped",
-                image: "https://images.unsplash.com/photo-1578302758064-2d4e4a8d2a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/thangka.jpg"
             },
             {
-                id: "#ZH-2023-8760",
+                id: "#ZH-2025-8760",
                 buyer: "Dechen Zangmo",
                 product: "Ceramic Tea Set",
                 date: "May 27, 2025",
                 status: "completed",
-                image: "https://images.unsplash.com/photo-1597466599360-3b9775841aec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/silver-bowl.jpg"
             },
             {
-                id: "#ZH-2023-8759",
+                id: "#ZH-2025-8759",
                 buyer: "Norbu Dorji",
                 product: "Wooden Bowl",
                 date: "May 23, 2025",
                 status: "pending",
-                image: "https://images.unsplash.com/photo-1604457860478-e6d1de463b0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/bowl.jpg"
             },
             {
-                id: "#ZH-2023-8758",
+                id: "#ZH-2025-8758",
                 buyer: "Yangchen Lhamo",
                 product: "Woolen Scarf",
                 date: "May 20, 2025",
                 status: "completed",
-                image: "https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                image: "/images/scarf.jpg"
             }
         ];
 
