@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FC2839',
+                        secondary: '#333333',
+                        accent: '#F8E71C',
+                        bglight: '#F9FAFB',
+                        darkred: '#D92231',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333333;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Noto Serif', serif;
+        }
+        
+        .art-tile {
+            transition: all 0.3s ease;
+        }
+        
+        .art-tile:hover {
+            transform: translateY(-5px);
+        }
+        
+        .bhutan-red {
+            color: #FC2839;
+        }
+        
+        .bg-bhutan-red {
+            background-color: #FC2839;
+        }
+        
+        .border-bhutan-red {
+            border-color: #FC2839;
+        }
+        
+        .motif-bg {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50,10 L60,30 L80,30 L65,45 L75,65 L50,55 L25,65 L35,45 L20,30 L40,30 Z" fill="%23FC2839" opacity="0.1"/></svg>');
+            background-repeat: repeat;
+            background-size: 80px;
+        }
+        
+        .craft-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .craft-detail.open {
+            max-height: 1000px;
+        }
+        
+        /* Custom scrollbar for articles */
+        .articles-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .articles-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .articles-container::-webkit-scrollbar-thumb {
+            background: #FC2839;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-primary font-bold text-2xl">Zorig<span class="text-secondary">Hub</span></h1>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="Buyer.html" class="text-secondary  px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="marketplace.html" class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Marketplace</a>
+                    <a href="artisanPage.html" class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Artisans</a>
+                    <a href="buyerAbout.html" class="text-primary border-b-2 border-primary hover:text-primary px-3 py-2 text-sm font-medium">About</a>
+                </div>
+                
+                <!-- Right Side -->
+                <div class="hidden md:flex items-center space-x-5">
+                    <div class="relative">
+                        <button class="text-secondary hover:text-primary">
+                            <i class="fas fa-search text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button class="text-secondary hover:text-primary relative">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">3</span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <a href="cart.html" class="text-secondary hover:text-primary relative inline-block" id="cart-btn">
+                          <i class="fas fa-shopping-cart text-xl"></i>
+                          <span class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs" id="cart-count">2</span>
+                        </a>
+                      </div>
+                    <button onclick="toggleLanguage()" class="text-xs bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 transition">
+                        <i class="fas fa-language mr-1"></i> Dzongkha
+                    </button>
+                    <div class="relative ml-4">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="User" class="w-8 h-8 rounded-full border-2 border-primary">
+                            <span class="text-sm font-medium text-secondary hidden md:inline">Sarah</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header class="relative bg-white overflow-hidden">
+        <div class="motif-bg absolute inset-0 z-0"></div>
+        <div class="container mx-auto px-4 py-16 md:py-24 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-3xl md:text-5xl font-bold mb-6">Preserving Bhutan's Living Heritage</h1>
+                <p class="text-lg md:text-xl text-gray-700 mb-8">Discover the 13 traditional arts of Bhutan, known as Zorig Chusum, ancient crafts that continue to shape the cultural identity of the Land of the Thunder Dragon.</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#arts" class="bg-bhutan-red text-white px-6 py-3 rounded-full font-semibold hover:bg-red-700 transition">Explore the Arts</a>
+                    <a href="#" class="border-2 border-bhutan-red text-bhutan-red px-6 py-3 rounded-full font-semibold hover:bg-red-50 transition">Watch Documentary</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bhutan Introduction -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold mb-6">The Essence of Zorig Chusum</h2>
+                    <p class="text-gray-700 mb-4">Zorig Chusum translates to "The Thirteen Crafts" and represents Bhutan's traditional arts and crafts that date back centuries. Established as an integral part of Bhutanese culture, these arts were formally categorized during the reign of the 4th Temporal Ruler, Tenzing Rabgye (1680-1694).</p>
+                    <p class="text-gray-700 mb-6">Each of these crafts plays a vital role in Bhutan's cultural identity, passed down through generations and still thriving today in monasteries, artisan workshops, and vocational schools across the country.</p>
+                    <a href="#" class="inline-flex items-center text-bhutan-red font-semibold hover:underline">
+                        Learn more about Bhutan's culture
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2 overflow-hidden rounded-xl shadow-xl border border-gray-200">
+                    <div class="relative pb-[56.25%] h-0">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/y5z3oX9K0do" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="bg-white p-4">
+                        <h3 class="font-semibold text-lg mb-1">Mastering Bhutan's Traditional Arts</h3>
+                        <p class="text-gray-600 text-sm">A documentary on the preservation of Zorig Chusum in modern Bhutan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 13 Arts Grid -->
+    <section id="arts" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">The Thirteen Traditional Arts of Bhutan</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto">Click on each art to learn about its history, techniques, and contemporary significance in Bhutanese society.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Art 1 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-paint-brush text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Lhadri - Thangka Painting</h3>
+                        <p class="text-gray-600 mb-4">Sacred Buddhist scroll paintings depicting deities and mandalas.</p>
+                        <button onclick="toggleDetail('detail1')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail1" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Thangka paintings serve as important meditation tools for Buddhist practitioners. Using natural pigments, artists follow strict iconometric guidelines passed down over centuries. The process includes priming cotton canvas with chalk and animal glue before painting with brushes made from animal hair.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Thangka</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 2 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-cut text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Shingzo - Woodworking</h3>
+                        <p class="text-gray-600 mb-4">Sacred wood carving for temples and traditional architecture.</p>
+                        <button onclick="toggleDetail('detail2')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail2" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Bhutanese woodworkers create intricate designs for dzongs, temples, and homes using hand tools. The craft includes carving religious symbols, floral patterns, and mythical creatures. Traditional Bhutanese architecture features elaborately carved windows, doors, and pillars that demonstrate exceptional craftsmanship.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Meet Artisans</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 3 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-gem text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Parzo - Stone Carving</h3>
+                        <p class="text-gray-600 mb-4">Art of carving stone into sacred objects and architecture.</p>
+                        <button onclick="toggleDetail('detail3')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail3" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Bhutanese stone carvers create Buddhist prayer stones (mani stones), water fountains, and architectural elements. The most common types inscribed are the six-syllabled mantra of Avalokiteshvara (Om Mani Padme Hum) and other religious texts. These stones can be found lining pathways and building walls throughout Bhutan.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Carvings</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 4 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-scroll text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Lhazo - Ornamental Painting</h3>
+                        <p class="text-gray-600 mb-4">Decorative painting of temples and religious artifacts.</p>
+                        <button onclick="toggleDetail('detail4')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail4" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">This art encompasses the decorative painting of temples, houses, and artifacts with intricate floral designs, religious symbols, and auspicious motifs. The colors are made from natural mineral and vegetable pigments. Lhazo artists must master specific color combinations and patterns that carry deep symbolic meaning in Bhutanese culture.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">View Gallery</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 5 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-praying-hands text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Jimzo - Clay Arts</h3>
+                        <p class="text-gray-600 mb-4">Sculpting religious statues and pottery.</p>
+                        <button onclick="toggleDetail('detail5')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail5" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Jimzo includes both sacred sculpture and utilitarian pottery. Religious clay sculptures (tsha-tsha) are small votive tablets often placed in stupas. Larger clay statues adorn temples. Potters also create household items using traditional techniques. Certain clay formations are believed to have medicinal properties in Bhutanese folk traditions.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Pottery</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 6 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-ring text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Garzo - Blacksmithing</h3>
+                        <p class="text-gray-600 mb-4">Forging iron implements and religious items.</p>
+                        <button onclick="toggleDetail('detail6')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail6" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Bhutanese blacksmiths produce tools, weapons, and religious objects. The craft holds spiritual significance as blacksmiths are believed to have special powers to work with "earth metal." Traditional products include knives (patag), axes, bells, chains, and ritual objects like phurbas (ceremonial daggers). The iron ore is locally sourced and processed in small forges.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Products</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 7 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-fill-drip text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Tsharzo - Bamboo Craft</h3>
+                        <p class="text-gray-600 mb-4">Weaving baskets and household items from bamboo.</p>
+                        <button onclick="toggleDetail('detail7')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail7" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Tsharzo involves creating a variety of items from bamboo and cane including baskets (bangchung), mats, containers, bows, arrows, and even traditional hats. Different regions have distinctive weaving patterns. The craft is particularly important in rural communities where bamboo products remain essential for daily life, though artisans are now creating more decorative items for the tourist market.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Baskets</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 8 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-yin-yang text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Dozo - Masonry</h3>
+                        <p class="text-gray-600 mb-4">Traditional Bhutanese stone construction.</p>
+                        <button onclick="toggleDetail('detail8')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail8" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Dozo refers to the traditional construction of stone buildings, primarily dzongs (fortress monasteries) and houses. Bhutanese masons build without mortar, using precise stone placement and wooden pins for stability. This technique has proven remarkably resilient to earthquakes. Characteristics include inward-sloping walls (batter), whitewashed surfaces with red ochre bands, and distinctive wooden roofs.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">View Projects</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 9 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-leaf text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Trozo - Silver & Gold Smithing</h3>
+                        <p class="text-gray-600 mb-4">Crafting jewelry and religious items.</p>
+                        <button onclick="toggleDetail('detail9')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail9" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Bhutanese gold and silversmiths create jewelry, ritual objects, and decorative items. Traditional work includes filigree, repoussé, and granulation techniques. Common items include amulet boxes (gau), which hold sacred relics, religious figurines, and jewelry featuring traditional motifs. Gold is considered sacred in Bhutan and used primarily for religious artifacts.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Jewelry</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 10 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-yarn text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Tshemzo - Embroidery</h3>
+                        <p class="text-gray-600 mb-4">Needlework for clothing and religious artifacts.</p>
+                        <button onclick="toggleDetail('detail10')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail10" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Tshemzo encompasses both secular and religious embroidery. It's used to decorate clothing (especially the kabney - ceremonial scarves), altar cloths, and temple hangings. Designs often feature the eight auspicious symbols, floral patterns, and mythical animals. Special appliqué techniques are used to create large thangkas made of silk, which serve as backdrops for religious ceremonies.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Textiles</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 11 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Lugzo - Bronze Casting</h3>
+                        <p class="text-gray-600 mb-4">Creating bronze statues and ritual objects.</p>
+                        <button onclick="toggleDetail('detail11')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail11" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Lugzo artists use the lost-wax (cire perdue) method to cast bronze statues, ritual objects, and temple bells. The sculptures range from small amulets to massive Buddha statues several meters tall. The craft is deeply connected to religious practice, with the casting process often accompanied by rituals. Bronze was historically imported from neighboring countries via trade routes through the Himalayas.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">View Collection</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 12 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-bolt text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Dhezho - Paper Making</h3>
+                        <p class="text-gray-600 mb-4">Traditional paper from Daphne bark.</p>
+                        <button onclick="toggleDetail('detail12')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail12" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Bhutanese paper is made from the bark of Daphne trees (Daphne cannabina and Daphne bholua) using a process that dates back centuries. The paper is valued for its durability and insect-resistant properties. Traditionally used for religious texts, it's now fashioned into lampshades, stationery, and decorative items. The production process is labor-intensive and completely manual.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Shop Paper Goods</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art 13 -->
+                <div class="art-tile bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg">
+                    <div class="relative pb-[70%] bg-gray-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-puzzle-piece text-5xl bhutan-red"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Tshemdrup - Tailoring</h3>
+                        <p class="text-gray-600 mb-4">Crafting the iconic Bhutanese national dress.</p>
+                        <button onclick="toggleDetail('detail13')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded transition">Learn More</button>
+                    </div>
+                    <div id="detail13" class="craft-detail px-5 pb-5">
+                        <p class="text-gray-700 mb-4">Tshemdrup involves sewing Bhutan's national dress: the gho for men and kira for women. The gho is a knee-length robe tied with a belt, while the kira is a long rectangular piece of fabric wrapped around the body. The art requires intricate hand-sewing for traditional occasions, though machine stitching is now common for everyday wear. Tailors must master specific folding and fitting techniques unique to Bhutanese garments.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="bg-bhutan-red text-white px-4 py-2 rounded text-sm font-semibold hover:bg-red-700 transition">Custom Order</a>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-bhutan-red"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Craft Origins Across Bhutan</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto">Explore where these traditional arts originated and are practiced today across Bhutan's distinct regions.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="relative pb-[56.25%]">
+                    <!-- Placeholder for Bhutan map - in a real implementation this would be an interactive map -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-gray-200 to-gray-300">
+                        <div class="text-center">
+                            <i class="fas fa-map-marked-alt text-6xl bhutan-red mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Interactive Bhutan Craft Map</h3>
+                            <p class="text-gray-700">Coming Soon - Explore the regional specialties of Bhutan's traditional arts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-4">Local Specialties:</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 border border-gray-200 rounded-lg">
+                            <h4 class="font-semibold bhutan-red mb-2">Bumthang Valley</h4>
+                            <p class="text-gray-700">Known for wooden bowls (dapa), textiles, and exquisite honey production.</p>
+                        </div>
+                        <div class="bg-white p-4 border border-gray-200 rounded-lg">
+                            <h4 class="font-semibold bhutan-red mb-2">Paro & Thimphu</h4>
+                            <p class="text-gray-700">Centers for thangka painting, sculpture, and contemporary adaptations of traditional crafts.</p>
+                        </div>
+                        <div class="bg-white p-4 border border-gray-200 rounded-lg">
+                            <h4 class="font-semibold bhutan-red mb-2">Trongsa</h4>
+                            <p class="text-gray-700">Renowned for bamboo work, stone carving, and traditional paper making.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles & Blog Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Cultural Insights</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto">Discover more about Bhutan's living traditions through our articles and stories.</p>
+            </div>
+            
+            <div class="articles-container overflow-x-auto pb-4" style="scrollbar-width: thin;">
+                <div class="flex space-x-6 pb-4" style="min-width: max-content;">
+                    <!-- Article 1 -->
+                    <div class="w-72 flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition">
+                        <div class="relative pb-[60%] bg-gray-100">
+                            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519817650390-64a93db51149?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs uppercase tracking-wide text-bhutan-red font-semibold mb-1">Festivals</div>
+                            <h3 class="font-bold text-lg mb-2">Tshechu: The Masked Dance Festival</h3>
+                            <p class="text-gray-600 text-sm mb-4">Explore the sacred masked dances of Bhutanese festivals, where ancient stories come to life through elaborate costumes and choreography passed down through generations.</p>
+                            <a href="#" class="inline-flex items-center text-sm font-semibold bhutan-red hover:underline">
+                                Read More
+                                <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 2 -->
+                    <div class="w-72 flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition">
+                        <div class="relative pb-[60%] bg-gray-100">
+                            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1580136830225-68a15c00959b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs uppercase tracking-wide text-bhutan-red font-semibold mb-1">Sustainability</div>
+                            <h3 class="font-bold text-lg mb-2">Preserving Tradition in Modern Bhutan</h3>
+                            <p class="text-gray-600 text-sm mb-4">How Bhutan's craftspeople are adapting ancient techniques to contemporary markets while maintaining cultural authenticity and environmental sustainability.</p>
+                            <a href="#" class="inline-flex items-center text-sm font-semibold bhutan-red hover:underline">
+                                Read More
+                                <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 3 -->
+                    <div class="w-72 flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition">
+                        <div class="relative pb-[60%] bg-gray-100">
+                            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4de7ee2ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs uppercase tracking-wide text-bhutan-red font-semibold mb-1">Craft Evolution</div>
+                            <h3 class="font-bold text-lg mb-2">From Monastery to Marketplace</h3>
+                            <p class="text-gray-600 text-sm mb-4">The journey of Bhutanese sacred arts into global collections, examining both the opportunities and challenges of this cultural exchange.</p>
+                            <a href="#" class="inline-flex items-center text-sm font-semibold bhutan-red hover:underline">
+                                Read More
+                                <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Article 4 -->
+                    <div class="w-72 flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition">
+                        <div class="relative pb-[60%] bg-gray-100">
+                            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                        </div>
+                        <div class="p-5">
+                            <div class="text-xs uppercase tracking-wide text-bhutan-red font-semibold mb-1">Artisans</div>
+                            <h3 class="font-bold text-lg mb-2">Masters & Apprentices: Passing the Torch</h3>
+                            <p class="text-gray-600 text-sm mb-4">Meet the master craftspeople teaching the next generation in Bhutan's vocational schools and private workshops, ensuring these traditions endure.</p>
+                            <a href="#" class="inline-flex items-center text-sm font-semibold bhutan-red hover:underline">
+                                Read More
+                                <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-bhutan-red text-white relative overflow-hidden">
+        <div class="motif-bg absolute inset-0 z-0 opacity-30"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Support Bhutan's Living Heritage</h2>
+                <p class="text-xl mb-8 opacity-90">By purchasing authentic Bhutanese crafts, you help sustain these ancient traditions and support the livelihoods of Bhutanese artisans and their communities.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:bg-opacity-10 transition">Shop Handicrafts</a>
+                    <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:bg-opacity-10 transition">Visit Bhutan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Zorig<span class="text-primary">Hub</span></h3>
+                    <p class="text-gray-400">Preserving and promoting Bhutanese traditional arts and crafts through ethical commerce.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Marketplace</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Artisan Profiles</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Zorig Chusum</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to receive updates on new products and artisan stories.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-3 py-2 rounded-l-md bg-gray-700 text-white w-full focus:outline-none">
+                        <button type="submit" class="bg-primary hover:bg-darkred px-4 py-2 rounded-r-md">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 ZorigHub. All rights reserved. Handcrafted in Bhutan 🇧🇹</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDetail(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('open');
+            
+            const button = element.previousElementSibling.querySelector('button');
+            if (element.classList.contains('open')) {
+                button.textContent = 'Show Less';
+                button.classList.remove('bg-gray-100');
+                button.classList.add('bg-gray-200');
+            } else {
+                button.textContent = 'Learn More';
+                button.classList.remove('bg-gray-200');
+                button.classList.add('bg-gray-100');
+            }
+        }
+    </script>
+</body>
+</html>
