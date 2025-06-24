@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Bhutanese pattern inspired by khamar motifs */
+        .bhutan-pattern {
+            background:
+                linear-gradient(135deg, #FC283911 25%, transparent 25%) -10px 0,
+                linear-gradient(225deg, #FC283911 25%, transparent 25%) -10px 0,
+                linear-gradient(315deg, #FC283911 25%, transparent 25%),
+                linear-gradient(45deg, #FC283911 25%, transparent 25%);
+            background-size: 20px 20px;
+        }
+
+        /* Custom CSS for circular progress indicators */
+        .circular-progress {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(#FC2839 var(--progress), #e5e7eb var(--progress));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom tab switcher */
+        .tab-switcher [type="radio"]:checked+label {
+            border-bottom: 3px solid #FC2839;
+            color: #FC2839;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 left-0 z-10">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img src="/images/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+                        <span class="sr-only">Notifications</span>
+                        <span class="relative inline-block">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-[#FC2839]"></span>
+                        </span>
+                    </button>
+                    <div class="ml-3 relative">
+                        <div class="flex items-center">
+                            <button class="max-w-xs flex items-center text-sm rounded-full focus:outline-none">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 object-cover rounded-full" src="/images/people/karma.jpg"
+                                    alt="profile img">
+                                <span class="ml-2 hidden md:block">Admin</span>
+                                <i class="fas fa-chevron-down ml-1 text-xs hidden md:block"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="hidden md:block w-64 h-screen bg-white shadow-sm fixed">
+            <nav class="p-6">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="index.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminuser.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminorders.html"
+                            class="flex items-center px-4 py-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-shopping-basket mr-3"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminanalytics.html"
+                            class="flex items-center px-4 py-2 text-[#FC2839] bg-[#FC2839]/10 rounded-lg">
+                            <i class="fas fa-chart-pie mr-3"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminloan.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chart-pie mr-3"></i>
+                            <span>Loan</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="adminsetting.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="mt-12 pt-6 border-t border-gray-200">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Quick Actions</h3>
+                    <div class="mt-4 space-y-2">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-check-circle mr-2 text-[#FC2839]"></i>
+                            <span>Approve Artisans</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-file-export mr-2 text-[#FC2839]"></i>
+                            <span>Export Reports</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-comment-dots mr-2 text-[#FC2839]"></i>
+                            <span>Customer Inquiries</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <main class="md:ml-64 flex-1 overflow-y-auto">
+            <div class="py-6">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                    <h1 class="text-2xl font-semibold text-gray-900">User Management</h1>
+                </div>
+
+                <!-- Dashboard Stats -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-6">
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+
+                        <!-- Stat Card 4 -->
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Analytics Module Tabs -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-8">
+                    <div class="border-b border-gray-200">
+                        <nav class="-mb-px flex space-x-8">
+                            <a href="#"
+                                class="border-[#FC2839] text-[#FC2839] whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Executive Dashboard
+                            </a>
+                            <a href="#"
+                                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Sales Performance
+                            </a>
+                            <a href="#"
+                                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Artisan Analytics
+                            </a>
+                            <a href="#"
+                                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Tourist Engagement
+                            </a>
+                            <a href="#"
+                                class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Custom Reports
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Charts and Alerts Section -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Sales Chart -->
+                        <div class="bg-white p-6 shadow rounded-lg lg:col-span-2">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-lg font-medium text-gray-900">Sales Overview</h2>
+                                <div class="relative">
+                                    <select
+                                        class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-1 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white">
+                                        <option>Last 7 Days</option>
+                                        <option selected>Last 30 Days</option>
+                                        <option>Last 90 Days</option>
+                                    </select>
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <i class="fas fa-chevron-down text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-64">
+                                <canvas id="salesChart" class="w-full h-full"></canvas>
+                            </div>
+                            <div class="mt-4 grid grid-cols-3 gap-4">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#FC2839] mr-2"></div>
+                                    <span class="text-sm text-gray-600">Weaving</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#10B981] mr-2"></div>
+                                    <span class="text-sm text-gray-600">Wood Carving</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#3B82F6] mr-2"></div>
+                                    <span class="text-sm text-gray-600">Thangka Painting</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tourist Heatmap -->
+                        <div class="bg-white p-6 shadow rounded-lg">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-lg font-medium text-gray-900">Tourist Engagement Heatmap</h2>
+                                <div class="relative">
+                                    <select
+                                        class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-1 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white">
+                                        <option>Last 7 Days</option>
+                                        <option selected>Last 30 Days</option>
+                                        <option>By Festival Season</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="h-64 bg-gray-100 rounded-lg flex items-center justify-center bhutan-pattern">
+                                <div class="text-center">
+                                    <i class="fas fa-globe-asia text-4xl text-gray-300"></i>
+                                    <p class="mt-2 text-sm text-gray-500">Interactive world map visualization would
+                                        appear here</p>
+                                    <p class="text-xs text-gray-400">Click any country for detailed analytics</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-3 gap-4">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#FC2839] mr-2"></div>
+                                    <span class="text-sm text-gray-600">High Engagement</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#D9A05B] mr-2"></div>
+                                    <span class="text-sm text-gray-600">Medium</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#7C6A5A] mr-2"></div>
+                                    <span class="text-sm text-gray-600">Low</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize sales chart
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(salesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [
+                    {
+                        label: 'Weaving',
+                        data: [12, 19, 15, 17, 23, 25],
+                        backgroundColor: '#FC2839',
+                        borderRadius: 4,
+                        barThickness: 12,
+                    },
+                    {
+                        label: 'Wood Carving',
+                        data: [8, 9, 10, 12, 15, 18],
+                        backgroundColor: '#10B981',
+                        borderRadius: 4,
+                        barThickness: 12,
+                    },
+                    {
+                        label: 'Thangka Painting',
+                        data: [6, 8, 10, 12, 14, 16],
+                        backgroundColor: '#3B82F6',
+                        borderRadius: 4,
+                        barThickness: 12,
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        stacked: true
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            borderDash: [5],
+                            drawBorder: false
+                        },
+                        ticks: {
+                            callback: function (value) {
+                                return 'BTN ' + value + 'k';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Initialize orders chart
+        const ordersCtx = document.getElementById('ordersChart').getContext('2d');
+        const ordersChart = new Chart(ordersCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Orders',
+                    data: [18, 24, 22, 30],
+                    backgroundColor: '#FC2839',
+                    borderRadius: 4,
+                    barThickness: 12,
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: {
+                        beginAtZero: true,
+                        grid: { display: false },
+                        ticks: { stepSize: 5 }
+                    }
+                }
+            }
+        });
+
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab-switcher input[type="radio"]');
+        tabs.forEach(tab => {
+            tab.addEventListener('change', function () {
+                // In a real app, you would fetch different data here based on the selected tab
+                console.log(`Switched to ${this.id} tab`);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 
 ## Implementation approach
 
-After analyzing the ZorigHub requirements, we need to design a scalable, culturally sensitive platform that connects Bhutanese artisans with global markets while preserving traditional crafts. The platform needs to support various user types (artisans, buyers, associations, admins), handle complex verification workflows, support e-commerce operations, and work reliably in areas with potentially limited connectivity.
+ZorigHub is a digital platform that empowers Bhutanese youth artisans skilled in traditional crafts such as weaving, carving, and painting. The platform offers verified skills certification, eco-friendly packaging solutions, and access to global and tourism-focused markets. By integrating with existing handicraft associations, ZorigHub supports job creation, promotes sustainable livelihoods, and preserves Bhutan's cultural heritage. It blends technology with tradition to help young artisans thrive in a modern economy while staying rooted in their identity.
 
 ### Key Technical Challenges:
 
@@ -32,17 +32,18 @@ Based on the requirements, we recommend the following open-source technologies:
 
 #### File Storage:
 
-- **AWS S3** or equivalent: For storing images and media files
+- **AWS S3**: For storing images and media files
 
 #### Authentication:
 
 - **OAuth 2.0**: For authentication
 - **JWT**: For secure token-based sessions
+- **NDI Integration**: For authentication (Bhutanese)
 
 #### Payment Processing:
 
-- **Stripe**: For international payments
-- **Local payment gateways** (for Bhutanese payment methods)
+- **Stripe/Paypal**: For international payments
+- **mBOB/mPay/DK** (for Bhutanese payment methods)
 
 #### Deployment & Infrastructure:
 
@@ -57,7 +58,7 @@ Based on the requirements, we recommend the following open-source technologies:
 
 #### Communication:
 
-- **SendGrid/Nodemailer**: For email notifications
+- **Nodemailer**: For email notifications
 - **Twilio**: For SMS notifications
 
 ## System Architecture Overview
@@ -89,7 +90,6 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - User login
-- `POST /api/auth/refresh-token` - Refresh JWT
 - `POST /api/auth/forgot-password` - Password recovery
 - `POST /api/auth/reset-password` - Reset password
 
@@ -97,17 +97,12 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 
 - `GET /api/users/:id` - Get user profile
 - `PUT /api/users/:id` - Update user profile
-- `GET /api/users/:id/addresses` - Get user addresses
-- `POST /api/users/:id/addresses` - Add address
-- `PUT /api/users/:id/addresses/:addressId` - Update address
 
 #### Artisan API
 
 - `GET /api/artisans` - List artisans
 - `GET /api/artisans/:id` - Get artisan profile
 - `PUT /api/artisans/:id` - Update artisan profile
-- `GET /api/artisans/:id/portfolio` - Get artisan portfolio
-- `POST /api/artisans/:id/portfolio` - Add portfolio item
 - `GET /api/artisans/:id/certifications` - Get artisan certifications
 
 #### Certification API
@@ -115,9 +110,6 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 - `POST /api/certifications/request` - Submit certification request
 - `GET /api/certifications/requests/:id` - Get request details
 - `PUT /api/certifications/requests/:id` - Update request
-- `GET /api/certifications/requests/association/:id` - Get pending requests for association
-- `POST /api/certifications/requests/:id/approve` - Approve request
-- `POST /api/certifications/requests/:id/reject` - Reject request
 - `GET /api/certifications/:id/verify` - Verify certification
 
 #### Product API
@@ -129,7 +121,6 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 - `DELETE /api/products/:id` - Delete product
 - `PUT /api/products/:id/inventory` - Update inventory
 - `GET /api/products/categories` - Get categories
-- `GET /api/products/craftTypes` - Get craft types
 
 #### Order API
 
@@ -146,15 +137,6 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 - `POST /api/payments/confirm` - Confirm payment
 - `POST /api/payments/:id/refund` - Process refund
 
-#### Experience API
-
-- `GET /api/experiences` - List experiences
-- `POST /api/experiences` - Create experience
-- `GET /api/experiences/:id` - Get experience details
-- `PUT /api/experiences/:id` - Update experience
-- `GET /api/experiences/:id/availability` - Check availability
-- `POST /api/experiences/:id/book` - Book experience
-
 #### Packaging API
 
 - `GET /api/packaging/options` - List packaging options
@@ -164,7 +146,7 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 
 - `GET /api/analytics/platform` - Get platform metrics
 - `GET /api/analytics/artisan/:id` - Get artisan dashboard metrics
-- `GET /api/analytics/association/:id` - Get association dashboard metrics
+- `GET /api/analytics/certification/:id` - Get certification dashboard metrics
 
 #### Support API
 
@@ -177,7 +159,6 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 
 - `GET /api/search/products` - Search products
 - `GET /api/search/artisans` - Search artisans
-- `GET /api/search/experiences` - Search experiences
 
 ### Security Considerations
 
@@ -203,6 +184,7 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 4. **Payment Security**
 
    - PCI DSS compliance for payment processing
+   - RMA compliance for micro-loan processing
    - Tokenization of payment information
    - Fraud detection mechanisms
 
@@ -235,12 +217,12 @@ The platform will use **MongoDB** for content-rich data (product descriptions, c
 
 4. **Communication**
 
-   - **SendGrid**: For transactional emails
+   - **Nodemailer**: For transactional emails
    - **Twilio**: For SMS notifications
    - **Firebase Cloud Messaging**: For push notifications
 
 5. **Authentication**
-   - **Auth0**: For identity management (optional)
+   - **OAuth 2.0**: For identity management (optional)
    - **Google/Facebook OAuth**: For social login options
 
 ### Scalability Considerations

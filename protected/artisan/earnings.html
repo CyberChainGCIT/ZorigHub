@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - Artisan Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zorig: '#FC2839',
+                        'zorig-light': '#FFE5E7',
+                        'bhutan-charcoal': '#333333',
+                        'bhutan-gray': '#F5F5F5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for elements not easily styled with Tailwind */
+        .sidebar {
+            scrollbar-width: thin;
+            scrollbar-color: #FC2839 transparent;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #FC2839;
+            border-radius: 20px;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .badge-shadow {
+            box-shadow: 0 4px 6px -1px rgba(252, 40, 57, 0.2), 0 2px 4px -1px rgba(252, 40, 57, 0.06);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-bhutan-gray font-sans">
+    <!-- Main Layout -->
+    <div class="flex flex-col md:flex-row min-h-screen">
+
+        <aside class="hidden md:flex md:flex-col w-64 bg-white border-r border-gray-200 h-screen sticky top-0 z-origin">
+            <div class="flex items-center justify-center h-16 border-b border-gray-200">
+                <img src="/images/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
+            </div>
+            <div class="overflow-y-auto sidebar flex-grow">
+                <nav class="px-4 py-6">
+                    <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mb-6">
+                        <img src="/images/people/pema.jpg" alt="Profile"
+                            class="w-12 h-12 object-cover rounded-full border-2 border-zorig">
+                        <div>
+                            <p class="text-sm text-gray-600">Welcome back</p>
+                            <p class="font-medium">Choden Lhamo</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="mb-2">
+                            <a href="index.html"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-home mr-3"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="myproduct.html"
+                                class="tab-button  flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-tshirt mr-3"></i>
+                                <span>My Products</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="orders.html"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-shopping-bag mr-3"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button active flex items-center px-4 py-3 text-zorig bg-zorig-light rounded-lg">
+                                <i class="fas fa-rupee-sign mr-3"></i>
+                                <span>Earnings</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="profile.html"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-user mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="mt-16 px-4">
+                        <button
+                            class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                            <i class="fas fa-plus mr-2"></i>
+                            <span>Add New Product</span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="px-4 py-3 border-t border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <img src="/images/people/pema.jpg" alt="Profile" class="w-8 h-8 object-cover rounded-full">
+                    <div class="flex-grow">
+                        <p class="text-sm font-medium">Choden Lhamo</p>
+                        <p class="text-xs text-gray-500">Weaving Artisan</p>
+                    </div>
+                    <button class="text-gray-500 hover:text-zorig">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content flex-grow pb-16 md:pb-0">
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 flex items-center justify-between">
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="text-gray-500 hover:text-zorig focus:outline-none">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex-1 md:text-right">
+                        <div class="flex items-center justify-end space-x-4">
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-bell text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-envelope text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <div class="hidden md:block">
+                                <div class="flex items-center space-x-2 border-l border-gray-200 pl-4">
+                                    <img src="/images/people/pema.jpg" alt="Profile"
+                                        class="w-8 h-8 object-cover rounded-full">
+                                    <span class="text-sm">Choden Lhamo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+                <!-- Page Title -->
+                <div class="mb-8 divider-pattern relative pb-2">
+                    <div class="flex justify-between items-center">
+                        <div class="pt-2">
+                            <h2 class="text-2xl font-bold text-bhutan-dark">My Earnings</h2>
+                            <p class="text-gray-600">Track your transactions and request payouts</p>
+                        </div>
+                        <span class="bg-yellow-50 text-yellow-800 text-xs px-3 py-1 rounded-full">Last updated: 5 mins
+                            ago</span>
+                    </div>
+                </div>
+
+                <!-- Earnings Summary -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden bhutan-pattern">
+                        <div class="p-6 flex items-start justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Total Earnings</p>
+                                <p class="text-3xl font-bold mt-2 text-bhutan-dark">Nu. 28,750</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-green-500 text-sm font-medium"><i class="fas fa-arrow-up"></i>
+                                        12.5%</span>
+                                    <span class="text-gray-500 text-sm ml-2">vs last month</span>
+                                </div>
+                            </div>
+                            <div class="p-3 rounded-full bg-bhutan-red bg-opacity-10 text-bhutan-red">
+                                <i class="fas fa-wallet text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-6 py-3 border-t border-gray-100 text-sm">
+                            <span class="text-green-500"><i class="fas fa-check-circle"></i> Verified account</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden bhutan-pattern">
+                        <div class="p-6 flex items-start justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Month-to-Date</p>
+                                <p class="text-3xl font-bold mt-2 text-bhutan-dark">Nu. 5,350</p>
+                                <div class="mt-4">
+                                    <span
+                                        class="inline-block px-3 py-1 text-xs rounded-full bg-blue-50 text-blue-700">Estimated
+                                        payout: Jun 5</span>
+                                </div>
+                            </div>
+                            <div class="p-3 rounded-full bg-bhutan-orange bg-opacity-10 text-bhutan-orange">
+                                <i class="fas fa-calendar-check text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-6 py-3 border-t border-gray-100 text-sm">
+                            <span><i class="far fa-clock text-yellow-500"></i> 3 transactions pending</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Balance & Payout Button -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8 bhutan-pattern">
+                    <div class="p-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Available for payout</p>
+                                <p class="text-3xl font-bold mt-1 text-bhutan-dark">Nu. 11,200</p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <button
+                                    class="w-full md:w-auto px-6 py-3 bg-bhutan-red hover:bg-red-700 text-white font-medium rounded-lg shadow-sm transition duration-150 ease-in-out flex items-center justify-center">
+                                    <i class="fas fa-rupee-sign mr-2"></i> Request Payout
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <p class="text-sm text-gray-500 flex items-center">
+                                <i class="fas fa-university mr-2"></i> Payout method: <span
+                                    class="ml-1 text-bhutan-dark font-medium">BDBL Bank (•••• 2345)</span>
+                                <a href="#" class="ml-3 text-bhutan-red hover:underline">Change</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction History -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
+                    <div class="p-6 border-b border-gray-100">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-bold text-bhutan-dark lotus-icon">Transaction History
+                            </h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="relative">
+                                    <select
+                                        class="appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-1 focus:ring-bhutan-red focus:border-bhutan-red">
+                                        <option>All transactions</option>
+                                        <option>Last 30 days</option>
+                                        <option>Last 6 months</option>
+                                    </select>
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <button class="p-2 rounded-lg hover:bg-gray-100">
+                                    <i class="fas fa-filter text-gray-500"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-gray-100">
+                        <!-- Transaction Item 1 -->
+                        <div class="p-4 md:p-6 hover:bg-gray-50 transition duration-150 ease-in-out">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div>
+                                    <h4 class="font-medium">Buddha Statue - Medium</h4>
+                                    <p class="text-gray-500 text-sm mt-1"><span class="hidden sm:inline">Order
+                                            #ZH-</span>4821 • May 28, 2025</p>
+                                    <div class="mt-2">
+                                        <span
+                                            class="inline-block px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Paid</span>
+                                        <span
+                                            class="ml-2 inline-block px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Delivered</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 md:mt-0 text-right">
+                                    <p class="text-lg font-medium text-gray-900">Nu. 4,500</p>
+                                    <div class="mt-1 flex md:justify-end">
+                                        <button class="text-xs text-bhutan-red hover:underline" data-transaction="1">
+                                            View fee breakdown <i class="fas fa-chevron-down ml-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fee Breakdown (Hidden by default) -->
+                            <div id="fee-breakdown-1" class="hidden mt-4 pt-4 border-t border-gray-100">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm text-gray-500">Item value</p>
+                                        <p class="font-medium">Nu. 4,500</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm text-gray-500">Platform fee (12%)</p>
+                                        <p class="font-medium">- Nu. 540</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm text-gray-500">Eco-packaging</p>
+                                        <p class="font-medium">- Nu. 150</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                                    <p class="text-sm text-gray-500">Amount deposited</p>
+                                    <p class="font-medium text-green-700">Nu. 3,810</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Item 2 -->
+                        <div class="p-4 md:p-6 hover:bg-gray-50 transition duration-150 ease-in-out">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div>
+                                    <h4 class="font-medium">Handwoven Kira</h4>
+                                    <p class="text-gray-500 text-sm mt-1"><span class="hidden sm:inline">Order
+                                            #ZH-</span>4765 • May 22, 2025</p>
+                                    <div class="mt-2">
+                                        <span
+                                            class="inline-block px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Processing</span>
+                                        <span
+                                            class="ml-2 inline-block px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Shipped</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 md:mt-0 text-right">
+                                    <p class="text-lg font-medium text-gray-900">Nu. 8,750</p>
+                                    <div class="mt-1 flex md:justify-end">
+                                        <button class="text-xs text-bhutan-red hover:underline" data-transaction="2">
+                                            View fee breakdown <i class="fas fa-chevron-down ml-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Item 3 -->
+                        <div class="p-4 md:p-6 hover:bg-gray-50 transition duration-150 ease-in-out">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div>
+                                    <h4 class="font-medium">Wooden Tashi Tagye</h4>
+                                    <p class="text-gray-500 text-sm mt-1"><span class="hidden sm:inline">Order
+                                            #ZH-</span>4692 • May 14, 2025</p>
+                                    <div class="mt-2">
+                                        <span
+                                            class="inline-block px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Pending</span>
+                                        <span
+                                            class="ml-2 inline-block px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">In
+                                            progress</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 md:mt-0 text-right">
+                                    <p class="text-lg font-medium text-gray-900">Nu. 3,200</p>
+                                    <div class="mt-1 flex md:justify-end">
+                                        <button class="text-xs text-bhutan-red hover:underline" data-transaction="3">
+                                            View fee breakdown <i class="fas fa-chevron-down ml-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6 text-center border-t border-gray-100">
+                        <button
+                            class="px-4 py-2 text-sm font-medium text-bhutan-red hover:text-red-700 rounded-lg hover:bg-gray-50 border border-bhutan-red border-opacity-20">
+                            View all transactions
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payout History (Condensed) -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
+                    <div class="p-6 border-b border-gray-100">
+                        <h3 class="text-lg font-medium text-bhutan-dark lotus-icon">Previous Payouts</h3>
+                    </div>
+                    <div class="divide-y divide-gray-100">
+                        <div class="p-4 md:p-6">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div>
+                                    <p class="font-medium">May 5, 2025</p>
+                                    <p class="text-gray-500 text-sm mt-1">Transaction: ZHP-39210</p>
+                                </div>
+                                <div class="mt-4 md:mt-0">
+                                    <p class="text-lg font-medium text-green-600">+ Nu. 7,420</p>
+                                    <p class="text-sm text-gray-500 mt-1"><i
+                                            class="fas fa-check-circle text-green-500"></i> Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div>
+                                    <p class="font-medium">April 5, 2025</p>
+                                    <p class="text-gray-500 text-sm mt-1">Transaction: ZHP-38124</p>
+                                </div>
+                                <div class="mt-4 md:mt-0">
+                                    <p class="text-lg font-medium text-green-600">+ Nu. 5,180</p>
+                                    <p class="text-sm text-gray-500 mt-1"><i
+                                            class="fas fa-check-circle text-green-500"></i> Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+    </div>
+    <!-- Mobile Sidebar Overlay (hidden by default) -->
+    <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden">
+        <div class="absolute left-0 top-0 bottom-0 w-64 bg-white shadow-lg">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200">
+                <div class="text-xl font-bold text-zorig">Zorig<span class="text-bhutan-charcoal">Hub</span></div>
+                <button id="close-mobile-sidebar" class="text-gray-500 hover:text-zorig">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="overflow-y-auto h-full py-4">
+                <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mx-3 mb-6">
+                    <img src="/images/people/pema.jpg" alt="Profile"
+                        class="w-10 h-10 rounded-full border-2 border-zorig">
+                    <div>
+                        <p class="text-xs text-gray-600">Welcome back</p>
+                        <p class="font-medium text-sm">Choden Lhamo</p>
+                    </div>
+                </div>
+                <ul>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button active flex items-center px-4 py-3 text-zorig bg-zorig-light mx-2 rounded-lg">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-tshirt mr-3"></i>
+                            <span>My Products</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-shopping-bag mr-3"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-rupee-sign mr-3"></i>
+                            <span>Earnings</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-user mr-3"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="mt-6 mx-3">
+                    <button
+                        class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                        <i class="fas fa-plus mr-2"></i>
+                        <span>Add New Product</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.remove('hidden');
+        });
+
+        document.getElementById('close-mobile-sidebar').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.add('hidden');
+        });
+
+        // Toggle fee breakdown visibility
+        document.querySelectorAll('[data-transaction]').forEach(button => {
+            button.addEventListener('click', function () {
+                const transactionId = this.getAttribute('data-transaction');
+                const breakdown = document.getElementById(`fee-breakdown-${transactionId}`);
+
+                if (breakdown.style.display === 'none' || !breakdown.style.display) {
+                    breakdown.style.display = 'block';
+                    this.innerHTML = 'Hide fee breakdown <i class="fas fa-chevron-up ml-1"></i>';
+                } else {
+                    breakdown.style.display = 'none';
+                    this.innerHTML = 'View fee breakdown <i class="fas fa-chevron-down ml-1"></i>';
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

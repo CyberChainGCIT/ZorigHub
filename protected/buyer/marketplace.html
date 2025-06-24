@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - marketplace page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bhutanRed: '#FC2839',
+                        charcoal: '#333333',
+                        softGray: '#f8f8f8',
+                        accentGold: '#FFD700',
+                        primary: '#FC2839',
+                        secondary: '#333333',
+                        accent: '#F8E71C',
+                        bglight: '#F9FAFB',
+                        darkred: '#D92231',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-section {
+            scrollbar-width: thin;
+            scrollbar-color: #e5e7eb #f3f4f6;
+        }
+
+        .filter-section::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .filter-section::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+
+        .filter-section::-webkit-scrollbar-thumb {
+            background-color: #e5e7eb;
+            border-radius: 3px;
+        }
+
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-slider {
+            -webkit-appearance: none;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #FC2839;
+            cursor: pointer;
+        }
+
+        .price-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #FC2839;
+            cursor: pointer;
+        }
+
+        .active-filter {
+            background-color: #FC2839;
+            color: white;
+        }
+
+        .bhutanese-border {
+            border: 3px solid;
+            border-image: linear-gradient(90deg, #FC2839, #F8E71C, #FC2839) 1;
+            border-width: 0 0 3px 0;
+        }
+
+        .card-hover:hover {
+
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge {
+            top: 10px;
+            right: 10px;
+        }
+
+        .carousel-item {
+            transition: transform 0.5s ease;
+        }
+
+        .artisan-card:hover .artisan-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-softGray">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="/images/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary  px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="marketplace.html"
+                        class="text-primary border-b-2 border-primary hover:text-primary px-3 py-2 text-sm font-medium">Marketplace</a>
+                    <a href="artisanPage.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Artisans</a>
+                    <a href="buyerAbout.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">About</a>
+                </div>
+
+                <!-- Right Side -->
+                <div class="hidden md:flex items-center space-x-5">
+                    <div class="relative">
+                        <button class="text-secondary hover:text-primary">
+                            <i class="fas fa-search text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button class="text-secondary hover:text-primary relative">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span
+                                class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">3</span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <a href="cart.html" class="text-secondary hover:text-primary relative inline-block"
+                            id="cart-btn">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span
+                                class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
+                                id="cart-count">2</span>
+                        </a>
+                    </div>
+                    <button onclick="toggleLanguage()"
+                        class="text-xs bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 transition">
+                        <i class="fas fa-language mr-1"></i> Dzongkha
+                    </button>
+                    <div class="relative ml-4">
+                        <div class="flex items-center space-x-2">
+                            <img src="/images/people/karma.jpg" alt="User"
+                                class="w-8 h-8 object-cover rounded-full border-2 border-primary">
+                            <span class="text-sm font-medium text-secondary hidden md:inline">Jigme</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row">
+            <!-- Filters Sidebar -->
+            <aside class="w-full md:w-64 flex-shrink-0 mr-0 md:mr-8 mb-8 md:mb-0">
+                <div class="bg-white p-6 rounded-lg shadow-sm sticky top-4 filter-section overflow-y-auto max-h-screen">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="font-bold text-lg text-charcoal">Filters</h2>
+                        <button id="reset-filters" class="text-sm text-bhutanRed hover:underline">Reset all</button>
+                    </div>
+
+                    <!-- Craft Category -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-700 mb-3">Craft Category</h3>
+                        <div class="space-y-2">
+                            <button class="filter-btn category bg-bhutanRed text-white px-3 py-1 rounded-full text-sm"
+                                data-category="all">All</button>
+                            <button class="filter-btn category hover:bg-gray-100 px-3 py-1 rounded-full text-sm"
+                                data-category="weaving">Weaving</button>
+                            <button class="filter-btn category hover:bg-gray-100 px-3 py-1 rounded-full text-sm"
+                                data-category="wood-carving">Wood Carving</button>
+                            <button class="filter-btn category hover:bg-gray-100 px-3 py-1 rounded-full text-sm"
+                                data-category="thangka">Thangka</button>
+                            <button class="filter-btn category hover:bg-gray-100 px-3 py-1 rounded-full text-sm"
+                                data-category="metalwork">Metalwork</button>
+                            <button class="filter-btn category hover:bg-gray-100 px-3 py-1 rounded-full text-sm"
+                                data-category="pottery">Pottery</button>
+                            <button class="filter-btn category hover:bg-gray-100 px-3 py-1 rounded-full text-sm"
+                                data-category="jewelry">Jewelry</button>
+                        </div>
+                    </div>
+
+                    <!-- Region Filter -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-700 mb-3">Region</h3>
+                        <select id="region-filter"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-bhutanRed focus:border-transparent">
+                            <option value="all">All Regions</option>
+                            <option value="thimphu">Thimphu</option>
+                            <option value="bumthang">Bumthang</option>
+                            <option value="paro">Paro</option>
+                            <option value="punakha">Punakha</option>
+                            <option value="wangdue">Wangdue Phodrang</option>
+                            <option value="trongsa">Trongsa</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-700 mb-3">Price Range</h3>
+                        <div class="flex justify-between mb-2">
+                            <span id="min-price" class="text-sm">Nu. 100</span>
+                            <span id="max-price" class="text-sm">Nu. 10,000</span>
+                        </div>
+                        <input type="range" min="100" max="10000" value="10000" step="100"
+                            class="w-full price-slider mb-2" id="price-range">
+                        <div class="flex justify-between">
+                            <span class="text-xs text-gray-500">Min</span>
+                            <span class="text-xs text-gray-500">Max</span>
+                        </div>
+                    </div>
+
+                    <!-- Artisan Name -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-700 mb-3">Artisan</h3>
+                        <select id="artisan-filter"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-bhutanRed focus:border-transparent">
+                            <option value="all">All Artisans</option>
+                            <option value="pema-dorji">Pema Dorji</option>
+                            <option value="sonam-choden">Sonam Choden</option>
+                            <option value="karma-wangchuk">Karma Wangchuk</option>
+                            <option value="dechen-pelden">Dechen Pelden</option>
+                            <option value="tshering-pem">Tshering Pem</option>
+                        </select>
+                    </div>
+
+                    <!-- Eco-friendly Toggle -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-700">Eco-friendly Only</h3>
+                            <p class="text-xs text-gray-500">Sustainable materials & processes</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" id="eco-toggle">
+                            <div
+                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-bhutanRed rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-bhutanRed">
+                            </div>
+                        </label>
+                    </div>
+
+                    <button id="apply-filters"
+                        class="w-full bg-bhutanRed text-white py-2 rounded-md hover:bg-red-700 transition">
+                        Apply Filters
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Products Section -->
+            <main class="flex-1">
+                <!-- Sort & Results -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                    <p id="results-count" class="text-gray-600 mb-2 sm:mb-0">Showing 12 of 36 products</p>
+                    <div class="flex items-center">
+                        <span class="text-gray-600 mr-2">Sort by:</span>
+                        <select id="sort-by"
+                            class="px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-bhutanRed focus:border-transparent">
+                            <option value="popular">Most Popular</option>
+                            <option value="newest">Newest</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="product-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm" data-category="weaving"
+                        data-region="thimphu" data-artisan="pema-dorji" data-price="4500" data-eco="false"
+                        data-new="true">
+                        <div class="relative">
+                            <img src="/images/crafts/weave.jpg" alt="Bhutanese woven textile"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute top-2 left-2 flex space-x-1">
+                                <span class="bg-bhutanRed text-white text-xs px-2 py-1 rounded-full">NEW</span>
+                                <span
+                                    class="bg-accentGold text-charcoal text-xs px-2 py-1 rounded-full flex items-center">
+                                    <i class="fas fa-award mr-1"></i> Certified
+                                </span>
+                            </div>
+                            <button
+                                class="absolute top-2 right-2 bg-white p-2 rounded-full text-gray-500 hover:text-bhutanRed">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-charcoal">Bhutanese Kira Textile</h3>
+                                <span class="font-bold text-bhutanRed">Nu. 4,500</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Handwoven traditional Bhutanese dress fabric with
+                                intricate patterns.</p>
+                            <a href="#" class="text-sm text-bhutanRed hover:underline flex items-center">
+                                <i class="fas fa-user-circle mr-1"></i> Pema Dorji, Thimphu
+                            </a>
+                            <div class="mt-3 flex justify-between items-center">
+                                <button
+                                    class="bg-bhutanRed text-white px-3 py-1 rounded-md text-sm hover:bg-red-700 transition flex items-center">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                                </button>
+                                <a href="productDetails.html"
+                                    class="text-gray-500 hover:text-bhutanRed text-sm flex items-center">
+                                    <i class="far fa-eye mr-1"></i> Quick View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm" data-category="wood-carving"
+                        data-region="bumthang" data-artisan="karma-wangchuk" data-price="3200" data-eco="true"
+                        data-popular="true">
+                        <div class="relative">
+                            <img src="/images/crafts/buddha-painting.jpg" alt="Wooden Buddhist statue"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute top-2 left-2 flex space-x-1">
+                                <span class="bg-green-600 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                                    <i class="fas fa-leaf mr-1"></i> Eco
+                                </span>
+                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">BESTSELLER</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-charcoal">Hand-carved Buddha Statue</h3>
+                                <span class="font-bold text-bhutanRed">Nu. 3,200</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Exquisitely carved wooden Buddha statue from
+                                sustainably harvested timber.</p>
+                            <a href="#" class="text-sm text-bhutanRed hover:underline flex items-center">
+                                <i class="fas fa-user-circle mr-1"></i> Karma Wangchuk, Bumthang
+                            </a>
+                            <div class="mt-3 flex justify-between items-center">
+                                <button
+                                    class="bg-bhutanRed text-white px-3 py-1 rounded-md text-sm hover:bg-red-700 transition flex items-center">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                                </button>
+                                <a href="productDetails.html"
+                                    class="text-gray-500 hover:text-bhutanRed text-sm flex items-center">
+                                    <i class="far fa-eye mr-1"></i> Quick View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm" data-category="thangka"
+                        data-region="paro" data-artisan="sonam-choden" data-price="6800" data-eco="false"
+                        data-new="true">
+                        <div class="relative">
+                            <img src="/images/crafts/thangka.jpg" alt="Traditional thangka painting"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute top-2 left-2 flex space-x-1">
+                                <span class="bg-bhutanRed text-white text-xs px-2 py-1 rounded-full">NEW</span>
+                                <span
+                                    class="bg-accentGold text-charcoal text-xs px-2 py-1 rounded-full flex items-center">
+                                    <i class="fas fa-award mr-1"></i> Certified
+                                </span>
+                            </div>
+                            <button
+                                class="absolute top-2 right-2 bg-white p-2 rounded-full text-gray-500 hover:text-bhutanRed">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-charcoal">Traditional Buddhist Thangka</h3>
+                                <span class="font-bold text-bhutanRed">Nu. 6,800</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Exquisite hand-painted religious scroll depicting the
+                                Wheel of Life.</p>
+                            <a href="#" class="text-sm text-bhutanRed hover:underline flex items-center">
+                                <i class="fas fa-user-circle mr-1"></i> Sonam Choden, Paro
+                            </a>
+                            <div class="mt-3 flex justify-between items-center">
+                                <button
+                                    class="bg-bhutanRed text-white px-3 py-1 rounded-md text-sm hover:bg-red-700 transition flex items-center">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                                </button>
+                                <a href="productDetails.html"
+                                    class="text-gray-500 hover:text-bhutanRed text-sm flex items-center">
+                                    <i class="far fa-eye mr-1"></i> Quick View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm" data-category="metalwork"
+                        data-region="punakha" data-artisan="dechen-pelden" data-price="5500" data-eco="true"
+                        data-popular="true">
+                        <div class="relative">
+                            <img src="/images/crafts/bowl.jpg" alt="Brinca prayer wheel"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute top-2 left-2 flex space-x-1">
+                                <span class="bg-green-600 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                                    <i class="fas fa-leaf mr-1"></i> Eco
+                                </span>
+                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">BESTSELLER</span>
+                            </div>
+                            <button
+                                class="absolute top-2 right-2 bg-white p-2 rounded-full text-gray-500 hover:text-bhutanRed">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-charcoal">Handcrafted Bowl</h3>
+                                <span class="font-bold text-bhutanRed">Nu. 5,500</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Traditional Bhutanese prayer wheel made from recycled
+                                metals.</p>
+                            <a href="#" class="text-sm text-bhutanRed hover:underline flex items-center">
+                                <i class="fas fa-user-circle mr-1"></i> Dechen Pelden, Punakha
+                            </a>
+                            <div class="mt-3 flex justify-between items-center">
+                                <button
+                                    class="bg-bhutanRed text-white px-3 py-1 rounded-md text-sm hover:bg-red-700 transition flex items-center">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                                </button>
+                                <a href="productDetails.html"
+                                    class="text-gray-500 hover:text-bhutanRed text-sm flex items-center">
+                                    <i class="far fa-eye mr-1"></i> Quick View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm" data-category="jewelry"
+                        data-region="thimphu" data-artisan="tshering-pem" data-price="8900" data-eco="false"
+                        data-new="true">
+                        <div class="relative">
+                            <img src="/images/crafts/jewellery.jpg" alt="Traditional Bhutanese necklace"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute top-2 left-2">
+                                <span class="bg-bhutanRed text-white text-xs px-2 py-1 rounded-full">NEW</span>
+                            </div>
+                            <button
+                                class="absolute top-2 right-2 bg-white p-2 rounded-full text-gray-500 hover:text-bhutanRed">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-charcoal">Traditional Silver Necklace</h3>
+                                <span class="font-bold text-bhutanRed">Nu. 8,900</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Authentic Bhutanese silver jewelry with traditional
+                                motifs.</p>
+                            <a href="#" class="text-sm text-bhutanRed hover:underline flex items-center">
+                                <i class="fas fa-user-circle mr-1"></i> Tshering Pem, Thimphu
+                            </a>
+                            <div class="mt-3 flex justify-between items-center">
+                                <button
+                                    class="bg-bhutanRed text-white px-3 py-1 rounded-md text-sm hover:bg-red-700 transition flex items-center">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                                </button>
+                                <a href="productDetails.html"
+                                    class="text-gray-500 hover:text-bhutanRed text-sm flex items-center">
+                                    <i class="far fa-eye mr-1"></i> Quick View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm" data-category="pottery"
+                        data-region="bumthang" data-artisan="karma-wangchuk" data-price="2100" data-eco="true"
+                        data-popular="true">
+                        <div class="relative">
+                            <img src="/images/crafts/woodwork.jpg" alt="Handcrafted Bhutanese cups"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute top-2 left-2 flex space-x-1">
+                                <span class="bg-green-600 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                                    <i class="fas fa-leaf mr-1"></i> Eco
+                                </span>
+                            </div>
+                            <button class="absolute top-2 right-2 bg-white p-2 rounded-full text-red-500">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-charcoal">Handmade Woodwork</h3>
+                                <span class="font-bold text-bhutanRed">Nu. 2,100</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Hand-thrown traditional Bhutanese cups made with
+                                natural clay.</p>
+                            <a href="#" class="text-sm text-bhutanRed hover:underline flex items-center">
+                                <i class="fas fa-user-circle mr-1"></i> Karma Wangchuk, Bumthang
+                            </a>
+                            <div class="mt-3 flex justify-between items-center">
+                                <button
+                                    class="bg-bhutanRed text-white px-3 py-1 rounded-md text-sm hover:bg-red-700 transition flex items-center">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                                </button>
+                                <a href="productDetails.html"
+                                    class="text-gray-500 hover:text-bhutanRed text-sm flex items-center">
+                                    <i class="far fa-eye mr-1"></i> Quick View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination/Load More -->
+                <div class="mt-8 bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <button id="load-more"
+                                class="bg-bhutanRed text-white px-4 py-2 rounded-md hover:bg-red-700 transition">
+                                Load More Products
+                            </button>
+                        </div>
+                        <div class="hidden md:block">
+                            <nav class="flex items-center space-x-1">
+                                <button
+                                    class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-100 text-charcoal hover:bg-bhutanRed hover:text-white">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button
+                                    class="w-10 h-10 flex items-center justify-center rounded-md bg-bhutanRed text-white">1</button>
+                                <button
+                                    class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-100 text-charcoal hover:bg-gray-200">2</button>
+                                <button
+                                    class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-100 text-charcoal hover:bg-gray-200">3</button>
+                                <span class="px-2">...</span>
+                                <button
+                                    class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-100 text-charcoal hover:bg-gray-200">8</button>
+                                <button
+                                    class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-100 text-charcoal hover:bg-bhutanRed hover:text-white">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="bg-white py-12 border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-2xl font-bold text-charcoal mb-4">Join Our Community</h2>
+                <p class="text-gray-600 mb-6">Subscribe to receive updates on new artisan products, special offers, and
+                    cultural stories from Bhutan.</p>
+                <div class="flex flex-col sm:flex-row justify-center">
+                    <input type="email" placeholder="Your email address"
+                        class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-bhutanRed focus:border-transparent mb-2 sm:mb-0 sm:mr-2 w-full sm:w-auto">
+                    <button
+                        class="bg-bhutanRed text-white px-6 py-2 rounded-md hover:bg-red-700 transition">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Zorig<span class="text-primary">Hub</span></h3>
+                    <p class="text-gray-400">Preserving and promoting Bhutanese traditional arts and crafts through
+                        ethical commerce.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Marketplace</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Artisan Profiles</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Zorig Chusum</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to receive updates on new products and artisan stories.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="px-3 py-2 rounded-l-md bg-gray-700 text-white w-full focus:outline-none">
+                        <button type="submit" class="bg-primary hover:bg-darkred px-4 py-2 rounded-r-md">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 ZorigHub. All rights reserved. Handcrafted in Bhutan 🇧🇹</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Filter functionality
+            const filterBtn = document.getElementById('apply-filters');
+            const resetBtn = document.getElementById('reset-filters');
+            const categoryBtns = document.querySelectorAll('.filter-btn.category');
+            const regionFilter = document.getElementById('region-filter');
+            const priceRange = document.getElementById('price-range');
+            const artisanFilter = document.getElementById('artisan-filter');
+            const ecoToggle = document.getElementById('eco-toggle');
+            const sortBy = document.getElementById('sort-by');
+            const productCards = document.querySelectorAll('.product-card');
+            const loadMoreBtn = document.getElementById('load-more');
+
+            // Price range display
+            const minPriceDisplay = document.getElementById('min-price');
+            const maxPriceDisplay = document.getElementById('max-price');
+
+            // Update price display
+            priceRange.addEventListener('input', function () {
+                maxPriceDisplay.textContent = 'Nu. ' + this.value.toLocaleString();
+            });
+
+            // Category filter active state
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    categoryBtns.forEach(b => b.classList.remove('active-filter'));
+                    if (!this.classList.contains('active-filter')) {
+                        this.classList.add('active-filter');
+                    }
+                });
+            });
+
+            // Filter products function
+            function filterProducts() {
+                const selectedCategory = document.querySelector('.filter-btn.category.active-filter');
+                const category = selectedCategory ? selectedCategory.dataset.category : 'all';
+                const region = regionFilter.value;
+                const artisan = artisanFilter.value;
+                const maxPrice = parseInt(priceRange.value);
+                const ecoOnly = ecoToggle.checked;
+
+                let visibleCount = 0;
+                let hiddenCount = 0;
+
+                productCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    const cardRegion = card.dataset.region;
+                    const cardArtisan = card.dataset.artisan;
+                    const cardPrice = parseInt(card.dataset.price);
+                    const cardEco = card.dataset.eco === 'true';
+
+                    const categoryMatch = category === 'all' || cardCategory === category;
+                    const regionMatch = region === 'all' || cardRegion === region;
+                    const artisanMatch = artisan === 'all' || cardArtisan === artisan;
+                    const priceMatch = cardPrice <= maxPrice;
+                    const ecoMatch = !ecoOnly || (ecoOnly && cardEco);
+
+                    if (categoryMatch && regionMatch && artisanMatch && priceMatch && ecoMatch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                        hiddenCount++;
+                    }
+                });
+
+                // Update results count
+                document.getElementById('results-count').textContent =
+                    `Showing ${visibleCount} of ${visibleCount + hiddenCount} products`;
+            }
+
+            // Sort products function
+            function sortProducts() {
+                const sortValue = sortBy.value;
+                const productGrid = document.getElementById('product-grid');
+                const products = Array.from(productGrid.querySelectorAll('.product-card'));
+
+                products.sort((a, b) => {
+                    switch (sortValue) {
+                        case 'price-low':
+                            return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+                        case 'price-high':
+                            return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+                        case 'newest':
+                            return (b.dataset.new === 'true') - (a.dataset.new === 'true');
+                        case 'popular':
+                            return (b.dataset.popular === 'true') - (a.dataset.popular === 'true');
+                        default:
+                            return 0;
+                    }
+                });
+
+                // Re-append sorted products
+                products.forEach(product => productGrid.appendChild(product));
+            }
+
+            // Event listeners
+            filterBtn.addEventListener('click', filterProducts);
+            resetBtn.addEventListener('click', function () {
+                categoryBtns[0].classList.add('active-filter');
+                categoryBtns.forEach((btn, index) => {
+                    if (index !== 0) btn.classList.remove('active-filter');
+                });
+                regionFilter.value = 'all';
+                artisanFilter.value = 'all';
+                priceRange.value = '10000';
+                maxPriceDisplay.textContent = 'Nu. 10,000';
+                ecoToggle.checked = false;
+                filterProducts();
+            });
+
+            sortBy.addEventListener('change', sortProducts);
+
+            // Load more functionality (simulated)
+            loadMoreBtn.addEventListener('click', function () {
+                // In a real implementation, this would load more products from an API
+                alert('Loading more products...');
+            });
+
+            // Initialize
+            categoryBtns[0].classList.add('active-filter');
+            filterProducts();
+
+            // Wishlist toggle
+            document.querySelectorAll('.product-card button i.far.fa-heart').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    if (this.classList.contains('far')) {
+                        this.classList.remove('far');
+                        this.classList.add('fas', 'text-red-500');
+                    } else {
+                        this.classList.remove('fas', 'text-red-500');
+                        this.classList.add('far');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

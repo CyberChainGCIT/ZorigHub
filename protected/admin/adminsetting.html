@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Bhutanese pattern inspired by khamar motifs */
+        .bhutan-pattern {
+            background:
+                linear-gradient(135deg, #FC283911 25%, transparent 25%) -10px 0,
+                linear-gradient(225deg, #FC283911 25%, transparent 25%) -10px 0,
+                linear-gradient(315deg, #FC283911 25%, transparent 25%),
+                linear-gradient(45deg, #FC283911 25%, transparent 25%);
+            background-size: 20px 20px;
+        }
+
+        /* Custom CSS for circular progress indicators */
+        .circular-progress {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(#FC2839 var(--progress), #e5e7eb var(--progress));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom tab switcher */
+        .tab-switcher [type="radio"]:checked+label {
+            border-bottom: 3px solid #FC2839;
+            color: #FC2839;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 left-0 z-10">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img src="/images/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+                        <span class="sr-only">Notifications</span>
+                        <span class="relative inline-block">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-[#FC2839]"></span>
+                        </span>
+                    </button>
+                    <div class="ml-3 relative">
+                        <div class="flex items-center">
+                            <button class="max-w-xs flex items-center text-sm rounded-full focus:outline-none">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 object-cover rounded-full" src="/images/people/karma.jpg"
+                                    alt="profile img">
+                                <span class="ml-2 hidden md:block">Admin</span>
+                                <i class="fas fa-chevron-down ml-1 text-xs hidden md:block"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="hidden md:block w-64 h-screen bg-white shadow-sm fixed">
+            <nav class="p-6">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="index.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminuser.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminorders.html"
+                            class="flex items-center px-4 py-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-shopping-basket mr-3"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminanalytics.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chart-pie mr-3"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminloan.html"
+                            class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chart-pie mr-3"></i>
+                            <span>Loan</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="adminsetting.html"
+                            class="flex items-center px-4 py-2 text-[#FC2839] bg-[#FC2839]/10 rounded-lg">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="mt-12 pt-6 border-t border-gray-200">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Quick Actions</h3>
+                    <div class="mt-4 space-y-2">
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-check-circle mr-2 text-[#FC2839]"></i>
+                            <span>Approve Artisans</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-file-export mr-2 text-[#FC2839]"></i>
+                            <span>Export Reports</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-comment-dots mr-2 text-[#FC2839]"></i>
+                            <span>Customer Inquiries</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <main class="md:ml-64 flex-1 overflow-y-auto">
+            <div class="py-6">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                    <h1 class="text-2xl font-semibold text-gray-900">User Management</h1>
+                </div>
+
+                <!-- Dashboard Stats -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-6">
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+
+                        <!-- Stat Card 4 -->
+                        <div
+                            class="stat-card bg-white overflow-hidden shadow rounded-lg transition duration-150 ease-in-out">
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Settings Content -->
+                <main class="md:ml-64 flex-1 overflow-y-auto">
+                    <div class="py-6">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                            <div class="flex justify-between items-center">
+                                <h1 class="text-2xl font-semibold text-gray-900">Admin Profile & Settings</h1>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                        <i class="fas fa-save mr-1"></i> Save Changes
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Settings Tabs -->
+                            <div class="mt-6 border-b border-gray-200">
+                                <nav class="-mb-px flex space-x-8">
+                                    <a href="#"
+                                        class="border-[#FC2839] text-[#FC2839] whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Profile
+                                    </a>
+                                    <a href="#"
+                                        class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Security
+                                    </a>
+                                    <a href="#"
+                                        class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        Preferences
+                                    </a>
+                                    <a href="#"
+                                        class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                        System Settings
+                                        <span class="ml-1 text-xs text-[#D9A05B]">(Admin Only)</span>
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <!-- Profile Settings -->
+                            <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
+                                <div class="px-6 py-4 border-b border-gray-200">
+                                    <h2 class="text-lg font-medium text-gray-900">Personal Information</h2>
+                                </div>
+                                <div class="px-6 py-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                    <!-- Profile Picture -->
+                                    <div class="sm:col-span-1">
+                                        <div class="flex items-center flex-col">
+                                            <img class="h-24 w-24 rounded-full object-cover"
+                                                src="/images/people/karma.jpg" alt="">
+                                            <button type="button"
+                                                class="mt-2 text-sm text-[#FC2839] hover:text-[#d92130] font-medium">
+                                                Change Photo
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Form Fields -->
+                                    <div class="sm:col-span-5">
+                                        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                            <div class="sm:col-span-3">
+                                                <label for="first-name"
+                                                    class="block text-sm font-medium text-gray-700">First name</label>
+                                                <input type="text" name="first-name" id="first-name"
+                                                    autocomplete="given-name"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-3">
+                                                <label for="last-name"
+                                                    class="block text-sm font-medium text-gray-700">Last name</label>
+                                                <input type="text" name="last-name" id="last-name"
+                                                    autocomplete="family-name"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-4">
+                                                <label for="email" class="block text-sm font-medium text-gray-700">Email
+                                                    address</label>
+                                                <input type="email" name="email" id="email" autocomplete="email"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-4">
+                                                <label for="phone" class="block text-sm font-medium text-gray-700">Phone
+                                                    number</label>
+                                                <input type="text" name="phone" id="phone" autocomplete="tel"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+
+                                            <div class="sm:col-span-3">
+                                                <label for="role"
+                                                    class="block text-sm font-medium text-gray-700">Role</label>
+                                                <select id="role" name="role"
+                                                    class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                                    <option>Super Admin</option>
+                                                    <option>Moderator</option>
+                                                    <option>Support</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Activity Log -->
+                            <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
+                                <div class="px-6 py-4 border-b border-gray-200">
+                                    <h2 class="text-lg font-medium text-gray-900">Recent Activity</h2>
+                                </div>
+                                <div class="divide-y divide-gray-200">
+                                    <div class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 bg-[#FC2839]/10 p-2 rounded-lg">
+                                                <i class="fas fa-user-check text-[#FC2839]"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <p class="text-sm font-medium text-gray-900">Approved 5 artisan
+                                                    applications</p>
+                                                <p class="text-xs text-gray-500">Today at 10:45 AM from 203.0.113.42</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 bg-[#FC2839]/10 p-2 rounded-lg">
+                                                <i class="fas fa-sign-in-alt text-[#FC2839]"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <p class="text-sm font-medium text-gray-900">Last login</p>
+                                                <p class="text-xs text-gray-500">Yesterday at 8:32 AM from 203.0.113.42
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Security Settings -->
+                            <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
+                                <div class="px-6 py-4 border-b border-gray-200">
+                                    <h2 class="text-lg font-medium text-gray-900">Security Settings</h2>
+                                </div>
+                                <div class="px-6 py-4 space-y-6">
+                                    <!-- Password Change -->
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h3 class="text-sm font-medium text-gray-900">Password</h3>
+                                            <p class="text-xs text-gray-500">Last changed 12 days ago</p>
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                            <div class="sm:col-span-3">
+                                                <label for="current-password"
+                                                    class="block text-sm font-medium text-gray-700">Current
+                                                    Password</label>
+                                                <input type="password" name="current-password" id="current-password"
+                                                    autocomplete="current-password"
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                            <div class="sm:col-span-3">
+                                                <label for="new-password"
+                                                    class="block text-sm font-medium text-gray-700">New Password</label>
+                                                <input type="password" name="new-password" id="new-password"
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                                <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                                                    <div class="h-1 w-1/3 bg-red-500 rounded-full"></div>
+                                                </div>
+                                                <p class="mt-1 text-xs text-gray-500">Password strength: Weak</p>
+                                            </div>
+                                            <div class="sm:col-span-3">
+                                                <label for="confirm-password"
+                                                    class="block text-sm font-medium text-gray-700">Confirm
+                                                    Password</label>
+                                                <input type="password" name="confirm-password" id="confirm-password"
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FC2839] focus:ring-[#FC2839] sm:text-sm">
+                                            </div>
+                                        </div>
+                                        <button type="button"
+                                            class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                            Change Password
+                                        </button>
+                                    </div>
+
+                                    <!-- Two Factor Auth -->
+                                    <div class="space-y-4 border-t border-gray-200 pt-4">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <h3 class="text-sm font-medium text-gray-900">Two-Factor Authentication
+                                                </h3>
+                                                <p class="text-xs text-gray-500">Add an extra layer of security</p>
+                                            </div>
+                                            <button type="button"
+                                                class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                                Enable 2FA
+                                            </button>
+                                        </div>
+                                        <div class="rounded-md bg-yellow-50 p-4">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-yellow-800">Not Enabled</h3>
+                                                    <div class="mt-2 text-sm text-yellow-700">
+                                                        <p>Two-factor authentication adds an extra layer of security to
+                                                            your account by requiring more than just a password to log
+                                                            in.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Active Sessions -->
+                                    <div class="space-y-4 border-t border-gray-200 pt-4">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <h3 class="text-sm font-medium text-gray-900">Active Sessions</h3>
+                                                <p class="text-xs text-gray-500">Currently logged in from 2 devices</p>
+                                            </div>
+                                            <button type="button"
+                                                class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FC2839] hover:bg-[#d92130] focus:outline-none">
+                                                Log Out Other Devices
+                                            </button>
+                                        </div>
+                                        <div class="rounded-md bg-blue-50 p-4">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <i class="fas fa-laptop text-blue-400"></i>
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <h3 class="text-sm font-medium text-blue-800">Chrome on Windows
+                                                        </h3>
+                                                        <div class="mt-1 text-sm text-blue-700">
+                                                            <p>Thimphu, Bhutan (This device)</p>
+                                                            <p class="text-xs">Last active: Just now</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-blue-700 text-sm font-medium">
+                                                    Current
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </main>
+            </div>
+
+            <!-- JavaScript -->
+            <!-- JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                // Initialize sales chart
+                const salesCtx = document.getElementById('salesChart').getContext('2d');
+                const salesChart = new Chart(salesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [
+                            {
+                                label: 'Weaving',
+                                data: [12, 19, 15, 17, 23, 25],
+                                backgroundColor: '#FC2839',
+                                borderRadius: 4,
+                                barThickness: 12,
+                            },
+                            {
+                                label: 'Wood Carving',
+                                data: [8, 9, 10, 12, 15, 18],
+                                backgroundColor: '#10B981',
+                                borderRadius: 4,
+                                barThickness: 12,
+                            },
+                            {
+                                label: 'Thangka Painting',
+                                data: [6, 8, 10, 12, 14, 16],
+                                backgroundColor: '#3B82F6',
+                                borderRadius: 4,
+                                barThickness: 12,
+                            }
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                stacked: true
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    borderDash: [5],
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    callback: function (value) {
+                                        return 'BTN ' + value + 'k';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Initialize orders chart
+                const ordersCtx = document.getElementById('ordersChart').getContext('2d');
+                const ordersChart = new Chart(ordersCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        datasets: [{
+                            label: 'Orders',
+                            data: [18, 24, 22, 30],
+                            backgroundColor: '#FC2839',
+                            borderRadius: 4,
+                            barThickness: 12,
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: { grid: { display: false } },
+                            y: {
+                                beginAtZero: true,
+                                grid: { display: false },
+                                ticks: { stepSize: 5 }
+                            }
+                        }
+                    }
+                });
+
+                // Tab switching functionality
+                const tabs = document.querySelectorAll('.tab-switcher input[type="radio"]');
+                tabs.forEach(tab => {
+                    tab.addEventListener('change', function () {
+                        // In a real app, you would fetch different data here based on the selected tab
+                        console.log(`Switched to ${this.id} tab`);
+                    });
+                });
+            </script>
+</body>
+
+</html>

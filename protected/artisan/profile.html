@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - Artisan Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zorig: '#FC2839',
+                        'zorig-light': '#FFE5E7',
+                        'bhutan-charcoal': '#333333',
+                        'bhutan-gray': '#F5F5F5',
+                        'bhutan-red': '#FC2839',
+                        'bhutan-orange': '#FF6B35',
+                        'bhutan-yellow': '#FFD166',
+                        'bhutan-green': '#06D6A0',
+                        'bhutan-blue': '#118AB2',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for elements not easily styled with Tailwind */
+        .sidebar {
+            scrollbar-width: thin;
+            scrollbar-color: #FC2839 transparent;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #FC2839;
+            border-radius: 20px;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .badge-shadow {
+            box-shadow: 0 4px 6px -1px rgba(252, 40, 57, 0.2), 0 2px 4px -1px rgba(252, 40, 57, 0.06);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-bhutan-gray font-sans">
+    <!-- Main Layout -->
+    <div class="flex flex-col md:flex-row min-h-screen">
+
+        <aside class="hidden md:flex md:flex-col w-64 bg-white border-r border-gray-200 h-screen sticky top-0 z-origin">
+            <div class="flex items-center justify-center h-16 border-b border-gray-200">
+                <img src="/images/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
+            </div>
+            <div class="overflow-y-auto sidebar flex-grow">
+                <nav class="px-4 py-6">
+                    <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mb-6">
+                        <img src="/images/people/pema.jpg" alt="Profile"
+                            class="w-12 h-12 object-cover rounded-full border-2 border-zorig">
+                        <div>
+                            <p class="text-sm text-gray-600">Welcome back</p>
+                            <p class="font-medium">Choden Lhamo</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="mb-2">
+                            <a href="index.html"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-home mr-3"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="myproduct.html"
+                                class="tab-button  flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-tshirt mr-3"></i>
+                                <span>My Products</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="orders.html"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-shopping-bag mr-3"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="earning.html"
+                                class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light hover:text-zorig rounded-lg transition">
+                                <i class="fas fa-rupee-sign mr-3"></i>
+                                <span>Earnings</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#"
+                                class="tab-button active flex items-center px-4 py-3 text-zorig bg-zorig-light rounded-lg">
+                                <i class="fas fa-user mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="mt-16 px-4">
+                        <button
+                            class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                            <i class="fas fa-plus mr-2"></i>
+                            <span>Add New Product</span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="px-4 py-3 border-t border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <img src="/images/people/pema.jpg" alt="Profile" class="w-8 h-8 object-cover rounded-full">
+                    <div class="flex-grow">
+                        <p class="text-sm font-medium">Choden Lhamo</p>
+                        <p class="text-xs text-gray-500">Weaving Artisan</p>
+                    </div>
+                    <button class="text-gray-500 hover:text-zorig">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content flex-grow pb-16 md:pb-0">
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 flex items-center justify-between">
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="text-gray-500 hover:text-zorig focus:outline-none">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex-1 md:text-right">
+                        <div class="flex items-center justify-end space-x-4">
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-bell text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <button class="relative text-gray-500 hover:text-zorig">
+                                <i class="fas fa-envelope text-xl"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-zorig rounded-full"></span>
+                            </button>
+                            <div class="hidden md:block">
+                                <div class="flex items-center space-x-2 border-l border-gray-200 pl-4">
+                                    <img src="/images/people/pema.jpg" alt="Profile"
+                                        class="w-8 h-8 object-cover rounded-full">
+                                    <span class="text-sm">Choden Lhamo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mx-auto px-4 py-8 max-w-6xl">
+                <!-- Profile Header -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8 bhutan-texture">
+                    <div class="md:flex">
+                        <!-- Profile Picture Section -->
+                        <div class="md:w-1/3 p-6 flex flex-col items-center">
+                            <div class="relative mb-4">
+                                <img id="profileImage" src="/images/people/tshering.jpg" alt="Artisan Profile"
+                                    class="w-40 h-40 rounded-full object-cover border-4 border-bhutan-red shadow-lg display-hidden">
+                                <div class="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md hidden">
+                                    <label for="imageUpload" class="cursor-pointer text-bhutan-red">
+                                        <i class="fas fa-camera"></i>
+                                    </label>
+                                    <input type="file" id="imageUpload" accept="image/*">
+                                </div>
+                            </div>
+                            <button id="uploadBtn"
+                                class="bg-bhutan-red text-white px-6 py-2 rounded-full font-medium hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                                Upload New Photo
+                            </button>
+                            <div class="mt-4 text-center">
+                                <h3 id="previewName" class="text-xl font-bold">Sonam Dorji</h3>
+                                <p id="previewRegion" class="text-gray-600">Paro, Bhutan</p>
+                            </div>
+                        </div>
+
+                        <!-- Profile Information Section -->
+                        <div class="md:w-2/3 p-6">
+                            <h2 class="text-2xl font-bold mb-6 border-motif pb-2">Artisan Profile</h2>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full
+                                        Name</label>
+                                    <input type="text" id="name"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-bhutan-red focus:border-bhutan-red"
+                                        value="Sonam Dorji">
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap## User interrupted
+```html
+ gap-4">
+                                    <div>
+                                        <label for="region"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Region</label>
+                                        <select id="region"
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-bhutan-red focus:border-bhutan-red">
+                                            <option selected>Paro</option>
+                                            <option>Thimphu</option>
+                                            <option>Bumthang</option>
+                                            <option>Punakha</option>
+                                            <option>Wangdue Phodrang</option>
+                                            <option>Trongsa</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="craft" class="block text-sm font-medium text-gray-700 mb-1">Craft
+                                            Type</label>
+                                        <select id="craft"
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-bhutan-red focus:border-bhutan-red">
+                                            <option selected>Weaving</option>
+                                            <option>Wood Carving</option>
+                                            <option>Thangka Painting</option>
+                                            <option>Sculpture</option>
+                                            <option>Blacksmithing</option>
+                                            <option>Other Traditional Craft</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Training
+                                        Certificates</label>
+                                    <div class="flex items-center space-x-4">
+                                        <select
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-bhutan-red focus:border-bhutan-red">
+                                            <option selected>Zorig Chusum - Traditional Arts School</option>
+                                            <option>National Institute for Zorig Chusum</option>
+                                            <option>Private Master-Apprentice Training</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <button
+                                            class="bg-bhutan-red text-white px-4 py-2 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                                            <i class="fas fa-upload"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="pt-4">
+                                    <button
+                                        class="bg-bhutan-red text-white px-6 py-2 rounded-lg font-medium hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                                        Save Profile Changes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges Section -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8 p-6 bhutan-texture">
+                    <h2 class="text-2xl font-bold mb-6 border-motif pb-2">Artisan Badges</h2>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div
+                            class="badge-container relative bg-bhutan-green bg-opacity-10 p-4 rounded-xl border border-bhutan-green text-center cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-bhutan-green rounded-full flex items-center justify-center mx-auto mb-2 text-white text-xl">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <p class="font-medium text-bhutan-green">Verified Artisan</p>
+                            <div class="badge-tooltip">
+                                This artisan has been verified by ZorigHub through identity verification and skill
+                                assessment.
+                            </div>
+                        </div>
+
+                        <div
+                            class="badge-container relative bg-bhutan-blue bg-opacity-10 p-4 rounded-xl border border-bhutan-blue text-center cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-bhutan-blue rounded-full flex items-center justify-center mx-auto mb-2 text-white text-xl">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <p class="font-medium text-bhutan-blue">Green Artisan</p>
+                            <div class="badge-tooltip">
+                                This artisan uses eco-friendly materials and sustainable packaging in their craft.
+                            </div>
+                        </div>
+
+                        <div
+                            class="badge-container relative bg-bhutan-yellow bg-opacity-10 p-4 rounded-xl border border-bhutan-yellow text-center cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-bhutan-yellow rounded-full flex items-center justify-center mx-auto mb-2 text-white text-xl">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="font-medium text-bhutan-yellow">Master Artisan</p>
+                            <div class="badge-tooltip">
+                                Recognized as a Master in their craft by the National Institute for Zorig Chusum.
+                            </div>
+                        </div>
+
+                        <div
+                            class="badge-container relative bg-bhutan-red bg-opacity-10 p-4 rounded-xl border border-bhutan-red text-center cursor-pointer">
+                            <div
+                                class="w-12 h-12 bg-bhutan-red rounded-full flex items-center justify-center mx-auto mb-2 text-white text-xl">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <p class="font-medium text-bhutan-red">Community Mentor</p>
+                            <div class="badge-tooltip">
+                                This artisan actively mentors younger artisans in their community.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Gallery Section -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden p-6 bhutan-texture">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold border-motif pb-2">Portfolio Gallery</h2>
+                        <button
+                            class="bg-bhutan-red text-white px-4 py-2 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 flex items-center space-x-2">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Work</span>
+                        </button>
+                    </div>
+
+                    <div id="portfolioGallery" class="mb-6">
+                        <div class="relative group rounded-xl overflow-hidden h-32 md:h-40">
+                            <img src="/images/crafts/jewelry.jpg" alt="Traditional Weaving"
+                                class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="text-white bg-bhutan-red p-2 rounded-full">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative group rounded-xl overflow-hidden h-32 md:h-40">
+                            <img src="/images/crafts/basket.jpg" alt="Wood Carving" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="text-white bg-bhutan-red p-2 rounded-full">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative group rounded-xl overflow-hidden h-32 md:h-40">
+                            <img src="/images/crafts/thangka.jpg" alt="Thangka Painting"
+                                class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="text-white bg-bhutan-red p-2 rounded-full">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative group rounded-xl overflow-hidden h-32 md:h-40">
+                            <img src="/images/crafts/sculptingg.jpg" alt="Sculpture Work"
+                                class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="text-white bg-bhutan-red p-2 rounded-full">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="#" class="inline-block text-bhutan-red font-medium hover:underline">View Full Portfolio
+                            →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Mobile Sidebar Overlay (hidden by default) -->
+    <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden">
+        <div class="absolute left-0 top-0 bottom-0 w-64 bg-white shadow-lg">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200">
+                <div class="text-xl font-bold text-zorig">Zorig<span class="text-bhutan-charcoal">Hub</span></div>
+                <button id="close-mobile-sidebar" class="text-gray-500 hover:text-zorig">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="overflow-y-auto h-full py-4">
+                <div class="flex items-center space-x-4 px-4 py-3 bg-zorig-light rounded-lg mx-3 mb-6">
+                    <img src="/images/people/pema.jpg" alt="Profile"
+                        class="w-10 h-10 rounded-full border-2 border-zorig">
+                    <div>
+                        <p class="text-xs text-gray-600">Welcome back</p>
+                        <p class="font-medium text-sm">Choden Lhamo</p>
+                    </div>
+                </div>
+                <ul>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button active flex items-center px-4 py-3 text-zorig bg-zorig-light mx-2 rounded-lg">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-tshirt mr-3"></i>
+                            <span>My Products</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-shopping-bag mr-3"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-rupee-sign mr-3"></i>
+                            <span>Earnings</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-user mr-3"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#"
+                            class="tab-button flex items-center px-4 py-3 text-gray-600 hover:bg-zorig-light mx-2 hover:text-zorig rounded-lg transition">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="mt-6 mx-3">
+                    <button
+                        class="w-full flex items-center justify-center px-4 py-2 bg-zorig text-white rounded-lg hover:bg-red-600 transition">
+                        <i class="fas fa-plus mr-2"></i>
+                        <span>Add New Product</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Mobile sidebar toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.remove('hidden');
+        });
+
+        document.getElementById('close-mobile-sidebar').addEventListener('click', function () {
+            document.getElementById('mobile-sidebar').classList.add('hidden');
+        });
+
+        // Profile image upload functionality
+        document.getElementById('uploadBtn').addEventListener('click', function () {
+            document.getElementById('imageUpload').click();
+        });
+
+        document.getElementById('imageUpload').addEventListener('change', function (e) {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function (event) {
+                    document.getElementById('profileImage').src = event.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Real-time preview of name and region
+        document.getElementById('name').addEventListener('input', function () {
+            document.getElementById('previewName').textContent = this.value;
+        });
+
+        document.getElementById('region').addEventListener('change', function () {
+            document.getElementById('previewRegion').textContent = `${this.value}, Bhutan`;
+        });
+
+    </script>
+</body>
+
+</html>

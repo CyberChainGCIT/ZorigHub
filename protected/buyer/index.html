@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorigHub - Buyer Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FC2839',
+                        secondary: '#333333',
+                        accent: '#F8E71C',
+                        bglight: '#F9FAFB',
+                        darkred: '#D92231',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        .bhutanese-border {
+            border: 3px solid;
+            border-image: linear-gradient(90deg, #FC2839, #F8E71C, #FC2839) 1;
+            border-width: 0 0 3px 0;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge {
+            top: 10px;
+            right: 10px;
+        }
+
+        .carousel-item {
+            transition: transform 0.5s ease;
+        }
+
+        .artisan-card:hover .artisan-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-bglight min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="/images/logo.png" class="w-28 h-14 object-cover" alt="logo image">
+
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-primary border-b-2 border-primary px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="marketplace.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Marketplace</a>
+                    <a href="artisanPage.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">Artisans</a>
+                    <a href="buyerAbout.html"
+                        class="text-secondary hover:text-primary px-3 py-2 text-sm font-medium">About</a>
+                </div>
+
+                <!-- Right Side -->
+                <div class="hidden md:flex items-center space-x-5">
+                    <div class="relative">
+                        <button class="text-secondary hover:text-primary">
+                            <i class="fas fa-search text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button class="text-secondary hover:text-primary relative">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span
+                                class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">3</span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <a href="cart.html" class="text-secondary hover:text-primary relative inline-block"
+                            id="cart-btn">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span
+                                class="absolute -top-1 -right-1 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
+                                id="cart-count">2</span>
+                        </a>
+                    </div>
+                    <button onclick="toggleLanguage()"
+                        class="text-xs bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 transition">
+                        <i class="fas fa-language mr-1"></i> Dzongkha
+                    </button>
+                    <div class="relative ml-4">
+                        <div class="flex items-center space-x-2">
+                            <img src="/images/people/karma.jpg" alt="User"
+                                class="w-8 h-8 object-cover rounded-full border-2 border-primary">
+                            <span class="text-sm font-medium text-secondary hidden md:inline">Jigme</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome Section -->
+        <section class="mb-10">
+            <div class="bg-white rounded-2xl shadow-md p-6 md:p-8">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2" id="welcome-text">Welcome back, Jigme!</h1>
+                <p class="text-gray-600 mb-4">Discover authentic Bhutanese craftsmanship today</p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="flex items-center bg-bglight rounded-lg px-4 py-2">
+                        <i class="fas fa-medal text-primary mr-2"></i>
+                        <span>Premium Member</span>
+                    </div>
+                    <div class="flex items-center bg-bglight rounded-lg px-4 py-2">
+                        <i class="fas fa-star text-primary mr-2"></i>
+                        <span>1246 Zorig Points</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Carousel -->
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold bhutanese-border pb-2 inline-block">Featured Products</h2>
+                <a href="#" class="text-primary hover:text-darkred flex items-center text-sm font-medium">
+                    View all <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+
+            <div class="relative">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="featured-carousel">
+                    <!-- Product 1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover">
+                        <div class="relative">
+                            <img src="/images/crafts/woodcarving.jpg" alt="Handmade Bhutanese Wood Carving"
+                                class="w-full h-48 object-cover">
+                            <div
+                                class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                                <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">Handmade Wood Carving</h3>
+                            <p class="text-gray-600 text-sm mb-2">Traditional Bhutanese wooden mask for wall decoration
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-primary text-lg">Nu. 2,500</span>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="bg-primary hover:bg-darkred text-white px-3 py-1 rounded-md text-sm transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                    <a href="productDetails.html"
+                                        class="border border-gray-300 hover:bg-gray-100 px-3 py-1 rounded-md text-sm transition inline-block text-center">
+                                        View
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover">
+                        <div class="relative">
+                            <img src="/images/crafts/weave.jpg" alt="Handmade Bhutanese Wood Carving"
+                                class="w-full h-48 object-cover">
+                            <div
+                                class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                                <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">Handwoven Textile</h3>
+                            <p class="text-gray-600 text-sm mb-2">Yathra fabric, perfect for jackets and upholstery</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-primary text-lg">Nu. 4,800</span>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="bg-primary hover:bg-darkred text-white px-3 py-1 rounded-md text-sm transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                    <a href="productDetails.html"
+                                        class="border border-gray-300 hover:bg-gray-100 px-3 py-1 rounded-md text-sm transition inline-block text-center">
+                                        View
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover">
+                        <div class="relative">
+                            <img src="/images/crafts/mask.jpg" alt="Handmade Bhutanese Wood Carving"
+                                class="w-full h-48 object-cover">
+                            <div
+                                class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                                <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">Handmade Mask</h3>
+                            <p class="text-gray-600 text-sm mb-2">Traditional handmade mask with unique blends</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-primary text-lg">Nu. 1,200</span>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="bg-primary hover:bg-darkred text-white px-3 py-1 rounded-md text-sm transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                    <a href="productDetails.html"
+                                        class="border border-gray-300 hover:bg-gray-100 px-3 py-1 rounded-md text-sm transition inline-block text-center">
+                                        View
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover">
+                        <div class="relative">
+                            <img src="/images/crafts/basket.jpg" alt="Handmade Bhutanese Wood Carving"
+                                class="w-full h-48 object-cover">
+                            <div
+                                class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                                <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-1">Bamboo Tea Set</h3>
+                            <p class="text-gray-600 text-sm mb-2">Eco-friendly bamboo tea cups with tray</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-primary text-lg">Nu. 3,500</span>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="bg-primary hover:bg-darkred text-white px-3 py-1 rounded-md text-sm transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                    <a href="productDetails.html"
+                                        class="border border-gray-300 hover:bg-gray-100 px-3 py-1 rounded-md text-sm transition inline-block text-center">
+                                        View
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Section -->
+        <section class="mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="#" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition flex items-center">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-lg p-3 mr-4">
+                        <i class="fas fa-box-open text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">My Orders</h3>
+                        <p class="text-gray-600 text-sm mt-1">Track your purchases</p>
+                    </div>
+                </a>
+
+                <a href="#" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition flex items-center">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-lg p-3 mr-4">
+                        <i class="fas fa-heart text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Saved Items</h3>
+                        <p class="text-gray-600 text-sm mt-1">Your wishlist (12 items)</p>
+                    </div>
+                </a>
+
+                <a href="#" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition flex items-center">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-lg p-3 mr-4">
+                        <i class="fas fa-bolt text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Recommended for You</h3>
+                        <p class="text-gray-600 text-sm mt-1">Personalized picks</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Top Artisans -->
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold bhutanese-border pb-2 inline-block">Top Artisans of the Month</h2>
+                <a href="#" class="text-primary hover:text-darkred flex items-center text-sm font-medium">
+                    View all <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Artisan 1 -->
+                <div class="relative artisan-card group">
+                    <div
+                        class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center transition-all duration-300 hover:shadow-lg">
+                        <div class="relative">
+                            <img src="/images/people/pema.jpg" alt="Artisan Jamyang"
+                                class="w-20 h-20 rounded-full border-4 border-primary object-cover">
+                        </div>
+                        <h3 class="font-semibold mt-2 text-center">Jamyang</h3>
+                        <p class="text-gray-600 text-sm text-center">Weaving Specialist</p>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 artisan-overlay transition">
+                            <button
+                                class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artisan 2 -->
+                <div class="relative artisan-card group">
+                    <div
+                        class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center transition-all duration-300 hover:shadow-lg">
+                        <div class="relative">
+                            <img src="/images/people/tshering.jpg" alt="Artisan Tashi"
+                                class="w-20 h-20 rounded-full border-4 border-primary object-cover">
+                        </div>
+                        <h3 class="font-semibold mt-2 text-center">Tashi</h3>
+                        <p class="text-gray-600 text-sm text-center">Wood Carver</p>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 artisan-overlay transition">
+                            <button
+                                class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artisan 3 -->
+                <div class="relative artisan-card group">
+                    <div
+                        class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center transition-all duration-300 hover:shadow-lg">
+                        <div class="relative">
+                            <img src="/images/people/sangay.jpg" alt="Artisan Pema"
+                                class="w-20 h-20 rounded-full border-4 border-primary object-cover">
+                        </div>
+                        <h3 class="font-semibold mt-2 text-center">Pema</h3>
+                        <p class="text-gray-600 text-sm text-center">Thangka Painter</p>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 artisan-overlay transition">
+                            <button
+                                class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artisan 4 -->
+                <div class="relative artisan-card group">
+                    <div
+                        class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center transition-all duration-300 hover:shadow-lg">
+                        <div class="relative">
+                            <img src="/images/people/karma.jpg" alt="Artisan Dorji"
+                                class="w-20 h-20 rounded-full border-4 border-primary object-cover">
+                        </div>
+                        <h3 class="font-semibold mt-2 text-center">Dorji</h3>
+                        <p class="text-gray-600 text-sm text-center">Silver Smith</p>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 artisan-overlay transition">
+                            <button
+                                class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artisan 5 -->
+                <div class="relative artisan-card group">
+                    <div
+                        class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center transition-all duration-300 hover:shadow-lg">
+                        <div class="relative">
+                            <img src="/images/people/pema.jpg" alt="Artisan Lhamo"
+                                class="w-20 h-20 rounded-full border-4 border-primary object-cover">
+                        </div>
+                        <h3 class="font-semibold mt-2 text-center">Lhamo</h3>
+                        <p class="text-gray-600 text-sm text-center">Ceramic Artist</p>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 artisan-overlay transition">
+                            <button
+                                class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Callout Sections -->
+        <section class="mb-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Learn About Zorig Chusum -->
+                <div class="bg-gradient-to-r from-primary to-darkred rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex items-start justify-between">
+                        <div class="max-w-md">
+                            <h2 class="text-2xl font-bold mb-2">Learn About Zorig Chusum</h2>
+                            <p class="mb-4 text-white text-opacity-90">Discover the 13 traditional arts and crafts of
+                                Bhutan that represent our rich cultural heritage.</p>
+                            <button
+                                class="bg-white text-primary hover:bg-gray-100 px-4 py-2 rounded-md font-medium transition">
+                                Explore Traditions
+                            </button>
+                        </div>
+                        <div class="relative">
+                            <img src="/images/crafts/sculptingg.jpg" alt="Artisan Lhamo"
+                                class="w-20 h-20 rounded-full border-4 border-primary object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Buy from ZorigHub? -->
+                <div class="bg-white rounded-xl shadow-lg p-6 flex items-start justify-between">
+                    <div class="max-w-md">
+                        <h2 class="text-2xl font-bold mb-2">Why Buy from ZorigHub?</h2>
+                        <p class="mb-4 text-gray-600">Your purchase directly supports traditional artisans and helps
+                            preserve Bhutanese culture.</p>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Authentic handmade products</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Fair
+                                compensation for artisans</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Eco-friendly materials</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="hidden md:flex items-center justify-center bg-primary bg-opacity-10 text-primary rounded-lg p-4">
+                        <i class="fas fa-hands-helping text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recently Viewed -->
+        <section class="mb-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold bhutanese-border pb-2 inline-block">Recently Viewed</h2>
+                <a href="#" class="text-primary hover:text-darkred flex items-center text-sm font-medium">
+                    View all <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-md shadow overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="/images/crafts/mask.jpg" alt="Handmade Bhutanese Wood Carving"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                            <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-medium text-sm mb-1">Traditional Mask</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary text-sm">Nu. 850</span>
+                            <button class="text-primary text-xs font-medium">
+                                View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-md shadow overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="/images/crafts/weave.jpg" alt="Handmade Bhutanese Wood Carving"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                            <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-medium text-sm mb-1">Kira Fabric</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary text-sm">Nu. 3,200</span>
+                            <button class="text-primary text-xs font-medium">
+                                View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-md shadow overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="/images/crafts/silver-bowl.jpg" alt="Handmade Bhutanese Wood Carving"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                            <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-medium text-sm mb-1">Silver-bowl</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary text-sm">Nu. 2,100</span>
+                            <button class="text-primary text-xs font-medium">
+                                View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-md shadow overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="/images/crafts/basket.jpg" alt="Handmade Bhutanese Wood Carving"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                            <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-medium text-sm mb-1">Bamboo Basket</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary text-sm">Nu. 1,100</span>
+                            <button class="text-primary text-xs font-medium">
+                                View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-white rounded-md shadow overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="/images/crafts/jewellery.jpg" alt="Handmade Bhutanese Wood Carving"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute badge bg-white rounded-full px-2 py-1 text-xs font-bold shadow flex items-center">
+                            <i class="fas fa-leaf text-green-500 mr-1"></i> Eco-friendly
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-medium text-sm mb-1">Silver Pendant</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary text-sm">Nu. 4,500</span>
+                            <button class="text-primary text-xs font-medium">
+                                View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Zorig<span class="text-primary">Hub</span></h3>
+                    <p class="text-gray-400">Preserving and promoting Bhutanese traditional arts and crafts through
+                        ethical commerce.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Marketplace</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Artisan Profiles</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Zorig Chusum</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to receive updates on new products and artisan stories.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="px-3 py-2 rounded-l-md bg-gray-700 text-white w-full focus:outline-none">
+                        <button type="submit" class="bg-primary hover:bg-darkred px-4 py-2 rounded-r-md">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 ZorigHub. All rights reserved. Handcrafted in Bhutan 🇧🇹</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple language toggle functionality
+        let currentLang = 'en';
+        const dzongkhaTexts = {
+            'Welcome back, Jigme!': 'སྤྱི་སྡེ་ལེགས་སོ་མི་སྣང་དང་། བཀྲ་ཤིས་བདེ་ལེགས་ཁྱེད་རང་།',
+            'Discover authentic Bhutanese craftsmanship today': 'དེ་རིང་ང་ཚོའི་འབྲུག་གི་རྩལ་ལས་རྩལ་འདོན་གྱི་དངོས་པོ་དག་གཟིགས་ནས་ལོང་།',
+            'Featured Products': 'ཐུན་མིན་གྱི་ལས་རྩལ་ཡོངས།',
+            'View all': 'དཔེ་ཆ་ཡོངས་ལ་གཟིགས།',
+            'Top Artisans of the Month': 'དབྱར་ཟླའི་ལས་རྩལ་པ་ཚོ།',
+            'Premium Member': 'ཆེ་དམིགས་ཀྱི་ཡོངས་འདུས་བྱེད་མཁན།',
+            '1246 Zorig Points': 'འབྲུག་རྩལ་གྱི་རྩིས་འབུར ༡༢༤༦',
+            'My Orders': 'ངའི་ཉོ་ཚགས།',
+            'Track your purchases': 'ཁྱེད་ཀྱི་ཉོ་ཚགས་ལ་གཟིགས།',
+            'Saved Items': 'ཉར་ཟིན་པའི་དངོས་པོ།',
+            'Your wishlist (12 items)': 'ཁྱེད་ཀྱི་འདོད་པའི་ཐོ་ཡིག (ཆ་༡༢)',
+            'Recommended for You': 'ཁྱེད་ལ་མཁོ་བའི་དངོས་པོ།',
+            'Personalized picks': 'ཁྱེད་རང་གི་དོ་སྣང་དང་མཐུན་པའི་གདམ་ཚན།',
+            'Recently Viewed': 'ཉར་ཚགས་དང་འཕྲད་པའི་དངོས་པོ།'
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'dz' : 'en';
+            const elements = document.querySelectorAll('[id^="welcome-text"], h1, h2, h3, p, span, a');
+
+            if (currentLang === 'dz') {
+                document.querySelectorAll('[id]').forEach(element => {
+                    const key = element.textContent.trim();
+                    if (dzongkhaTexts[key]) {
+                        element.textContent = dzongkhaTexts[key];
+                    }
+                });
+                document.querySelector('.fa-language').parentElement.innerHTML = '<i class="fas fa-language mr-1"></i> English';
+            } else {
+                document.querySelectorAll('[id]').forEach(element => {
+                    for (const [en, dz] of Object.entries(dzongkhaTexts)) {
+                        if (element.textContent.trim() === dz) {
+                            element.textContent = en;
+                            break;
+                        }
+                    }
+                });
+                document.querySelector('.fa-language').parentElement.innerHTML = '<i class="fas fa-language mr-1"></i> Dzongkha';
+            }
+        }
+
+        // Simple cart count increment
+        document.querySelectorAll('[class*="fa-shopping-cart"]').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const count = parseInt(document.getElementById('cart-count').textContent);
+                document.getElementById('cart-count').textContent = count + 1;
+            });
+        });
+
+        // Mobile menu toggle (just for show in this demo)
+        document.querySelector('.md\\:hidden .fa-bars').addEventListener('click', function () {
+            alert('Mobile menu would open here in a complete implementation');
+        });
+    </script>
+</body>
+
+</html>
